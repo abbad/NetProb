@@ -1,0 +1,1881 @@
+!SESSION 2013-04-19 20:41:34.426 -----------------------------------------------
+eclipse.buildId=I20100608-0911
+java.version=1.7.0_07
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2013-04-19 20:42:23.335
+!MESSAGE Registering: com.google.appengine.eclipse.sdkbundle.1.4.0_1.4.0.v201012021502
+
+!ENTRY com.google.gdt.eclipse.suite 1 0 2013-04-19 20:42:24.087
+!MESSAGE Registering: com.google.gwt.eclipse.sdkbundle.2.1.1_2.1.1.v201012170127
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:43:31.489
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:44:59.736
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:45:23.143
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:45:56.034
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:47:28.004
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:47:51.990
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:48:23.903
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:48:47.307
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:49:18.545
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:49:47.452
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:50:27.691
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:51:22.083
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:51:52.046
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:53:16.129
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:53:36.925
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:53:57.600
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 20:54:32.840
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:00:08.420
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:00:30.394
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:01:00.333
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:01:21.368
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:02:18.430
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:02:56.556
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:03:26.398
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:03:50.159
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:05:13.520
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:05:39.750
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:06:08.286
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:06:32.023
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:06:54.516
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:07:19.988
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:08:18.167
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:09:00.875
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:09:28.058
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:12:01.437
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:12:22.097
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:13:00.431
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:13:25.938
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:13:47.506
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:14:11.415
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:15:21.010
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:15:55.308
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:16:18.846
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:16:39.630
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:17:07.073
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:17:27.471
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:17:50.693
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:18:15.151
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:19:46.488
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:20:16.028
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:21:28.638
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:21:56.338
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:22:28.574
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:23:12.301
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:23:56.925
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:24:32.885
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:24:53.092
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:25:14.737
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:25:36.919
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:25:59.363
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY org.eclipse.jface 2 0 2013-04-19 21:26:45.318
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2013-04-19 21:26:45.318
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.actions.OpenTypeAction),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(com.python.pydev.analysis.actions.pyGlobalsBrowserWorkbench,Python Show Global Tokens (Global),
+		Python Show Global Tokens (Global),
+		Category(org.python.pydev.ui.category.source,PyDev - Editor,PyDev editor category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	com.python.pydev.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.python.pydev.editor.actions.pyShowBrowser,Python Show Global Tokens (Editor),
+		Python Show Global Tokens (Editor),
+		Category(org.python.pydev.ui.category.source,PyDev - Editor,PyDev editor category,true),
+		ActionDelegateHandlerProxy(null,org.python.pydev.editor.actions.PyShowBrowser),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.python.pydev.ui.editor.scope,,,system)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:27:09.391
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:27:31.991
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:27:53.140
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:28:18.608
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:28:47.532
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:29:11.670
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:30:42.812
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:31:06.006
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:31:39.618
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:33:23.264
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:33:50.910
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:34:11.069
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:34:36.098
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:35:06.217
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:45:15.860
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:45:45.885
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:46:22.828
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:46:47.189
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:47:10.635
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:47:33.112
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:47:54.395
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:48:16.709
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:48:46.727
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:49:14.043
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:49:44.209
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:50:28.346
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:51:11.046
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:51:59.021
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:52:51.028
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:53:47.624
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:54:10.119
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:54:36.325
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:56:46.860
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:57:11.153
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 21:57:54.509
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:00:21.439
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:00:42.532
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:01:10.343
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:01:44.800
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:02:06.184
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:02:31.158
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:03:27.876
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:03:52.991
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:04:15.002
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:04:35.689
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:07:51.641
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:08:21.112
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:08:44.155
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:09:16.200
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:10:44.157
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:11:05.130
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:11:38.046
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:12:07.310
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:12:29.045
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:12:50.838
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:13:16.640
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:13:38.946
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:14:05.493
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:15:43.027
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:16:07.168
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:16:43.311
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:17:10.361
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:17:33.600
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:18:06.387
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:18:30.787
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:18:55.718
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:19:19.487
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:19:59.797
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:20:20.042
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:20:44.851
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:21:18.142
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:21:49.648
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:22:15.267
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:23:21.997
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:23:54.512
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:25:02.808
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:25:23.703
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:27:11.894
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:27:49.924
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:28:12.254
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:28:56.130
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:29:18.742
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:29:59.169
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:30:36.985
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:31:06.516
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:31:51.363
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:32:36.894
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:33:08.912
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:33:47.553
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:34:26.060
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:34:47.104
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:35:08.392
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:36:55.752
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:37:27.869
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:37:51.201
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:38:11.910
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:38:48.740
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:39:13.569
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:39:41.064
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:41:14.024
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:43:25.474
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:43:58.360
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:44:28.948
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:45:11.366
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:45:36.435
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:46:22.334
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:47:37.007
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:48:45.460
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:49:21.406
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:49:49.343
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:50:30.013
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:51:02.295
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:51:28.815
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:51:50.398
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:52:15.475
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:52:38.569
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:54:25.837
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:55:07.441
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:55:55.407
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:56:24.792
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:58:31.021
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:59:16.838
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 22:59:42.181
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
+
+!ENTRY com.aptana.shared_core 4 4 2013-04-19 23:00:53.603
+!MESSAGE No message gotten (null message).
+!STACK 0
+java.lang.NullPointerException
+	at org.python.pydev.editor.PyEdit.getGrammarVersion(PyEdit.java:1587)
+	at org.python.pydev.editor.PyEdit$5.getGrammarVersion(PyEdit.java:1595)
+	at org.python.pydev.parser.PyParser.reparseDocument(PyParser.java:423)
+	at org.python.pydev.parser.ParserScheduler.reparseDocument(ParserScheduler.java:156)
+	at org.python.pydev.parser.ParsingThread.run(ParsingThread.java:51)
