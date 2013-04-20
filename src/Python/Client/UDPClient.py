@@ -60,7 +60,7 @@ def printHelp():
 	print '-n number of packets \t\t default 1000'
 	print '-d duration sending packets \t default 10 seconds'
 	print '-t time between each packet \t default 0 seconds'
-	print 'note: option -d will override option -n. So you can only use one of these modes'
+	print 'note: option -d will override option -n.'
 	
 def makePacket(size, number):
 
@@ -86,8 +86,8 @@ def checkArguments(argv):
 			printHelp()
 			sys.exit()
 		elif opt in ('-l'):
-			global localHost
-			localHost = arg
+			global host
+			host = arg
 		elif opt in ('-p'):
 			global port
 			port = int(arg)

@@ -6,13 +6,12 @@ UDP and TCP clients and servers using python and c
 
 - Python code run without compile (python 2.7 needed). 
 
-- For the python part variables are statically defined in the source file for now. Later to be passed as arguments 
-  from cmd. 
-
 - Size of packet can be defined in UDPClient.py warning your computer might beep sometimes 
   because of the random generation of bytes. 
 
 - for now there is no exception handling for the python application. 
+
+- c will be excluded from the project. 
 
 
 
