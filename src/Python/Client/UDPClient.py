@@ -3,6 +3,7 @@ Created on Apr 13, 2013
 
 @author: Abbad
 '''
+
 import socket
 import os
 import sys, getopt
@@ -17,43 +18,39 @@ duration = 10
 timeBetweenPackets = 0 
 timeBased = False 
 
-
 def sendUdpBasedOntime(sock):
 	'''
 		sending packets based on duration
 	'''
 	startTime = time.time()
 	stopTime = startTime + duration
-	counter = 1 
-	
+	print 'sending packets for about ' + str(duration) + ' of seconds'
+	global numberOfPackets
+	numberOfPackets = 1
 	while(1):
-		packetHeader = "packet number %d" % counter
-		packetData = os.urandom(packetSize)
-		print 'sending'+ packetHeader
+		packet = makePacket(packetSize, numberOfPackets)
+		print 'sending packet', numberOfPackets 
+		
 		time.sleep(timeBetweenPackets)
-		sock.sendto(packetHeader + packetData , (host, port))
-		counter = counter + 1
+		sock.sendto(packet , (host, port))
+		
 		if stopTime <= time.time():
 			print 'done'
 			break
-
+			
+		numberOfPackets = numberOfPackets + 1
 
 def sendUdpBasedOnPackets(sock):
 	'''
 		sending packets based on number of packets 
 	'''	
 	for x in range (0,numberOfPackets):
-		
-		packet = x + 1
-		packetHeader = "packet number %d" % packet
-		packetData = os.urandom(packetSize)
-		print 'sending'+ packetHeader
+		counter = x+1 
+		print 'sending packet number '+ str(counter)
+		packet = makePacket(packetSize, counter)
 		time.sleep(timeBetweenPackets)
-		sock.sendto(packetHeader + packetData , (host, port))
-	
-	print "Number of packets sent:", numberOfPackets
-	
-	
+		sock.sendto(packet, (host, port))
+		
 def printHelp():
 	print 'This is a UDP client:'
 	print 'usage:'
@@ -63,6 +60,20 @@ def printHelp():
 	print '-n number of packets \t\t default 1000'
 	print '-d duration sending packets \t default 10 seconds'
 	print '-t time between each packet \t default 0 seconds'
+	print 'note: option -d will override option -n. So you can only use one of these modes'
+	
+def makePacket(size, number):
+
+	packetheader = makePacketHeader( "packet number %d" % number)
+	packetData = makePacketBody(size)
+	
+	return packetheader + packetData 
+	
+def makePacketHeader(header):
+	return header 
+	
+def makePacketBody(size):
+	return os.urandom(size)
 	
 def checkArguments(argv):
 	try:
@@ -78,14 +89,14 @@ def checkArguments(argv):
 			global localHost
 			localHost = arg
 		elif opt in ('-p'):
-			global port 
+			global port
 			port = int(arg)
 		elif opt in ('-s'):
 			global packetSize
-			packetSize = arg
+			packetSize = int(arg)
 		elif opt in ('-n'):
 			global numberOfPackets
-			numberOfPackets = arg
+			numberOfPackets = int(arg)
 		elif opt in ('-d'):
 			global duration 
 			global timeBased
@@ -95,7 +106,6 @@ def checkArguments(argv):
 			global timeBetweenPackets
 			timeBetweenPackets = float(arg)
 		
-
 if __name__ == '__main__':
 	print 'UDP target IP:', socket.gethostbyname(host)
 	print 'UDP target port:', port
@@ -107,11 +117,11 @@ if __name__ == '__main__':
 	
 	
 	if timeBased:
-		print 'sending packets for about %d of seconds', duration
 		sendUdpBasedOntime(sock)
 	else: 
-		print 'Number of packets:', numberOfPackets
 		sendUdpBasedOnPackets(sock)
+	
+	print "Number of packets sent:", numberOfPackets
 	
 	print 'closing sockets'
 	sock.close()
