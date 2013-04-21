@@ -57,10 +57,11 @@ def printHelp():
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-s packet size \t\t\t default 50'
-	print '-n number of packets \t\t default 1000'
+	print '-n number of packets \t\t default 1000' # remove 
 	print '-d duration sending packets \t default 10 seconds'
 	print '-t time between each packet \t default 0 seconds'
 	print 'note: option -d will override option -n.'
+	print '-w window size'
 	
 def makePacket(size, number):
 
