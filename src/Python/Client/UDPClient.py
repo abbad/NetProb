@@ -16,7 +16,6 @@ windowSize = 10
 packetSize = 1000
 duration = 10
 timeBetweenPackets = 0 
-timeBased = False 
 numberOfPackets = 1
 
 def sendUdpBasedOntime(sock):
@@ -55,9 +54,8 @@ def printHelp():
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-s packet size \t\t\t default 50'
-	print '-n number of packets \t\t default 1000' # remove 
 	print '-t time between each packet \t default 0 seconds'
-	print '-w window size'
+	print '-w window size \t\t\t default 0'
 	
 def makePacket(size, number):
 
@@ -113,6 +111,9 @@ if __name__ == '__main__':
 	
 	
 	sendUdpBasedOntime(sock)
+	
+	# report 
+	# tcp  
 	
 	print "Number of packets sent:", numberOfPackets
 	
