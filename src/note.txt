@@ -1,15 +1,8 @@
 UDP and TCP clients and servers using python and c
 --------------------------------------------------
-- Very simple applications explaining the concepts of socket programming in c and python. 
+- Very simple applications explaining the concepts of socket programming in c. 
 
 - C source code needs to be compiled before running.
-
-- Python code run without compile (python 2.7 needed). 
-
-- Size of packet can be defined in UDPClient.py warning your computer might beep sometimes 
-  because of the random generation of bytes. 
-
-- for now there is no exception handling for the python application. 
 
 - c will be excluded from the project. 
 
