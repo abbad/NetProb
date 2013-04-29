@@ -13,16 +13,17 @@ port = 4001                     # Arbitrary non-privileged port
 bufferSize = 1024
 
 def printHelp():
-	print 'This is a UDP client:'
+	print 'This is a UDP Server:'
 	print 'usage:'
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-s buffer size \t\t\t default 1024'
+
 def checkArguments(argv):
 	try:
 		opts, args = getopt.getopt(argv[1:],"hl:p:s:",["host", "portNumber", "bufferSize"])
 	except getopt.GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <bufferSize>'
+		print 'UDPServer.py -l <hostname> -p <port> -s <bufferSize>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -49,6 +50,10 @@ if __name__ == "__main__":
 
 	while 1:
 		data  = sock.recv(bufferSize)
-		print "received message:\nsize:" + str(len(data))
+		if data != '':
+			break;
+		
+	
+	print "received message:\nsize:" + str(len(data))
 	
 	

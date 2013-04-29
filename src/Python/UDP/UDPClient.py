@@ -46,7 +46,6 @@ def sendUdpBasedOntime(sock):
 			print 'done'
 			break
 			
-		
 
 def printHelp():
 	print 'This is a UDP client:'
@@ -110,10 +109,7 @@ if __name__ == '__main__':
 	
 	
 	
-	sendUdpBasedOntime(sock)
-	
-	# report 
-	# tcp  
+	sendUdpBasedOntime(sock)  
 	
 	print "Number of packets sent:", numberOfPackets
 	
