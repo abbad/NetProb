@@ -17,6 +17,7 @@ packetSize = 1000
 duration = 10
 timeBetweenPackets = 0 
 numberOfPackets = 1
+fileName = 'blabla.xml'
 
 def sendUdpBasedOntime(sock):
 	'''
@@ -46,7 +47,26 @@ def sendUdpBasedOntime(sock):
 			print 'done'
 			break
 			
-
+def writeStatistics():
+	'''
+		this is to write statistics to a file.
+	'''
+	with open(fileName,'w') as f:
+		f.write(__generateStatistics())
+	
+	
+	f.close()
+	
+def __generateStatistics():
+	'''
+		A function to generate xml statistics for server.
+	'''
+	
+	return '''<updStatistics><packetsSend>''' + str(numberOfPackets) + '''</packetsSend><windowSize>''' + str(windowSize) + '''</windowSize>
+<packetSize>''' + str(packetSize) + '''</packetSize><duration>''' + str(duration) + '''</duration>
+<timeBetweenPackets> ''' + str(timeBetweenPackets) + '''</timeBetweenPackets></udpStatistics> '''
+	
+	
 def printHelp():
 	print 'This is a UDP client:'
 	print 'usage:'
@@ -55,9 +75,9 @@ def printHelp():
 	print '-s packet size \t\t\t default 50'
 	print '-t time between each packet \t default 0 seconds'
 	print '-w window size \t\t\t default 0'
+	print '-f fileName to dump statistics \t \t default udp statistics'
 	
 def makePacket(size, number):
-
 	packetheader = makePacketHeader( "packet number %d" % number)
 	packetData = makePacketBody(size)
 	
@@ -71,9 +91,9 @@ def makePacketBody(size):
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:b:",["host", "portNumber", "numberOfPackets", "packetSize", "duration", "Time"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:b:f:",["host", "portNumber", "numberOfPackets", "packetSize", "duration", "Time", "FileName"])
 	except getopt.GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w windowSize -d <windowSize> -t <timeBetweenPackets>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w windowSize -d <windowSize> -t <timeBetweenPackets> -f <fileName>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -97,6 +117,10 @@ def checkArguments(argv):
 		elif opt in ('-t'):
 			global timeBetweenPackets
 			timeBetweenPackets = float(arg)
+		elif oprt in ('-f'):
+			global fileName
+			fileName = arg
+		
 		
 if __name__ == '__main__':
 	print 'UDP target IP:', socket.gethostbyname(host)
@@ -110,6 +134,8 @@ if __name__ == '__main__':
 	
 	
 	sendUdpBasedOntime(sock)  
+	
+	writeStatistics()
 	
 	print "Number of packets sent:", numberOfPackets
 	
