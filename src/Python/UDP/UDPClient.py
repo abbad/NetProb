@@ -17,7 +17,6 @@ packetSize = 1000
 duration = 10
 timeBetweenPackets = 0 
 numberOfPackets = 1
-fileName = 'blabla.xml'
 
 def sendUdpBasedOntime(sock):
 	'''
@@ -47,53 +46,36 @@ def sendUdpBasedOntime(sock):
 			print 'done'
 			break
 			
-def writeStatistics():
-	'''
-		this is to write statistics to a file.
-	'''
-	with open(fileName,'w') as f:
-		f.write(__generateStatistics())
-	
-	
-	f.close()
-	
-def __generateStatistics():
-	'''
-		A function to generate xml statistics for server.
-	'''
-	
-	return '''<updStatistics><packetsSend>''' + str(numberOfPackets) + '''</packetsSend><windowSize>''' + str(windowSize) + '''</windowSize>
-<packetSize>''' + str(packetSize) + '''</packetSize><duration>''' + str(duration) + '''</duration>
-<timeBetweenPackets> ''' + str(timeBetweenPackets) + '''</timeBetweenPackets></udpStatistics> '''
-	
-	
 def printHelp():
 	print 'This is a UDP client:'
 	print 'usage:'
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-s packet size \t\t\t default 50'
-	print '-t time between each packet \t default 0 seconds'
+	print '-t time between each window \t default 0 seconds'
 	print '-w window size \t\t\t default 0'
-	print '-f fileName to dump statistics \t \t default udp statistics'
+	print '-d duration sending packets \t dafault 20'
 	
 def makePacket(size, number):
-	packetheader = makePacketHeader( "packet number %d" % number)
+	packetheader = makePacketHeader(number)
 	packetData = makePacketBody(size)
 	
 	return packetheader + packetData 
 	
 def makePacketHeader(header):
-	return header 
+	'''
+		specification first 32 bits are reserved for squence number 
+	'''
+	return bytearray('{0:32b}'.format(header))
 	
 def makePacketBody(size):
 	return os.urandom(size)
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:b:f:",["host", "portNumber", "numberOfPackets", "packetSize", "duration", "Time", "FileName"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time"])
 	except getopt.GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w windowSize -d <windowSize> -t <timeBetweenPackets> -f <fileName>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenPackets>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -113,29 +95,24 @@ def checkArguments(argv):
 			windowSize = int(arg)
 		elif opt in ('-d'):
 			global duration
-			duration = int(arg)
+			duration = float(arg)
 		elif opt in ('-t'):
 			global timeBetweenPackets
 			timeBetweenPackets = float(arg)
-		elif oprt in ('-f'):
-			global fileName
-			fileName = arg
 		
 		
 if __name__ == '__main__':
-	print 'UDP target IP:', socket.gethostbyname(host)
-	print 'UDP target port:', port
 	
 	checkArguments(sys.argv)
-	
+	print 'UDP target IP:', socket.gethostbyname(host)
+	print 'UDP target port:', port
+
 	sock = socket.socket(socket.AF_INET, # Internet
 						             socket.SOCK_DGRAM) # UDP
 	
 	
 	
 	sendUdpBasedOntime(sock)  
-	
-	writeStatistics()
 	
 	print "Number of packets sent:", numberOfPackets
 	

@@ -6,24 +6,47 @@ Created on Apr 13, 2013
 
 import socket
 import sys, getopt
+import time
+from interpreter import getPacketSequenceNumber
 
 # global variables
 host = "localhost"              # Symbolic name meaning all available interfaces
 port = 4001                     # Arbitrary non-privileged port
-bufferSize = 1024
+bufferSize = 2084
+statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
+fileName = "stsdat.xml"
+numberOfPackets = 0
 
+def writeStatistics():
+	'''
+		this is to write statistics to a file.
+	'''
+	with open(fileName, 'a') as f:
+		f.write(__generateStatistics())
+	
+	f.close()
+	
+def __generateStatistics():
+	'''
+		A function to generate xml statistics for server.
+	'''
+	return '''<updStatistics><packetsSend>''' + str(numberOfPackets) + '''</packetsSend></updStatistics> '''
+	
+	 
 def printHelp():
 	print 'This is a UDP Server:'
 	print 'usage:'
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
-	print '-s buffer size \t\t\t default 1024'
+	print '-b buffer size \t\t\t default 1024'
+	print '-f file name \t\t\t default stat.xml'
+	print '-n notification period \t\t default 20 seconds'
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:s:",["host", "portNumber", "bufferSize"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
 	except getopt.GetoptError:
-		print 'UDPServer.py -l <hostname> -p <port> -s <bufferSize>'
+		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -38,22 +61,33 @@ def checkArguments(argv):
 		elif opt in ('-b'):
 			global bufferSize
 			bufferSize = int(arg)
+		elif opt in ('-f'):
+			global fileName
+			fileName = arg
+		elif opt in ('-n'):
+			global statNotPeriod
+			statNotPeriod = int(arg)
 		
 if __name__ == "__main__":
+
 	checkArguments(sys.argv)
 
 	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 	sock.bind((host, port))
 
+	startTime = time.time()
+	stopTime = startTime + statNotPeriod
+	
 	print "Server is listening.."
-
+	
 	while 1:
 		data  = sock.recv(bufferSize)
-		if data != '':
-			break;
+		print "received message:\nsize:" + str(len(data))
 		
+		numberOfPackets += 1
 	
-	print "received message:\nsize:" + str(len(data))
-	
-	
+		if stopTime <= time.time():
+			print 'writing statistics'
+			writeStatistics()
+			
