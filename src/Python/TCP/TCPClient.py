@@ -12,7 +12,6 @@ import time
 # global variables 
 host = "localhost"
 port = 5005
-fileName = ''
 
 def printHelp():
 	'''
@@ -22,16 +21,15 @@ def printHelp():
 	print 'usage:'
 	print '-l localHost \t\t\t default localhost'
 	print '-p port number \t\t\t default 5005'
-	print '-f file name'
 	
 def checkArguments(argv):
 	'''
 		this is to check arguments.
 	'''
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:f:",["host", "portNumber", "fileName"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:",["host", "portNumber"])
 	except getopt.GetoptError:
-		print 'TCPClient.py -l <hostname> -p <port> -f <fileName>'
+		print 'TCPClient.py -l <hostname> -p <port>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -43,9 +41,6 @@ def checkArguments(argv):
 		elif opt in ('-p'):
 			global port
 			port = int(arg)
-		elif opt in ('-f'):
-			global fileName
-			fileName = arg
 	
 def getStatistics():
 	'''
@@ -54,7 +49,6 @@ def getStatistics():
 	
 	with open(fileName,'r') as f:
 		read_data = f.read()
-	
 	
 	f.close()
 	
@@ -65,11 +59,14 @@ if __name__ == '__main__':
 		start of the program.
 	'''
 	checkArguments(sys.argv)
-	
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
 	
-	s.send('sadas')
-    
+	while 1:
+		
+		s.send(getStatistics())
+		
+	
+	
 	s.close()
 	

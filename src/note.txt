@@ -4,7 +4,12 @@ UDP and TCP clients and servers using python and c
 
 - C source code needs to be compiled before running.
 
-- c will be excluded from the project. 
+- tcp connections needs to be fixed. with error "socket.error: [Errno 10053] An established connection was aborted by the softwar
+e in your host machine"
+
+- generate statistics needs to be created in udp server. 
+
+- write to a file function to be created in udp server. 
 
 
 

@@ -7,21 +7,23 @@ Created on Apr 13, 2013
 import socket
 import sys, getopt
 import time
+from time import strftime
 from interpreter import getPacketSequenceNumber
+import thread
 
 # global variables
 host = "localhost"              # Symbolic name meaning all available interfaces
 port = 4001                     # Arbitrary non-privileged port
 bufferSize = 2084
 statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
-fileName = "stsdat.xml"
+fileName = "statistics "
 numberOfPackets = 0
-
+	
 def writeStatistics():
 	'''
 		this is to write statistics to a file.
 	'''
-	with open(fileName, 'a') as f:
+	with open(fileName +  strftime("%H%M%S") + '.xml', 'w') as f:
 		f.write(__generateStatistics())
 	
 	f.close()
@@ -31,7 +33,6 @@ def __generateStatistics():
 		A function to generate xml statistics for server.
 	'''
 	return '''<updStatistics><packetsSend>''' + str(numberOfPackets) + '''</packetsSend></updStatistics> '''
-	
 	 
 def printHelp():
 	print 'This is a UDP Server:'
@@ -44,7 +45,7 @@ def printHelp():
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod", "peerPID"])
 	except getopt.GetoptError:
 		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
 		sys.exit(2)
@@ -71,7 +72,7 @@ def checkArguments(argv):
 if __name__ == "__main__":
 
 	checkArguments(sys.argv)
-
+	
 	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 	sock.bind((host, port))
@@ -89,5 +90,7 @@ if __name__ == "__main__":
 	
 		if stopTime <= time.time():
 			print 'writing statistics'
-			writeStatistics()
-			
+			thread.start_new_thread(writeStatistics, ())
+			startTime = time.time()
+			stopTime = startTime + statNotPeriod
+				

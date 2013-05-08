@@ -13,3 +13,5 @@ def getPacketSequenceNumber(packet):
 		first 32 bytes are the sequence number
 	'''
 	return int(data[0:32], 2)
+
+	
