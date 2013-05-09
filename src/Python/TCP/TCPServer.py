@@ -54,10 +54,10 @@ print 'Connection address:', addr
 
 while 1:
 	data = conn.recv(bufferSize)
-	if data == '':
-		break
+	#if data == '':
+	#	break
 	print "received data:", data
-	conn.send(data)  # echo
+	#conn.send(data)  # echo
 
 	
 conn.close()

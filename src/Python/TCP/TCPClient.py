@@ -41,23 +41,40 @@ def checkArguments(argv):
 		elif opt in ('-p'):
 			global port
 			port = int(arg)
+
+def getFileName():
+	'''
+		using listdir functino in os to find files ending with
+		xml if one found then return it to function.
+	'''
+	
+	while 1:
+		for files in os.listdir("."):
+			if files.endswith(".xml"):
+				return files
+	
+def deleteStatistics(fileName):
+	os.remove(fileName)
+	
 	
 def getStatistics():
 	'''
-		this is to open and read the statistics which are dumped from udp server.
+		this is to open and read the statistics which are dumped from udp server. once read are also deleted.
 	'''
 	
+	fileName = getFileName()
 	with open(fileName,'r') as f:
 		read_data = f.read()
 	
 	f.close()
-	
+	deleteStatistics(fileName)
 	return read_data 
 	
 if __name__ == '__main__':
 	'''
 		start of the program.
 	'''
+	
 	checkArguments(sys.argv)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
