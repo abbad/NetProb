@@ -9,7 +9,7 @@ This module will call UDP server and TCP server.
 
 from subprocess import Popen
 from time import sleep
-import os
+from os import system
 
 if __name__ == '__main__':
 	
@@ -22,9 +22,9 @@ if __name__ == '__main__':
 	p2 = Popen(args, shell=False)
 	
 	try:
-		os.system('pause')  #windows, doesn't require enter
+		system('pause')  #windows, doesn't require enter
 	except ValueError:
-		os.system('read -p "Press any key to continue"') #linux
+		system('read -p "Press any key to continue"') #linux
 	
 	try:
 		p1.terminate()
