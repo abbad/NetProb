@@ -7,7 +7,7 @@ Created on Apr 29, 2013
 import socket
 import os
 import sys, getopt
-import time
+from time import sleep
 
 # global variables 
 host = "localhost"
@@ -64,12 +64,15 @@ def getStatistics():
 	'''
 	
 	fileName = getFileName()
-	with open(fileName,'r') as f:
+	with open(fileName, 'r') as f:
 		read_data = f.read()
 	
+	if len(read_data) == 0:
+		sleep(5)
+		getStatistics()
+		
 	f.close()
 	deleteStatistics(fileName)
-	print read_data
 	return read_data 
 	
 if __name__ == '__main__':
@@ -88,12 +91,13 @@ if __name__ == '__main__':
 		except: 
 			sleepTime = 5
 			print 'TCP Client: sleeping for ' + str(sleepTime) + ' seconds'
-			time.sleep(sleepTime)
+			sleep(sleepTime)
 		
 		
 	while 1:
-		time.sleep(2)
-		s.send(getStatistics())
+		sleep(2)
+		stat = getStatistics()
+		s.send(stat)
 		
 	
 	s.close()

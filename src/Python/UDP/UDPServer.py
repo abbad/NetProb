@@ -45,7 +45,7 @@ def printHelp():
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod", "peerPID"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
 	except getopt.GetoptError:
 		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
 		sys.exit(2)
