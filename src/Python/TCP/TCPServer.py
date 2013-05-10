@@ -50,14 +50,11 @@ s.listen(1)
 
 
 conn, addr = s.accept()
-print 'Connection address:', addr
+print 'TCP Server: Connection address:', addr
 
 while 1:
 	data = conn.recv(bufferSize)
-	#if data == '':
-	#	break
-	print "received data:", data
-	#conn.send(data)  # echo
+	print "TCP Server: received data:", data
 
 	
 conn.close()

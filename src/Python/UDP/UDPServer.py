@@ -84,12 +84,13 @@ if __name__ == "__main__":
 	
 	while 1:
 		data  = sock.recv(bufferSize)
-		print "received message:\nsize:" + str(len(data))
+		#print "UDP Server: received message " + str(numberOfPackets)
+		#print "UDP Server: size:" + str(len(data))
 		
 		numberOfPackets += 1
 	
 		if stopTime <= time.time():
-			print 'writing statistics'
+			print "UDP Server: Writing statistics"
 			thread.start_new_thread(writeStatistics, ())
 			startTime = time.time()
 			stopTime = startTime + statNotPeriod

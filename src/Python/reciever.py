@@ -13,12 +13,12 @@ import os
 
 if __name__ == '__main__':
 	
-	print 'Starting TCP server'
+	print 'Starting TCP client'
 	args = ["python", "TCP\TCPClient.py"]
 	p1 = Popen(args, shell=False)
 	
 	print 'Starting UDP server'
-	args =  ["python", "UDP\UDPserver.py"]
+	args =  ["python", "UDP\UDPserver.py", "-n 5"]
 	p2 = Popen(args, shell=False)
 	
 	try:
@@ -26,6 +26,9 @@ if __name__ == '__main__':
 	except ValueError:
 		os.system('read -p "Press any key to continue"') #linux
 	
-	p1.terminate()
-	p2.terminate()
-	
+	try:
+		p1.terminate()
+		p2.terminate()
+	except:
+		pass
+		

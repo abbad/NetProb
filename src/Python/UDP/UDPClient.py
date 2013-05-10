@@ -24,22 +24,21 @@ def sendUdpBasedOntime(sock):
 	'''
 	startTime = time.time()
 	stopTime = startTime + duration
-	print 'sending packets for about ' + str(duration) + ' of seconds'
+	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
 	global numberOfPackets
 	numberOfPackets = 1
 		
 	while(1):
 			
-		counter =0 
-			
+		
 		for i in range(windowSize):
 		
 			packet = makePacket(packetSize, numberOfPackets)
-			print 'sending packet', numberOfPackets 
 			sock.sendto(packet , (host, port))
 			numberOfPackets = numberOfPackets + 1
-			
-		print 'sleeping for ' + str(timeBetweenPackets) + ' seconds' 
+		
+		if timeBetweenPackets != 0:
+			print 'sleeping for ' + str(timeBetweenPackets) + ' seconds' 
 		time.sleep(timeBetweenPackets)
 		
 		if stopTime <= time.time():

@@ -17,6 +17,7 @@ def printHelp():
 	'''
 		this is to print options.
 	'''
+	
 	print 'This is a TCP client:'
 	print 'usage:'
 	print '-l localHost \t\t\t default localhost'
@@ -27,7 +28,7 @@ def checkArguments(argv):
 		this is to check arguments.
 	'''
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:",["host", "portNumber"])
+		opts, args = getopt.getopt(argv[1:], "hl:p:", ["host", "portNumber"])
 	except getopt.GetoptError:
 		print 'TCPClient.py -l <hostname> -p <port>'
 		sys.exit(2)
@@ -44,7 +45,7 @@ def checkArguments(argv):
 
 def getFileName():
 	'''
-		using listdir functino in os to find files ending with
+		using listdir function in os to find files ending with
 		xml if one found then return it to function.
 	'''
 	
@@ -68,6 +69,7 @@ def getStatistics():
 	
 	f.close()
 	deleteStatistics(fileName)
+	print read_data
 	return read_data 
 	
 if __name__ == '__main__':
@@ -77,10 +79,20 @@ if __name__ == '__main__':
 	
 	checkArguments(sys.argv)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect((host, port))
 	
 	while 1:
+		try:
+			s.connect((host, port))
+			print 'TCP Client: Connection established.'
+			break
+		except: 
+			sleepTime = 5
+			print 'TCP Client: sleeping for ' + str(sleepTime) + ' seconds'
+			time.sleep(sleepTime)
 		
+		
+	while 1:
+		time.sleep(2)
 		s.send(getStatistics())
 		
 	
