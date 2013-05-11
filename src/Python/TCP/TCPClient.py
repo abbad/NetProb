@@ -65,12 +65,9 @@ def getStatistics():
 	
 	fileName = getFileName()
 	with open(fileName, 'r') as f:
+		sleep(2)
 		read_data = f.read()
-	
-	if len(read_data) == 0:
-		sleep(5)
-		getStatistics()
-		
+			
 	f.close()
 	deleteStatistics(fileName)
 	return read_data 

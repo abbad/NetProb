@@ -32,7 +32,7 @@ def __generateStatistics():
 	'''
 		A function to generate xml statistics for server.
 	'''
-	return '''<updStatistics><packetsSend>''' + str(numberOfPackets) + '''</packetsSend></updStatistics> '''
+	return '''<updStatistics><packetsRecieved>''' + str(numberOfPackets) + '''</packetsRecieved></updStatistics> '''
 	 
 def printHelp():
 	print 'This is a UDP Server:'
