@@ -65,7 +65,7 @@ def getStatistics():
 	
 	fileName = getFileName()
 	with open(fileName, 'r') as f:
-		sleep(2)
+		sleep(1)
 		read_data = f.read()
 			
 	f.close()
