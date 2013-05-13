@@ -11,6 +11,7 @@ from subprocess import Popen
 import os
 from inspect import currentframe, getfile
 from sys import path
+# code to include subfolder modules (packages)
 cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(getfile( currentframe() ))[0],"subfolder")))
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
