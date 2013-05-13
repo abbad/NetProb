@@ -3,49 +3,19 @@ Created on may 10, 2013
 
 @author: Abbad
 
-Sender Module to run the sender.
+Module to run the sender.
 
 '''
 
 from subprocess import Popen
-from time import sleep
 import os
+from inspect import currentframe, getfile
+from sys import path
+cmd_subfolder = os.path.realpath(os.path.abspath(os.path.join(os.path.split(getfile( currentframe() ))[0],"subfolder")))
+if cmd_subfolder not in path:
+	path.insert(0, cmd_subfolder)
 
-class _Getch:
-    """Gets a single character from standard input.  Does not echo to the
-screen."""
-    def __init__(self):
-        try:
-            self.impl = _GetchWindows()
-        except ImportError:
-            self.impl = _GetchUnix()
-
-    def __call__(self): return self.impl()
-
-
-class _GetchUnix:
-    def __init__(self):
-        import tty, sys
-
-    def __call__(self):
-        import sys, tty, termios
-        fd = sys.stdin.fileno()
-        old_settings = termios.tcgetattr(fd)
-        try:
-            tty.setraw(sys.stdin.fileno())
-            ch = sys.stdin.read(1)
-        finally:
-            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        return ch
-
-
-class _GetchWindows:
-    def __init__(self):
-        import msvcrt
-
-    def __call__(self):
-        import msvcrt
-        return msvcrt.getch()
+from utilities.getChar import *
 
 def menu():
 	
@@ -57,7 +27,7 @@ def menu():
 		print "1. start TCP Server"
 		print "2. start UDP Client"
 		print "3. quit"
-		getch = _Getch() 
+		getch = Getch() 
 		val = getch.__call__()
 		if val == '1':
 			p1 = launchTCPServer()
@@ -85,8 +55,7 @@ def launchUdpClient():
 	return(Popen(args, shell=False))
 
 if __name__ == '__main__':
-	
-	
+	 
 	menu()
 	
 	'''
