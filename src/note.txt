@@ -4,9 +4,6 @@ UDP and TCP clients and servers using python and c
 
 - C source code needs to be compiled before running.
 
-
-- zombie processes.
-
 - turn off firewall
 
 
