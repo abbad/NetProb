@@ -13,6 +13,7 @@ from os import system, remove, listdir
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
+
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile( currentframe() ))[0],"subfolder")))
 if cmd_subfolder not in path:
