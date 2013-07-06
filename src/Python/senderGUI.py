@@ -8,12 +8,11 @@ Module to run the sender.
 '''
 from Tkinter import *
 from subprocess import Popen
+	
 
 class Window(Frame):
 			
 	def __init__(self, parent):
-		self.p1 = None
-		self.p2 = None
 		Frame.__init__(self, parent, background = "beige")
 		self.parent = parent 
 		self.interface()
@@ -24,20 +23,6 @@ class Window(Frame):
 		self.setLabels()
 		self.setButtons()
 		self.setTextFields()
-
-	
-	# variables to handle running processes
-	
-	''' this will terminate the processes running '''
-	@staticmethod
-	def terminateProcesses():
-		try: 
-			if self.p1:
-				self.p1.terminate()
-			if self.p2:
-				self.p2.terminate()
-		except:
-			print "error while terminating one of the processes"
 	
 	'''
 		This function will set buttons on the window.
@@ -124,23 +109,27 @@ class Window(Frame):
 		This function will open the pipe to launch TCP server.
 	'''
 	def launchTCPServer(self):
+		global P1
 		print 'Starting TCP server'
 		args = ["python", "TCP\TCPServer.py", "-p", str(self.tcp_portEntry.get())]
-		self.p1 = Popen(args, shell=False)
+		P1 = Popen(args, shell=False)
 		
 	'''
 		This function will open a pipe and launch UDP Client.
 	'''
 	def launchUdpClient(self):
+		global P2
 		print 'Starting UDP client'
 		args =  ["python", "UDP\UDPClient.py", "-d 400"]
-		self.p2 = Popen(args, shell=False)		
+		P2 = Popen(args, shell=False)		
 
 
 		
 # global variables 
 
 ROOT = None 
+P1 = None
+P2 = None
 
 def main():
 	global ROOT 
@@ -155,9 +144,26 @@ def main():
 
 def terminateAll():
 	global ROOT 
-	Window.terminateProcesses() 
+	terminateProcesses() 
 	ROOT.destroy()
-		
+
+	# variables to handle running processes
+	
+''' this will terminate the processes running '''
+
+def terminateProcesses():
+	global P1, P2
+	try: 
+		if P1:
+			P1.terminate()
+	except:
+		print "error terminating p1"
+	try:
+		if P2:
+			P2.terminate()
+	except: 
+		print "error terminating p2"
+	
 if __name__ == '__main__':
 	main()
 	
