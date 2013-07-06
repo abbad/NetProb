@@ -115,7 +115,7 @@ class Window(Frame):
 		self.notificationEntry.place(x = 420, y = 30)
 		
 	'''
-		This function will open the pipe to launch TCP server.
+		This function will open a sub-process to launch TCP server.
 	'''
 	def launchTCPServer(self):
 		global P1
@@ -124,7 +124,7 @@ class Window(Frame):
 		P1 = Popen(args, shell=False)
 		
 	'''
-		This function will open a pipe and launch UDP Client.
+		This function will open a sub-process and launch UDP Client.
 	'''
 	def launchUdpClient(self):
 		global P2
