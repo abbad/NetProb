@@ -33,9 +33,9 @@ class Window(Frame):
 		# exitbutton.place(x= 150, y = 120)
 		# start UDP Client button
 		startUpdButton = Button(self, text = "Start UDP Client", foreground = "Black", command = self.launchUdpClient)
-		startUpdButton.place(x = 30, y = 170)
+		startUpdButton.place(x = 30, y = 190)
 		startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
-		startTcpButton.place(x = 340, y = 170) 
+		startTcpButton.place(x = 340, y = 190) 
 	
 	'''
 		This function will set the labels on the window.
@@ -57,8 +57,11 @@ class Window(Frame):
 		udp_timeBetweenEachWindowLabel = Label(self, text = "Time Between each Window", foreground = "Black")
 		udp_timeBetweenEachWindowLabel.place(x = 10, y = 100) 
 	
-		udp_durationLabel = Label(self, text = "Duration Sending Packets", foreground = "Black")
-		udp_durationLabel.place(x = 10, y = 130)
+		udp_windowSizeLabel = Label(self, text = "Window Size", foreground = "Black")
+		udp_windowSizeLabel.place(x = 10, y = 130)
+		
+		udp_durationSendingPackets = Label(self, text = "Duration sending packets", foreground = "Black")
+		udp_durationSendingPackets.place(x = 10, y = 160)
 		
 		# TCP Server
 		tcp_portNumber = Label(self, text = "Port Number", foreground = "Black")
@@ -85,14 +88,20 @@ class Window(Frame):
 		self.udp_packetSizeEntry = Entry(self)
 		self.udp_packetSizeEntry.insert(0, "1000")
 		self.udp_packetSizeEntry.place(x = 90, y = 70)
-		# Time Between Each Packet
-		self.udp_timeBetweenEachPacket = Entry(self)
-		self.udp_timeBetweenEachPacket.insert(0, "0")
-		self.udp_timeBetweenEachPacket.place(x = 170, y = 100)
+		# Time Between Each Window
+		self.udp_timeBetweenEachWindow = Entry(self)
+		self.udp_timeBetweenEachWindow.insert(0, "0")
+		self.udp_timeBetweenEachWindow.place(x = 170, y = 100)
+		
+		# Window Size
+		self.udp_windowSizeEntry = Entry(self)
+		self.udp_windowSizeEntry.insert(0, "5")
+		self.udp_windowSizeEntry.place(x = 170, y = 130)
+		
 		# Duration
 		self.udp_durationEntry = Entry(self)
 		self.udp_durationEntry.insert(0, "10")
-		self.udp_durationEntry.place(x = 170, y = 130)
+		self.udp_durationEntry.place(x = 170, y = 160)
 		
 		#TCP Server
 		# Port
@@ -120,7 +129,8 @@ class Window(Frame):
 	def launchUdpClient(self):
 		global P2
 		print 'Starting UDP client'
-		args =  ["python", "UDP\UDPClient.py", "-d 400"]
+		args =  ["python", "UDP\UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", str(self.udp_packetSizeEntry.get()), "-t"
+				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()) , "-d", str(self.udp_durationEntry.get())]
 		P2 = Popen(args, shell=False)		
 
 
@@ -137,7 +147,7 @@ def main():
 	ROOT.protocol('WM_DELETE_WINDOW', terminateAll)
 	w = ROOT.winfo_screenwidth()
 	h = ROOT.winfo_screenheight()
-	ROOT.geometry("%dx%d" % (w/2.3, h/3.6))
+	ROOT.geometry("%dx%d" % (w/1.6, h/3))
 	app = Window(ROOT)
 	ROOT = mainloop()
 
