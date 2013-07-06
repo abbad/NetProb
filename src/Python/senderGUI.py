@@ -10,10 +10,10 @@ from Tkinter import *
 from subprocess import Popen
 
 class Window(Frame):
-	
-	# local variables 
-		
+			
 	def __init__(self, parent):
+		self.p1 = None
+		self.p2 = None
 		Frame.__init__(self, parent, background = "beige")
 		self.parent = parent 
 		self.interface()
@@ -24,7 +24,21 @@ class Window(Frame):
 		self.setLabels()
 		self.setButtons()
 		self.setTextFields()
-			
+
+	
+	# variables to handle running processes
+	
+	''' this will terminate the processes running '''
+	@staticmethod
+	def terminateProcesses():
+		try: 
+			if self.p1:
+				self.p1.terminate()
+			if self.p2:
+				self.p2.terminate()
+		except:
+			print "error while terminating one of the processes"
+	
 	'''
 		This function will set buttons on the window.
 	'''
@@ -112,7 +126,7 @@ class Window(Frame):
 	def launchTCPServer(self):
 		print 'Starting TCP server'
 		args = ["python", "TCP\TCPServer.py", "-p", str(self.tcp_portEntry.get())]
-		return(Popen(args, shell=False))
+		self.p1 = Popen(args, shell=False)
 		
 	'''
 		This function will open a pipe and launch UDP Client.
@@ -120,19 +134,30 @@ class Window(Frame):
 	def launchUdpClient(self):
 		print 'Starting UDP client'
 		args =  ["python", "UDP\UDPClient.py", "-d 400"]
-		return(Popen(args, shell=False))		
-			
+		self.p2 = Popen(args, shell=False)		
+
+
+		
+# global variables 
+
+ROOT = None 
+
 def main():
-	root = Tk()
-	w = root.winfo_screenwidth()
-	h = root.winfo_screenheight()
-	root.geometry("%dx%d" % (w/2.3, h/3.6))
-	app = Window(root)
-	root = mainloop()
-	
-	
+	global ROOT 
+	ROOT = Tk()
+	ROOT.protocol('WM_DELETE_WINDOW', terminateAll)
+	w = ROOT.winfo_screenwidth()
+	h = ROOT.winfo_screenheight()
+	ROOT.geometry("%dx%d" % (w/2.3, h/3.6))
+	app = Window(ROOT)
+	ROOT = mainloop()
+
+
+def terminateAll():
+	global ROOT 
+	Window.terminateProcesses() 
+	ROOT.destroy()
+		
 if __name__ == '__main__':
 	main()
 	
-''' to do start getting the values and send them into the tcp and udp'''
-		
