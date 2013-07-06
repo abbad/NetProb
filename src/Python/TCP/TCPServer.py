@@ -8,8 +8,8 @@ import socket
 import sys, getopt 
 
 host = '127.0.0.1'
+bufferSize = 4096 
 port = 5005
-bufferSize = 1024 
 notificationPeriod = 5
 
 # global variables
@@ -51,7 +51,7 @@ def createConnection():
 	this function will send the notification period to client.
 '''
 def sendNotificationPeriod(conn):
-	conn.sendall("<notificationPeriod>"+ str(notificationPeriod) +"</notificationPeriod>")
+	conn.sendall("<notificationPeriod>"+ str(notificationPeriod +"</notificationPeriod>")
 
 def main():
 	checkArguments(sys.argv)
