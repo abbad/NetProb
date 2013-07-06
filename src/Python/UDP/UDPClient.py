@@ -17,6 +17,7 @@ packetSize = 1000
 duration = 10
 timeBetweenPackets = 0 
 numberOfPackets = 1
+notificationPeriod = 5 
 
 def sendUdpBasedOntime(sock):
 	'''
@@ -54,6 +55,7 @@ def printHelp():
 	print '-t time between each window \t default 0 seconds'
 	print '-w window size \t\t\t default 0'
 	print '-d duration sending packets \t dafault 20'
+	print '-n notification period \t default 5 \n'
 	
 def makePacket(size, number):
 	packetheader = makePacketHeader(number)
@@ -72,9 +74,9 @@ def makePacketBody(size):
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:n:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time", "notificationPeriod"])
 	except getopt.GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenPackets>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenPackets>, -n <notificationPeriod>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -98,7 +100,9 @@ def checkArguments(argv):
 		elif opt in ('-t'):
 			global timeBetweenPackets
 			timeBetweenPackets = float(arg)
-		
+		elif opt in ('-n'):
+			global notificationPeriod
+			notificationPeriod = float(arg)
 		
 if __name__ == '__main__':
 	
