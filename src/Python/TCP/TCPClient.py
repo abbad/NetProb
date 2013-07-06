@@ -72,6 +72,9 @@ def getStatistics():
 	deleteStatistics(fileName)
 	return read_data 
 	
+def getNotificationPeriod(conn):
+	data = conn.recv(4096)
+	print data
 if __name__ == '__main__':
 	'''
 		start of the program.
@@ -79,11 +82,14 @@ if __name__ == '__main__':
 	
 	checkArguments(sys.argv)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	
+	s.connect((host, port))
+	print 'TCP Client: Connection established.'
+	getNotificationPeriod(s)
+	exit()
+	'''
 	while 1:
 		try:
-			s.connect((host, port))
-			print 'TCP Client: Connection established.'
+
 			break
 		except: 
 			sleepTime = 5
@@ -96,6 +102,6 @@ if __name__ == '__main__':
 		stat = getStatistics()
 		s.send(stat)
 		
-	
+	'''
 	s.close()
 	

@@ -111,7 +111,7 @@ class Window(Frame):
 	def launchTCPServer(self):
 		global P1
 		print 'Starting TCP server'
-		args = ["python", "TCP\TCPServer.py", "-p", str(self.tcp_portEntry.get())]
+		args = ["python", "TCP\TCPServer.py", "-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get())]
 		P1 = Popen(args, shell=False)
 		
 	'''

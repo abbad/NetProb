@@ -47,12 +47,6 @@ def createConnection():
 	print 'TCP Server: Connection address:', addr
 	return conn
 
-'''
-	this function will send the notification period to client.
-'''
-def sendNotificationPeriod(conn):
-	conn.sendall("<notificationPeriod>"+ str(notificationPeriod +"</notificationPeriod>")
-
 def main():
 	checkArguments(sys.argv)
 	conn = createConnection()
@@ -62,7 +56,14 @@ def main():
 		data = conn.recv(bufferSize)
 		print "TCP Server: received data:", data
 		conn.close()
-	
+
+'''
+	this function will send the notification period to client.
+'''
+def sendNotificationPeriod(conn):
+	conn.sendall("<notificationPeriod>" + str(notificationPeriod) + "</notificationPeriod>")
+
+		
 if __name__ == '__main__':
 	
 	main()
