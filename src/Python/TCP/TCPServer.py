@@ -43,19 +43,22 @@ def createConnection():
 	print 'server is listening'
 	s.listen(1)
 
-
 	conn, addr = s.accept()
 	print 'TCP Server: Connection address:', addr
+	return conn
+
 
 def main():
 	checkArguments(sys.argv)
-	createConnection()
-		
+	conn = createConnection()
+	
+	
 	while 1:
 		data = conn.recv(bufferSize)
 		print "TCP Server: received data:", data
 		conn.close()
 	
 if __name__ == '__main__':
+	
 	main()
 	
