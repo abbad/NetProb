@@ -71,10 +71,20 @@ def getStatistics():
 	f.close()
 	deleteStatistics(fileName)
 	return read_data 
-	
+
+'''
+	This function to get notification period from server.
+'''
 def getNotificationPeriod(conn):
 	data = conn.recv(4096)
 	print data
+	
+'''
+	This function to send confirm to server.
+'''
+def sendConfirm(conn):
+	conn.send("confirm")
+
 if __name__ == '__main__':
 	'''
 		start of the program.
@@ -85,7 +95,8 @@ if __name__ == '__main__':
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
 	getNotificationPeriod(s)
-	exit()
+	sendConfirm(s)
+	
 	'''
 	while 1:
 		try:

@@ -51,6 +51,8 @@ def main():
 	checkArguments(sys.argv)
 	conn = createConnection()
 	sendNotificationPeriod(conn)
+	receiveConfirm(conn)
+	
 	
 	while 1:
 		data = conn.recv(bufferSize)
@@ -63,7 +65,13 @@ def main():
 def sendNotificationPeriod(conn):
 	conn.sendall("<notificationPeriod>" + str(notificationPeriod) + "</notificationPeriod>")
 
-		
+'''
+	this function to receive confirm from the client. 
+'''
+def receiveConfirm(conn):
+	data = conn.recv(bufferSize)
+	print data
+	
 if __name__ == '__main__':
 	
 	main()
