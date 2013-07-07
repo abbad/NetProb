@@ -9,7 +9,6 @@ Module to run the sender.
 from Tkinter import *
 from subprocess import Popen
 	
-
 class Window(Frame):
 			
 	def __init__(self, parent):
@@ -69,7 +68,7 @@ class Window(Frame):
 		
 		#global 
 		notification_period = Label(self, text = "Notification Period", foreground = "Black")
-		notification_period.place(x = 310, y = 30)
+		notification_period.place(x = 310, y = 40)
 	
 	'''
 		This function will set the text fields.
@@ -112,7 +111,7 @@ class Window(Frame):
 		# Notification period
 		self.notificationEntry = Entry(self)
 		self.notificationEntry.insert(0, "5")
-		self.notificationEntry.place(x = 420, y = 30)
+		self.notificationEntry.place(x = 420, y = 40)
 		
 	'''
 		This function will open a sub-process to launch TCP server.
