@@ -48,16 +48,17 @@ def createConnection():
 	return conn
 
 def main():
+	global bufferSize
 	checkArguments(sys.argv)
 	conn = createConnection()
 	sendNotificationPeriod(conn)
 	receiveConfirm(conn)
-	
-	
+	'''
 	while 1:
+	
 		data = conn.recv(bufferSize)
 		print "TCP Server: received data:", data
-		conn.close()
+		conn.close()'''
 
 '''
 	this function will send the notification period to client.
