@@ -8,7 +8,6 @@ import socket
 import sys, getopt
 import time
 from time import strftime
-from interpreter import getPacketSequenceNumber
 import thread
 
 # global variables

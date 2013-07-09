@@ -64,7 +64,7 @@ def launchTcpClient(pipearg):
 				
 def launchUdpServer():
 	print 'Starting UDP server'
-	args =  ["python", "UDP\UDPserver.py", "-n 5"]
+	args =  ["python", "UDPserver.py", "-n 5"]
 	p2 = Popen(args, shell=False)
 
 
