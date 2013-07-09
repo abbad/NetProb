@@ -15,7 +15,7 @@ if sys.platform == "win32":
 # global variables 
 host = "localhost"
 port = 5005
-pipeArg = 0 
+pipeArg = None
 
 def printHelp():
 	'''
@@ -33,7 +33,7 @@ def checkArguments(argv):
 	try:
 		opts, args = getopt.getopt(argv[1:], "hl:p:a:", ["host", "portNumber", "pipeArg"])
 	except getopt.GetoptError:
-		print 'TCPClient.py -l <hostname> -p <port>'
+		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -83,7 +83,7 @@ def getStatistics():
 '''
 def getNotificationPeriod(conn):
 	data = conn.recv(4096)
-	print data
+	#print 'TCP Client:' + data
 	
 '''
 	This function to send confirm to server.
@@ -94,24 +94,27 @@ def sendConfirm(conn):
 '''
 	using pipes a message to parent is sent to start udp server. 
 '''	
-def notifyParent():
-	# opened pipe
-	pipeinfd = openPipe()
-	# Write to child (could be done with os.write, without os.fdopen)
-	pipefh = os.fdopen(pipeinfd, 'w')
-	pipefh.write("confirm")
-	pipefh.close()
+def notifyParent(message):
+	# open pipe
+	pipeoutfd = openPipe(os.O_WRONLY)
+	
+	# Read from pipe
+	# Note:  Could be done with os.read/os.close directly, instead of os.fdopen
+	pipeout = os.fdopen(pipeoutfd, 'w')
+	pipeout.write(message)
+	pipeout.close()
+ 
 	
 '''
-	this function to open a pipe. 
+	this function will pepare pipe
 '''
-def openPipe():
-	global pipeArg
-	# if windows or linux system
-	if sys.platform == "win32":
-		pipeoutfd = msvcrt.open_osfhandle(pipeArg, os.O_WRONLY)
-	else:
-		pipeoutfd = pipeArg
+def openPipe(flags):
+	# Get file descriptor from argument
+	pipearg = int(pipeArg)
+	if sys.platform == "win32": # windows
+		pipeoutfd = msvcrt.open_osfhandle(pipearg, flags)
+	else: # linux
+		pipeoutfd = pipearg
 	
 	return pipeoutfd
 	
@@ -125,7 +128,7 @@ if __name__ == '__main__':
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
 	getNotificationPeriod(s)
-	notifyParent()
+	notifyParent("startUdpServer")
 	sendConfirm(s)
 	
 	'''
@@ -145,5 +148,5 @@ if __name__ == '__main__':
 		s.send(stat)
 		
 	'''
-	s.close()
+	#s.close()
 	

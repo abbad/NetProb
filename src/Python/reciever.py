@@ -9,10 +9,17 @@ This module will call UDP server and TCP server.
 
 from subprocess import Popen
 from time import sleep
-from os import system, remove, listdir
+from os import system, remove, listdir, pipe, fdopen, close, O_WRONLY, O_RDONLY
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
+import sys
+
+if sys.platform == "win32":
+    import msvcrt
+    import _subprocess
+else:
+    import fcntl
 
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile( currentframe() ))[0],"subfolder")))
@@ -55,18 +62,79 @@ def menu():
 				print "error while terminating one of the processes"
 			exit()
 			
-def launchTCPClient():
+def launchTcpClient(pipearg):
 	print 'Starting TCP client'
-	args = ["python", "TCP\TCPClient.py"]
+	args = ["python", "TCP\TCPClient.py", "-a", pipearg]
 	return Popen(args, shell=False)
 				
 def launchUdpServer():
 	print 'Starting UDP server'
 	args =  ["python", "UDP\UDPserver.py", "-n 5"]
 	p2 = Popen(args, shell=False)
-	
+
+'''
+		This function will prepare the pipe before passing it to a subprocess, because of a file descriptor inheritance issue in windows. 
+'''
+def preparePipes(pipe, pipeToClose):
+
+	# Prepare to pass to child process
+	if sys.platform == "win32": # windows
+		curproc = _subprocess.GetCurrentProcess()
+		pipeHandle = msvcrt.get_osfhandle(pipe)
+		pipeDuplicate = _subprocess.DuplicateHandle(curproc, pipeHandle, curproc, 0, 1,
+				_subprocess.DUPLICATE_SAME_ACCESS)
+
+		return str(int(pipeDuplicate)), pipeDuplicate
+		
+	else: # linux
+		pipearg = str(pipe)
+
+		# Must close pipe input if child will block waiting for end
+		# Can also be closed in a preexec_fn passed to subprocess.Popen
+		fcntl.fcntl(pipeToClose, fcntl.F_SETFD, fcntl.FD_CLOEXEC)
+		
+		return pipearg
+
+'''
+	This will close the pipe end.
+'''
+def closePipe(pipeout, pipeHandler):
+	close(pipeout)
+	if sys.platform == "win32":
+		pipeHandler.Close()
+
 if __name__ == '__main__':
+		
+	# Create pipe for communication
+	pipeout, pipein = pipe()
+
+	pipearg, pipeHandler = preparePipes(pipein, pipeout)
+
+	# Start child with argument indicating which FD/FH to read from
+	TCPsubproc = launchTcpClient(pipearg)
 	
-	menu()
+	# Close write end of pipe in parent
+	closePipe(pipein, pipeHandler)
+
+	# Write to child (could be done with os.write, without os.fdopen)
+	pipefh = fdopen(pipeout, 'r')
+	message = pipefh.read()
+	if(message == "startUdpServer"):
+		UDPServerSubProc = launchUdpServer()
 	
-	cleanUp()
+	pipefh.close()
+
+	# Wait for the child to finish
+	TCPsubproc.wait()
+	 
+	#menu()
+	
+	#cleanUp()
+
+	
+	# pipe is working but reverse mechanism. 
+	# steps of the program:
+	# 1. establish a connection with tcp server.
+	# 2. get notification and start udp server.
+	# 3. send confirm to sender. 
+	

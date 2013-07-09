@@ -113,8 +113,6 @@ if __name__ == '__main__':
 	sock = socket.socket(socket.AF_INET, # Internet
 						             socket.SOCK_DGRAM) # UDP
 	
-	
-	
 	sendUdpBasedOntime(sock)  
 	
 	print "Number of packets sent:", numberOfPackets
