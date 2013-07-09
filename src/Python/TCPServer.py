@@ -69,7 +69,7 @@ def main():
 	print data
 	if data == "confirm":
 		notifyParent("startUdpClient", pipeArg)
-	'''
+	'''				
 	while 1:
 	
 		data = conn.recv(bufferSize)
@@ -80,7 +80,7 @@ def main():
 	this function will send the notification period to client.
 '''
 def sendNotificationPeriod(conn):
-	conn.sendall("<notificationPeriod>" + str(notificationPeriod) + "</notificationPeriod>")
+	conn.sendall(str(notificationPeriod))
 
 '''
 	this function to receive confirm from the client. 
