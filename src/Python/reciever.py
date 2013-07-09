@@ -13,7 +13,6 @@ from os import system, remove, listdir, pipe, fdopen, close, O_WRONLY, O_RDONLY
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
-import sys
 
 
 # code to include subfolder modules (packages)
@@ -82,7 +81,7 @@ if __name__ == '__main__':
 	# Close write end of pipe in parent
 	closePipe(pipein, pipeHandler)
 
-	# Write to child (could be done with os.write, without os.fdopen)
+	# Read from child (could be done with os.write, without os.fdopen)
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
 	if(message == "startUdpServer"):

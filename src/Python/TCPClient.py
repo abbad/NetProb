@@ -5,15 +5,24 @@ Created on Apr 29, 2013
 '''
 
 import socket
-import os
 import sys, getopt
 from time import sleep
-from utilities import user_pipes
+from os import pipe, fdopen, read, listdir
+from os import path as osPath
+from inspect import currentframe, getfile
+from sys import path
 
 # global variables 
 host = "localhost"
 port = 5005
 pipeArg = None
+
+# code to include subfolder modules (packages)
+cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
+if cmd_subfolder not in path:
+	path.insert(0, cmd_subfolder)
+
+from utilities.user_pipes import notifyParent
 
 def printHelp():
 	'''
@@ -54,7 +63,7 @@ def getFileName():
 	'''
 	
 	while 1:
-		for files in os.listdir("."):
+		for files in listdir("."):
 			if files.endswith(".xml"):
 				return files
 	
@@ -99,7 +108,7 @@ if __name__ == '__main__':
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
 	getNotificationPeriod(s)
-	user_pipes.notifyParent("startUdpServer", pipeArg)
+	notifyParent("startUdpServer", pipeArg)
 	sendConfirm(s)
 	
 	'''

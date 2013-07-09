@@ -8,6 +8,18 @@ Module to run the sender.
 '''
 from Tkinter import *
 from subprocess import Popen
+from os import pipe, fdopen, read
+from os import path as osPath
+from inspect import currentframe, getfile
+from sys import path
+
+# code to include subfolder modules (packages)
+cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile( currentframe() ))[0],"subfolder")))
+if cmd_subfolder not in path:
+	path.insert(0, cmd_subfolder)
+
+from utilities.getChar import *
+from utilities.user_pipes import preparePipes, closePipe	
 	
 class Window(Frame):
 			
@@ -31,10 +43,10 @@ class Window(Frame):
 		# exitbutton = Button(self, text = "Exit", foreground= "red", command = self.quit)
 		# exitbutton.place(x= 150, y = 120)
 		# start UDP Client button
-		startUpdButton = Button(self, text = "Start UDP Client", foreground = "Black", command = self.launchUdpClient)
-		startUpdButton.place(x = 30, y = 190)
-		startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
-		startTcpButton.place(x = 340, y = 190) 
+		startButton = Button(self, text = "Start", foreground = "Black", command = self.start)
+		startButton.place(x = 30, y = 190)
+		#startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
+		#startTcpButton.place(x = 340, y = 190) 
 	
 	'''
 		This function will set the labels on the window.
@@ -116,10 +128,10 @@ class Window(Frame):
 	'''
 		This function will open a sub-process to launch TCP server.
 	'''
-	def launchTCPServer(self):
+	def launchTCPServer(self, pipeArg):
 		global P1
 		print 'Starting TCP server'
-		args = ["python", "TCP\TCPServer.py", "-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get())]
+		args = ["python", "TCPServer.py", "-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get()), "-a", pipeArg]
 		P1 = Popen(args, shell=False)
 		
 	'''
@@ -132,7 +144,29 @@ class Window(Frame):
 				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()) , "-d", str(self.udp_durationEntry.get())]
 		P2 = Popen(args, shell=False)		
 
-
+	'''
+		This function will start 1. Tcp Server, 2. Udp Client.
+	'''
+	def start(self):
+		
+		# Create pipe for communication
+		pipeout, pipein = pipe()
+		
+		pipearg, pipeHandler = preparePipes(pipein, pipeout)
+		
+		self.launchTCPServer(pipearg)
+		
+		# Close write end of pipe in parent
+		closePipe(pipein, pipeHandler)
+		
+		pipefh = fdopen(pipeout, 'r')
+		message = pipefh.read()
+		# a message to start udp server
+		if(message == "startUdpClient"):
+			self.launchUdpClient()
+	
+		pipefh.close()
+		
 		
 # global variables 
 
