@@ -79,12 +79,15 @@ if __name__ == "__main__":
 	startTime = time.time()
 	stopTime = startTime + statNotPeriod
 	
-	print "Server is listening.."
+	print "UDP Server: Server is listening.."
 	
 	while 1:
+		print port
+		print host
+		print 'fuck'
 		data  = sock.recv(bufferSize)
-		#print "UDP Server: received message " + str(numberOfPackets)
-		#print "UDP Server: size:" + str(len(data))
+		print "UDP Server: received message " + str(numberOfPackets)
+		print "UDP Server: size:" + str(len(data))
 		
 		numberOfPackets += 1
 	
@@ -93,4 +96,5 @@ if __name__ == "__main__":
 			thread.start_new_thread(writeStatistics, ())
 			startTime = time.time()
 			stopTime = startTime + statNotPeriod
-				
+	
+	print 'fuckfuckf'

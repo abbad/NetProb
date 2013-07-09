@@ -89,11 +89,11 @@ class Window(Frame):
 		#UDP Client
 		# host 
 		self.udp_hostEntry = Entry(self)
-		self.udp_hostEntry.insert(0, "192.168.0.1")
+		self.udp_hostEntry.insert(0, "127.0.0.1")
 		self.udp_hostEntry.place(x = 90, y = 10)
 		# port
 		self.udp_portEntry = Entry(self)
-		self.udp_portEntry.insert(0, "5005")
+		self.udp_portEntry.insert(0, "4001")
 		self.udp_portEntry.place(x = 90, y = 40)
 		# packetSize
 		self.udp_packetSizeEntry = Entry(self)
@@ -141,7 +141,7 @@ class Window(Frame):
 		global P2
 		print 'Starting UDP client'
 		args =  ["python", "UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", str(self.udp_packetSizeEntry.get()), "-t"
-				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()) , "-d", str(self.udp_durationEntry.get())]
+				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()), "-d", str(self.udp_durationEntry.get())]
 		P2 = Popen(args, shell=False)		
 
 	'''
