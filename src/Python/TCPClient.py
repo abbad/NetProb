@@ -95,12 +95,12 @@ if __name__ == '__main__':
 	'''
 	
 	checkArguments(sys.argv)
-	'''s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
-	getNotificationPeriod(s)'''
+	getNotificationPeriod(s)
 	user_pipes.notifyParent("startUdpServer", pipeArg)
-	#sendConfirm(s)
+	sendConfirm(s)
 	
 	'''
 	while 1:
@@ -119,5 +119,5 @@ if __name__ == '__main__':
 		s.send(stat)
 		
 	'''
-	#s.close()
+	s.close()
 	
