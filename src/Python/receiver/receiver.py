@@ -91,3 +91,6 @@ if __name__ == '__main__':
 
 	# Wait for the child to finish
 	TCPsubproc.wait()
+	
+	
+	# to do : implement a pipe to connect the tcp client with udp server wherein the udpserver sends statistics to udp client. 
