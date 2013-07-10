@@ -189,8 +189,6 @@ def terminateAll():
 	global ROOT 
 	terminateProcesses() 
 	ROOT.destroy()
-
-	# variables to handle running processes
 	
 ''' this will terminate the processes running '''
 
@@ -206,6 +204,7 @@ def terminateProcesses():
 			P2.terminate()
 	except: 
 		print "error terminating p2"
+	
 	
 if __name__ == '__main__':
 	main()
