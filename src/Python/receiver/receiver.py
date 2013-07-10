@@ -14,7 +14,6 @@ from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
 
-
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile( currentframe() ))[0],"subfolder")))
 if cmd_subfolder not in path:
@@ -62,9 +61,9 @@ def launchTcpClient(pipearg):
 	args = ["python", "TCPClient.py", "-a", pipearg]
 	return Popen(args, shell=False)
 				
-def launchUdpServer():
+def launchUdpServer(notificationPeriod):
 	print 'Starting UDP server'
-	args =  ["python", "UDPserver.py", "-n 5"]
+	args =  ["python", "UDPserver.py", "-n", notificationPeriod]
 	p2 = Popen(args, shell=False)
 
 
@@ -84,8 +83,9 @@ if __name__ == '__main__':
 	# Read from child (could be done with os.write, without os.fdopen)
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
-	if(message == "startUdpServer"):
-		UDPServerSubProc = launchUdpServer()
+	
+	if(message[0:14] == "startUdpServer"):
+		UDPServerSubProc = launchUdpServer(message[14:])  
 	
 	pipefh.close()
 
