@@ -56,41 +56,69 @@ def menu():
 				print "error while terminating one of the processes"
 			exit()
 			
-def launchTcpClient(pipearg):
+'''
+	@pipeArg1 This is for sending command and also notification period to receiver. 
+	@pipeArg2 This is for statistics. 
+'''
+def launchTcpClient(pipeArg1, pipeArg2):
 	print 'Starting TCP client'
-	args = ["python", "TCPClient.py", "-a", pipearg]
+	args = ["python", "TCPClient.py", "-a", pipeArg1, "-v", pipeArg2]
 	return Popen(args, shell=False)
-				
+
+'''
+	@pipeArg1 This is for sending statistics. 
+'''
 def launchUdpServer(notificationPeriod):
 	print 'Starting UDP server'
 	args =  ["python", "UDPserver.py", "-n", notificationPeriod]
 	p2 = Popen(args, shell=False)
 
-
+'''
+	 Create pipe for communication between tcp client and udp server. 
+	 this pipe will send the statistics from udp server to tcp client. 
+'''
+def createPipesForStatistics():
+	
+	pipeout_tcpClient, pipein_udpserver = pipe()
+	
+	#prepare pipeOut for tcp client
+	tcp_pipeArg, tcp_pipeHandler = preparePipes(pipeout_tcpClient, pipein_udpserver)
+	
+	#prepare pipeIn for udp Server
+	udp_pipeArg, udp_pipeHandler = preparePipes(pipein_udpserver, pipeout_tcpClient)
+	
+	return tcp_pipeArg, tcp_pipeHandler, udp_pipeArg, udp_pipeHandler
+	
 if __name__ == '__main__':
-		
+
+	pipes = createPipesForStatistics()
+	
 	# Create pipe for communication
 	pipeout, pipein = pipe()
-
+	
 	pipearg, pipeHandler = preparePipes(pipein, pipeout)
 
 	# Start child with argument indicating which FD/FH to read from
-	TCPsubproc = launchTcpClient(pipearg)
+	TCPsubproc = launchTcpClient(pipearg, pipes[0])
 	
 	# Close write end of pipe in parent
 	closePipe(pipein, pipeHandler)
+	
+	# Close both ends of statistics pipes 
+	closePipe(pipes[0], pipes[1])
+	closePipe(pipes[2], pipes[3])
 
 	# Read from child (could be done with os.write, without os.fdopen)
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
 	
 	if(message[0:14] == "startUdpServer"):
-		UDPServerSubProc = launchUdpServer(message[14:])  
+		UDPServerSubProc = launchUdpServer(message[14:], pipes[2])  
 	
 	pipefh.close()
 
 	# Wait for the child to finish
-	TCPsubproc.wait()
+	#TCPsubproc.wait()
 	
 	
 	# to do : implement a pipe to connect the tcp client with udp server wherein the udpserver sends statistics to udp client. 
