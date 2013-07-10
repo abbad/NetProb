@@ -89,7 +89,7 @@ def getStatistics():
 	This function to get notification period from server.
 '''
 def getNotificationPeriod(conn):
-	data = conn.recv(4096)
+	return conn.recv(4096)
 	#print 'TCP Client:' + data
 	
 '''
@@ -107,8 +107,8 @@ if __name__ == '__main__':
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
-	getNotificationPeriod(s)
-	notifyParent("startUdpServer", pipeArg)
+	notificationPeriod = getNotificationPeriod(s)
+	notifyParent("startUdpServer"+notificationPeriod, pipeArg)
 	sendConfirm(s)
 	
 	'''
