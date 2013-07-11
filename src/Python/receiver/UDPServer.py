@@ -17,7 +17,8 @@ bufferSize = 2084
 statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
 fileName = "statistics "
 numberOfPackets = 0
-	
+pipeIn = None
+
 def writeStatistics():
 	'''
 		this is to write statistics to a file.
@@ -44,9 +45,9 @@ def printHelp():
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
+		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:a:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod", "pipe"])
 	except getopt.GetoptError:
-		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
+		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod> -a <pipeForStatistics>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -67,6 +68,9 @@ def checkArguments(argv):
 		elif opt in ('-n'):
 			global statNotPeriod
 			statNotPeriod = int(arg)
+		elif opt in ('-a'):
+			global pipeIn
+			pipeIn = int(arg)
 		
 if __name__ == "__main__":
 
