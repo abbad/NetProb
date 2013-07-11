@@ -68,9 +68,9 @@ def launchTcpClient(pipeArg1, pipeArg2):
 '''
 	@pipeArg1 This is for sending statistics. 
 '''
-def launchUdpServer(notificationPeriod):
+def launchUdpServer(notificationPeriod, pipeArg1):
 	print 'Starting UDP server'
-	args =  ["python", "UDPserver.py", "-n", notificationPeriod]
+	args =  ["python", "UDPserver.py", "-n", notificationPeriod, "-a", pipeArg1]
 	p2 = Popen(args, shell=False)
 
 '''
@@ -82,13 +82,13 @@ def createPipesForStatistics():
 	pipeout_tcpClient, pipein_udpserver = pipe()
 	
 	#prepare pipeOut for tcp client
-	tcp_pipeArg, tcp_pipeHandler = preparePipes(pipeout_tcpClient, pipein_udpserver)
+	tcp_pipeDup, tcp_pipeHandler = preparePipes(pipeout_tcpClient, pipein_udpserver)
 	
 	#prepare pipeIn for udp Server
-	udp_pipeArg, udp_pipeHandler = preparePipes(pipein_udpserver, pipeout_tcpClient)
+	udp_pipeDup, udp_pipeHandler = preparePipes(pipein_udpserver, pipeout_tcpClient)
 	
-	return tcp_pipeArg, tcp_pipeHandler, udp_pipeArg, udp_pipeHandler
-	
+	return pipeout_tcpClient, tcp_pipeDup, tcp_pipeHandler, pipein_udpserver, udp_pipeDup, udp_pipeHandler
+	 
 if __name__ == '__main__':
 
 	pipes = createPipesForStatistics()
@@ -96,24 +96,24 @@ if __name__ == '__main__':
 	# Create pipe for communication
 	pipeout, pipein = pipe()
 	
-	pipearg, pipeHandler = preparePipes(pipein, pipeout)
+	pipeDuplicate, pipeHandler = preparePipes(pipein, pipeout)
 
 	# Start child with argument indicating which FD/FH to read from
-	TCPsubproc = launchTcpClient(pipearg, pipes[0])
+	TCPsubproc = launchTcpClient(pipeDuplicate, pipes[1])
 	
 	# Close write end of pipe in parent
 	closePipe(pipein, pipeHandler)
 	
-	# Close both ends of statistics pipes 
-	closePipe(pipes[0], pipes[1])
-	closePipe(pipes[2], pipes[3])
-
 	# Read from child (could be done with os.write, without os.fdopen)
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
 	
 	if(message[0:14] == "startUdpServer"):
-		UDPServerSubProc = launchUdpServer(message[14:], pipes[2])  
+		UDPServerSubProc = launchUdpServer(message[14:], pipes[4])  
+	
+	# Close both ends of statistics pipes 
+	closePipe(pipes[0], pipes[2])
+	closePipe(pipes[3], pipes[5])
 	
 	pipefh.close()
 
