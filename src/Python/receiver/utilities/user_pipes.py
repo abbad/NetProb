@@ -72,9 +72,8 @@ def preparePipes(pipe, pipeToClose):
 '''
 	This will close the pipe end.
 '''
-def closePipe(pipeout, pipeHandler):
-	
+def closePipe(pipe, pipeHandler):
+	close(pipe)
 	if platform == "win32":
 		pipeHandler.Close()
-	else:
-		close(pipeout)
+		
