@@ -15,7 +15,8 @@ from sys import path
 # global variables 
 host = "localhost"
 port = 5005
-pipeArg = None
+pipeArg1 = None
+pipeArg2 = None
 
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
@@ -38,9 +39,9 @@ def checkArguments(argv):
 		this is to check arguments.
 	'''
 	try:
-		opts, args = getopt.getopt(argv[1:], "hl:p:a:", ["host", "portNumber", "pipeArg"])
+		opts, args = getopt.getopt(argv[1:], "hl:p:a:v:", ["host", "portNumber", "pipeArg1", "pipeArg2"])
 	except getopt.GetoptError:
-		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg>'
+		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg1> -v <pipeArg2>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -53,8 +54,11 @@ def checkArguments(argv):
 			global port
 			port = int(arg)
 		elif opt in ('-a'):
-			global pipeArg 
-			pipeArg = int(arg)
+			global pipeArg1 
+			pipeArg1 = int(arg)
+		elif opt in ('-v'):
+			global pipeArg2 
+			pipeArg2 = int(arg)
 			
 def getFileName():
 	'''
