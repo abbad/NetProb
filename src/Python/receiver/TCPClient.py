@@ -112,7 +112,7 @@ if __name__ == '__main__':
 	s.connect((host, port))
 	print 'TCP Client: Connection established.'
 	notificationPeriod = getNotificationPeriod(s)
-	notifyParent("startUdpServer"+notificationPeriod, pipeArg)
+	notifyParent("startUdpServer"+notificationPeriod, pipeArg1)
 	sendConfirm(s)
 	
 	'''
