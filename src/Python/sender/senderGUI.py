@@ -6,20 +6,14 @@ Created on June 23, 2013
 Module to run the sender.
 
 '''
-from Tkinter import *
+from Tkinter import Frame, Tk, BOTH, Label, Button, Entry, mainloop
 from subprocess import Popen
 from os import pipe, fdopen, read
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
 
-# code to include subfolder modules (packages)
-cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile( currentframe() ))[0],"subfolder")))
-if cmd_subfolder not in path:
-	path.insert(0, cmd_subfolder)
-
-from utilities.getChar import *
-from utilities.user_pipes import preparePipes, closePipe	
+from utilities.user_pipes import getHandleDuplicate, closePipe	
 	
 class Window(Frame):
 			
@@ -150,16 +144,16 @@ class Window(Frame):
 	def start(self):
 		
 		# Create pipe for communication
-		pipeout, pipein = pipe()
+		pipeOut, pipeIn = pipe()
 		
-		pipearg, pipeHandler = preparePipes(pipein, pipeout)
+		pipeInDup = getHandleDuplicate(pipeIn)
 		
-		self.launchTCPServer(pipearg)
+		self.launchTCPServer(str(int(pipeInDup)))
 		
 		# Close write end of pipe in parent
-		closePipe(pipein, pipeHandler)
+		closePipe(pipeIn, pipeInDup)
 		
-		pipefh = fdopen(pipeout, 'r')
+		pipefh = fdopen(pipeOut, 'r')
 		message = pipefh.read()
 		# a message to start udp server
 		if(message == "startUdpClient"):

@@ -4,8 +4,9 @@ Created on Apr 28, 2013
 @author: Abbad
 '''
 
-import socket
-import sys, getopt 
+from socket import socket, AF_INET, SOCK_STREAM
+from sys import exit, argv
+from getopt import getopt, GetoptError
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
@@ -21,7 +22,7 @@ cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
-from utilities.user_pipes import notifyParent	
+from utilities.user_pipes import sendMessage	
 
 
 def printHelp():
@@ -32,14 +33,14 @@ def printHelp():
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hp:n:a:",["portNumber", "notificationPeriod", "pipeArg"])
-	except getopt.GetoptError:
+		opts, args = getopt(argv[1:],"hp:n:a:",["portNumber", "notificationPeriod", "pipeArg"])
+	except GetoptError:
 		print 'TCPServer.py -p <port> -n <notification period> -a <pipeArg>'
-		sys.exit(2)
+		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
 			printHelp()
-			sys.exit()
+			exit()
 		elif opt in ('-p'):
 			global port 
 			port = int(arg)
@@ -50,8 +51,11 @@ def checkArguments(argv):
 			global pipeArg
 			pipeArg = int(arg)
 
+'''
+	Create tcp connection and accept when one is ready to accept.
+'''
 def createConnection():
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s = socket(AF_INET, SOCK_STREAM)
 	s.bind((host, port))
 	print 'server is listening'
 	s.listen(1)
@@ -62,7 +66,7 @@ def createConnection():
 
 def main():
 	global bufferSize
-	checkArguments(sys.argv)
+	checkArguments(argv)
 	conn = createConnection()
 	sendNotificationPeriod(conn)
 	data = receiveConfirm(conn)
@@ -70,7 +74,7 @@ def main():
 	# getting the confirm from receiver to start sending. 
 	
 	if data == "confirm":
-		notifyParent("startUdpClient", pipeArg)
+		sendMessage("startUdpClient", pipeArg)
 		
 	while 1:
 		data = conn.recv(bufferSize)

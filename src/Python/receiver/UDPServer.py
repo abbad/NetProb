@@ -4,15 +4,14 @@ Created on Apr 13, 2013
 @author: Abbad
 '''
 
-import socket
-import sys, getopt
-import time
-from time import strftime
-import thread
-from os import fdopen, O_WRONLY, write, O_CREAT, fsync
-from utilities.user_pipes import getOsFileHandle, notifyParent
+from socket import socket, AF_INET, SOCK_DGRAM
+from sys import platform, exit, argv
+from getopt import getopt, GetoptError
+from time import strftime, time, sleep
+from thread import start_new_thread
+from os import write
 
-if sys.platform == "win32":
+if platform == "win32":
     from msvcrt import open_osfhandle, get_osfhandle
 
 # global variables
@@ -51,14 +50,14 @@ def printHelp():
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
-	except getopt.GetoptError:
+		opts, args = getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
+	except GetoptError:
 		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
-		sys.exit(2)
+		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
 			printHelp()
-			sys.exit()
+			exit()
 		elif opt in ('-l'):
 			global host
 			host = arg
@@ -77,13 +76,13 @@ def checkArguments(argv):
 		
 if __name__ == "__main__":
 		
-	checkArguments(sys.argv)
+	checkArguments(argv)
 	
-	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	sock = socket(AF_INET, SOCK_DGRAM)
 
 	sock.bind((host, port))
 
-	startTime = time.time()
+	startTime = time()
 	stopTime = startTime + statNotPeriod
 	
 	print "UDP Server: Server is listening.."
@@ -95,9 +94,9 @@ if __name__ == "__main__":
 		
 		numberOfPackets += 1
 		
-		if stopTime <= time.time():
+		if stopTime <= time():
 			
-			thread.start_new_thread(writeStatistics, ( numberOfPackets,))
-			startTime = time.time()
+			start_new_thread(writeStatistics, ( numberOfPackets,))
+			startTime = time()
 			stopTime = startTime + statNotPeriod
 			numberOfPackets = 0

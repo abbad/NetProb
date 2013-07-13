@@ -22,7 +22,7 @@ else:
 '''
 	using pipes a message to parent is sent to start udp server. 
 '''	
-def notifyParent(message, pipe):
+def sendMessage(message, pipe):
 	# open pipe
 	pipeoutfd = getOsFileHandle(pipe, O_WRONLY)
 	

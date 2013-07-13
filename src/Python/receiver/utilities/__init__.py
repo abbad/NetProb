@@ -1,1 +1,1 @@
-from user_pipes import notifyParent, getOsFileHandle, getHandleDuplicate
+from user_pipes import sendMessage, getOsFileHandle, getHandleDuplicate

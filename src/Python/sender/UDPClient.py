@@ -4,10 +4,11 @@ Created on Apr 13, 2013
 @author: Abbad
 '''
 
-import socket
-import os
-import sys, getopt
-import time
+from socket import socket, gethostbyname, AF_INET, SOCK_DGRAM
+from os import urandom
+from sys import exit, argv
+from getopt import getopt, GetoptError
+from time import sleep, time
 
 # global variables 
 host = "localhost"
@@ -23,7 +24,7 @@ def sendUdpBasedOntime(sock):
 	'''
 		sending packets based on duration
 	'''
-	startTime = time.time()
+	startTime = time()
 	stopTime = startTime + duration
 	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
 	global numberOfPackets
@@ -40,9 +41,9 @@ def sendUdpBasedOntime(sock):
 		
 		if timeBetweenPackets != 0:
 			print 'sleeping for ' + str(timeBetweenPackets) + ' seconds' 
-		time.sleep(timeBetweenPackets)
+			sleep(timeBetweenPackets)
 		
-		if stopTime <= time.time():
+		if stopTime <= time():
 			print 'done'
 			break
 			
@@ -70,18 +71,18 @@ def makePacketHeader(header):
 	return bytearray('{0:32b}'.format(header))
 	
 def makePacketBody(size):
-	return os.urandom(size)
+	return urandom(size)
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt.getopt(argv[1:],"hl:p:w:s:d:t:n:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time", "notificationPeriod"])
-	except getopt.GetoptError:
+		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time", "notificationPeriod"])
+	except GetoptError:
 		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenPackets>, -n <notificationPeriod>'
-		sys.exit(2)
+		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
 			printHelp()
-			sys.exit()
+			exit()
 		elif opt in ('-l'):
 			global host
 			host = arg
@@ -106,17 +107,17 @@ def checkArguments(argv):
 		
 if __name__ == '__main__':
 	
-	checkArguments(sys.argv)
-	print 'UDP target IP:', socket.gethostbyname(host)
+	checkArguments(argv)
+	print 'UDP target IP:', gethostbyname(host)
 	print 'UDP target port:', port
 
-	sock = socket.socket(socket.AF_INET, # Internet
-						             socket.SOCK_DGRAM) # UDP
+	sock = socket(AF_INET, SOCK_DGRAM) 
 	
 	sendUdpBasedOntime(sock)  
 	
 	print "Number of packets sent:", numberOfPackets
 	
 	print 'closing sockets'
+	
 	sock.close()
 	

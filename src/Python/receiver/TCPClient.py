@@ -4,16 +4,13 @@ Created on Apr 29, 2013
 @author: Abbad
 '''
 
-import socket
-import sys, getopt
+from socket import socket, AF_INET, SOCK_STREAM
+from sys import exit, argv, path
+from getopt import getopt, GetoptError
 from time import sleep
 from os import read, listdir, remove
 from os import path as osPath
 from inspect import currentframe, getfile
-from sys import path
-
-if sys.platform == "win32":
-    from msvcrt import open_osfhandle 
 
 # global variables 
 host = "localhost"
@@ -25,7 +22,7 @@ cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
-from utilities.user_pipes import notifyParent
+from utilities.user_pipes import sendMessage
 
 def printHelp():
 	'''
@@ -41,14 +38,14 @@ def checkArguments(argv):
 		this is to check arguments.
 	'''
 	try:
-		opts, args = getopt.getopt(argv[1:], "hl:p:a:v:", ["host", "portNumber", "pipeArg1"])
-	except getopt.GetoptError:
+		opts, args = getopt(argv[1:], "hl:p:a:v:", ["host", "portNumber", "pipeArg1"])
+	except GetoptError:
 		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg1>'
-		sys.exit(2)
+		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
 			printHelp()
-			sys.exit()
+			exit()
 		elif opt in ('-l'):
 			global host
 			host = arg
@@ -77,10 +74,8 @@ def getStatistics():
 	'''
 		this is to open and read the statistics which are dumped from udp server. once read are also deleted.
 	'''
-	
 	fileName = getFileName()
 	with open(fileName, 'r') as f:
-		sleep(1)
 		read_data = f.read()
 			
 	f.close()
@@ -92,7 +87,6 @@ def getStatistics():
 '''
 def getNotificationPeriod(conn):
 	return conn.recv(4096)
-	#print 'TCP Client:' + data
 	
 '''
 	This function to send confirm to server.
@@ -105,8 +99,8 @@ if __name__ == '__main__':
 		start of the program.
 	'''
 	
-	checkArguments(sys.argv)
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	checkArguments(argv)
+	s = socket(AF_INET, SOCK_STREAM)
 	s.connect((host, port))
 	
 	print 'TCP Client: Connection established.'
@@ -114,11 +108,13 @@ if __name__ == '__main__':
 	# read from tcp server.
 	notificationPeriod = getNotificationPeriod(s)
 	# notify the parent to launch the udp server with the notification period read from tcp server.
-	notifyParent("startUdpServer" + notificationPeriod, pipeArg1)
+	sendMessage("startUdpServer" + notificationPeriod, pipeArg1)
 	sendConfirm(s)
 	
 	
 	while 1:
+		# start looking for statistics after the notification period had passed + one second for safety.
+		sleep(int(notificationPeriod)+1)
 		stat = getStatistics()
 		s.send(stat)
 	'''
@@ -132,5 +128,5 @@ if __name__ == '__main__':
 			sleep(sleepTime)
 	'''
 	
-	#s.close()
+	s.close()
 	
