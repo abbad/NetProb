@@ -7,16 +7,18 @@ Created on Apr 29, 2013
 import socket
 import sys, getopt
 from time import sleep
-from os import pipe, fdopen, read, listdir
+from os import read, listdir, remove
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
+
+if sys.platform == "win32":
+    from msvcrt import open_osfhandle 
 
 # global variables 
 host = "localhost"
 port = 5005
 pipeArg1 = None
-pipeArg2 = None
 
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
@@ -39,9 +41,9 @@ def checkArguments(argv):
 		this is to check arguments.
 	'''
 	try:
-		opts, args = getopt.getopt(argv[1:], "hl:p:a:v:", ["host", "portNumber", "pipeArg1", "pipeArg2"])
+		opts, args = getopt.getopt(argv[1:], "hl:p:a:v:", ["host", "portNumber", "pipeArg1"])
 	except getopt.GetoptError:
-		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg1> -v <pipeArg2>'
+		print 'TCPClient.py -l <hostname> -p <port> -a <pipeArg1>'
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -56,9 +58,6 @@ def checkArguments(argv):
 		elif opt in ('-a'):
 			global pipeArg1 
 			pipeArg1 = int(arg)
-		elif opt in ('-v'):
-			global pipeArg2 
-			pipeArg2 = int(arg)
 			
 def getFileName():
 	'''
@@ -72,8 +71,7 @@ def getFileName():
 				return files
 	
 def deleteStatistics(fileName):
-	os.remove(fileName)
-	
+	remove(fileName)
 	
 def getStatistics():
 	'''
@@ -110,11 +108,19 @@ if __name__ == '__main__':
 	checkArguments(sys.argv)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
+	
 	print 'TCP Client: Connection established.'
+	
+	# read from tcp server.
 	notificationPeriod = getNotificationPeriod(s)
-	notifyParent("startUdpServer"+notificationPeriod, pipeArg1)
+	# notify the parent to launch the udp server with the notification period read from tcp server.
+	notifyParent("startUdpServer" + notificationPeriod, pipeArg1)
 	sendConfirm(s)
 	
+	
+	while 1:
+		stat = getStatistics()
+		s.send(stat)
 	'''
 	while 1:
 		try:
@@ -124,13 +130,7 @@ if __name__ == '__main__':
 			sleepTime = 5
 			print 'TCP Client: sleeping for ' + str(sleepTime) + ' seconds'
 			sleep(sleepTime)
-		
-		
-	while 1:
-		sleep(2)
-		stat = getStatistics()
-		s.send(stat)
-		
 	'''
-	s.close()
+	
+	#s.close()
 	

@@ -71,12 +71,13 @@ def main():
 	
 	if data == "confirm":
 		notifyParent("startUdpClient", pipeArg)
-	'''				
+		
 	while 1:
-	
 		data = conn.recv(bufferSize)
 		print "TCP Server: received data:", data
-		conn.close()'''
+	
+	
+	conn.close()
 
 '''
 	this function will send the notification period to client.

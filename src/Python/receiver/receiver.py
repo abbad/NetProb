@@ -9,7 +9,7 @@ This module will call UDP server and TCP server.
 
 from subprocess import Popen
 from time import sleep
-from os import system, remove, listdir, pipe, fdopen, close, O_WRONLY, O_RDONLY
+from os import system, remove, listdir, pipe, fdopen, close, O_RDONLY, O_WRONLY
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
@@ -20,7 +20,7 @@ if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
 from utilities.getChar import *
-from utilities.user_pipes import preparePipes, closePipe
+from utilities.user_pipes import getHandleDuplicate, closePipe
 
 def cleanUp():
 	'''
@@ -60,65 +60,56 @@ def menu():
 	@pipeArg1 This is for sending command and also notification period to receiver. 
 	@pipeArg2 This is for statistics. 
 '''
-def launchTcpClient(pipeArg1, pipeArg2):
+def launchTcpClient(pipeArg1):
 	print 'Starting TCP client'
-	args = ["python", "TCPClient.py", "-a", pipeArg1, "-v", pipeArg2]
-	return Popen(args, shell=False)
+	args = ["python", "TCPClient.py", "-a", pipeArg1]
+	return Popen(args, shell=False, close_fds = False)
 
 '''
 	@pipeArg1 This is for sending statistics. 
 '''
-def launchUdpServer(notificationPeriod, pipeArg1):
+def launchUdpServer(notificationPeriod):
 	print 'Starting UDP server'
-	args =  ["python", "UDPserver.py", "-n", notificationPeriod, "-a", pipeArg1]
-	p2 = Popen(args, shell=False)
+	args =  ["python", "UDPserver.py", "-n", notificationPeriod]
+	p2 = Popen(args, shell=False, close_fds = False)
 
 '''
-	 Create pipe for communication between tcp client and udp server. 
-	 this pipe will send the statistics from udp server to tcp client. 
+	create a pipe between parent and tcp client. 
 '''
-def createPipesForStatistics():
-	
-	pipeout_tcpClient, pipein_udpserver = pipe()
-	
-	#prepare pipeOut for tcp client
-	tcp_pipeDup, tcp_pipeHandler = preparePipes(pipeout_tcpClient, pipein_udpserver)
-	
-	#prepare pipeIn for udp Server
-	udp_pipeDup, udp_pipeHandler = preparePipes(pipein_udpserver, pipeout_tcpClient)
-	
-	return pipeout_tcpClient, tcp_pipeDup, tcp_pipeHandler, pipein_udpserver, udp_pipeDup, udp_pipeHandler
-	 
-if __name__ == '__main__':
-
-	pipes = createPipesForStatistics()
-	
-	# Create pipe for communication
+def CreatePipeBetweenParentAndTcpClient():
 	pipeout, pipein = pipe()
 	
-	pipeDuplicate, pipeHandler = preparePipes(pipein, pipeout)
+	pipeInDuplicate = getHandleDuplicate(pipein)
+	
+	return pipeout, pipein, pipeInDuplicate
 
-	# Start child with argument indicating which FD/FH to read from
-	TCPsubproc = launchTcpClient(pipeDuplicate, pipes[1])
-	
-	# Close write end of pipe in parent
-	closePipe(pipein, pipeHandler)
-	
-	# Read from child (could be done with os.write, without os.fdopen)
+'''
+	get message from tcp client, which it got from the sender part of the program.
+'''
+def getMessageFromTcpClient(pipeout):
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
+	pipefh.close()
+	return message
+	
+if __name__ == '__main__':
+	cleanUp()
+	# Must close pipe input if child will block waiting for end
+	# Can also be closed in a preexec_fn passed to subprocess.Popen
+	#fcntl(pipeToClose, fcntl.F_SETFD, fcntl.FD_CLOEXEC)
+	 
+	# Create pipe for handshake
+	handShake = CreatePipeBetweenParentAndTcpClient()
+	
+	# Start child with argument indicating which FD/FH to read from
+	TCPsubproc = launchTcpClient(str(int(handShake[2])))
+
+	# Close write end of the pipe in parent
+	closePipe(handShake[1], handShake[2])
+	
+	# wait for message from tcp client
+	message = getMessageFromTcpClient(handShake[0])
 	
 	if(message[0:14] == "startUdpServer"):
-		UDPServerSubProc = launchUdpServer(message[14:], pipes[4])  
-	
-	# Close both ends of statistics pipes 
-	closePipe(pipes[0], pipes[2])
-	closePipe(pipes[3], pipes[5])
-	
-	pipefh.close()
-
-	# Wait for the child to finish
-	#TCPsubproc.wait()
-	
-	
-	# to do : implement a pipe to connect the tcp client with udp server wherein the udpserver sends statistics to udp client. 
+		UDPServerSubProc = launchUdpServer(message[14:])
+		
