@@ -23,7 +23,7 @@ if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
 from utilities.user_pipes import sendMessage	
-
+from utilities.tcp_server_win32_named_pipes import *
 
 def printHelp():
 	print 'This is a TCP Server:'
@@ -63,6 +63,13 @@ def createConnection():
 	conn, addr = s.accept()
 	print 'TCP Server: Connection address:', addr
 	return conn
+	
+'''
+	Send to udp client in order to analyze it. 
+'''
+def sendToReciever(data):
+	writeToPipe(data)
+	
 
 def main():
 	global bufferSize
@@ -78,8 +85,7 @@ def main():
 		
 	while 1:
 		data = conn.recv(bufferSize)
-		print "TCP Server: received data:", data
-	
+		sendToReciever(data)
 	
 	conn.close()
 

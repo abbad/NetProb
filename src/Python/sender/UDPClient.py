@@ -9,6 +9,10 @@ from os import urandom
 from sys import exit, argv
 from getopt import getopt, GetoptError
 from time import sleep, time
+from thread import start_new_thread
+from os import path as osPath
+from inspect import currentframe, getfile
+from sys import path
 
 # global variables 
 host = "localhost"
@@ -19,6 +23,13 @@ duration = 10
 timeBetweenPackets = 0 
 numberOfPackets = 1
 notificationPeriod = 5 
+
+# code to include subfolder modules (packages)
+cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
+if cmd_subfolder not in path:
+	path.insert(0, cmd_subfolder)
+
+from utilities.udp_client_win32_named_pipes import *
 
 def sendUdpBasedOntime(sock):
 	'''
@@ -31,8 +42,6 @@ def sendUdpBasedOntime(sock):
 	numberOfPackets = 1
 		
 	while(1):
-			
-		
 		for i in range(windowSize):
 		
 			packet = makePacket(packetSize, numberOfPackets)
@@ -104,15 +113,17 @@ def checkArguments(argv):
 		elif opt in ('-n'):
 			global notificationPeriod
 			notificationPeriod = float(arg)
-		
+
+	
 if __name__ == '__main__':
 	
 	checkArguments(argv)
 	print 'UDP target IP:', gethostbyname(host)
 	print 'UDP target port:', port
-
-	sock = socket(AF_INET, SOCK_DGRAM) 
+	print 'sads'
+	sock = socket(AF_INET, SOCK_DGRAM)
 	
+	start_new_thread(readFromPipe, ())
 	sendUdpBasedOntime(sock)  
 	
 	print "Number of packets sent:", numberOfPackets
