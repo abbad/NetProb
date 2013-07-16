@@ -3,6 +3,11 @@ Created on Apr 13, 2013
 
 @author: Abbad
 '''
+'''
+Created on Apr 13, 2013
+
+@author: Abbad
+'''
 
 from socket import socket, gethostbyname, AF_INET, SOCK_DGRAM
 from os import urandom
@@ -13,6 +18,7 @@ from thread import start_new_thread
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
+from Queue import Queue 
 
 # global variables 
 host = "localhost"
@@ -23,6 +29,11 @@ duration = 10
 timeBetweenPackets = 0 
 numberOfPackets = 1
 notificationPeriod = 5 
+# what the udp client send. 
+packetsSendQueue = Queue()
+# what the udp server has received. 
+packetsRecievedQueue = Queue()
+totalNumberOfPacketsSend = 0
 
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
@@ -36,9 +47,10 @@ def sendUdpBasedOntime(sock):
 		sending packets based on duration
 	'''
 	startTime = time()
-	stopTime = startTime + duration
+	stopDurationTime = startTime + duration
+	notificationTime = startTime + notificationPeriod
 	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
-	global numberOfPackets
+	global numberOfPackets, totalNumberOfPacketsSend
 	numberOfPackets = 1
 		
 	while(1):
@@ -47,12 +59,17 @@ def sendUdpBasedOntime(sock):
 			packet = makePacket(packetSize, numberOfPackets)
 			sock.sendto(packet , (host, port))
 			numberOfPackets = numberOfPackets + 1
-		
+			totalNumberOfPacketsSend = totalNumberOfPacketsSend + 1
+			if notificationTime <= time():
+				packetsSendQueue.put(numberOfPackets)
+				numberOfPackets = 0
+				notificationTime = time() + notificationPeriod
+			
 		if timeBetweenPackets != 0:
 			print 'sleeping for ' + str(timeBetweenPackets) + ' seconds' 
 			sleep(timeBetweenPackets)
 		
-		if stopTime <= time():
+		if stopDurationTime <= time():
 			print 'done'
 			break
 			
@@ -114,19 +131,26 @@ def checkArguments(argv):
 			global notificationPeriod
 			notificationPeriod = float(arg)
 
-	
+'''
+	This function to make statistics. It will compare what is received by udp server with what was send from udp client. 
+'''
+def makeStatistics():
+	while 1:
+		print str(packetsRecievedQueue.get()) + '/' + str(packetsSendQueue.get())
+		
 if __name__ == '__main__':
 	
 	checkArguments(argv)
 	print 'UDP target IP:', gethostbyname(host)
 	print 'UDP target port:', port
-	print 'sads'
+	
 	sock = socket(AF_INET, SOCK_DGRAM)
 	
+	start_new_thread(makeStatistics, ())
 	start_new_thread(readFromPipe, ())
 	sendUdpBasedOntime(sock)  
 	
-	print "Number of packets sent:", numberOfPackets
+	print "Number of packets sent:", totalNumberOfPacketsSend
 	
 	print 'closing sockets'
 	

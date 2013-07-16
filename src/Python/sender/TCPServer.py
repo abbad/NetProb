@@ -52,7 +52,7 @@ def checkArguments(argv):
 			pipeArg = int(arg)
 
 '''
-	Create tcp connection and accept when one is ready to accept.
+	Create tcp connection and accept a connection.
 '''
 def createConnection():
 	s = socket(AF_INET, SOCK_STREAM)

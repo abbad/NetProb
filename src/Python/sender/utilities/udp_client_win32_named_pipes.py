@@ -16,6 +16,7 @@
 '''
 
 from ctypes import *
+from UDPClient import packetsRecievedQueue
 
 PIPE_ACCESS_DUPLEX = 0x3
 PIPE_TYPE_MESSAGE = 0x4
@@ -99,7 +100,8 @@ def ReadWrite_ClientPipe_Thread(hPipe):
     while 1:
         fSuccess = windll.kernel32.ReadFile(hPipe, chBuf, BUFSIZE,byref(cbRead), None)
         if ((fSuccess ==1) or (cbRead.value != 0)):
-			print chBuf.value
+			packetsRecievedQueue.put(int(chBuf.value))
+			#print chBuf.value
 			cbWritten = c_ulong(0)
 			'''fSuccess = windll.kernel32.WriteFile(hPipe,
                                                  c_char_p(MESSAGE),
