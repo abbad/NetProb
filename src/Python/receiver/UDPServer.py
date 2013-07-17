@@ -11,8 +11,7 @@ from time import strftime, time, sleep
 from thread import start_new_thread
 from os import write
 
-if platform == "win32":
-    from msvcrt import open_osfhandle, get_osfhandle
+from utilities.udp_server_win32_named_pipes import writeToPipe
 
 # global variables
 host = "localhost"              # Symbolic name meaning all available interfaces
@@ -96,7 +95,7 @@ if __name__ == "__main__":
 		
 		if stopTime <= time():
 			
-			start_new_thread(writeStatistics, ( numberOfPackets,))
+			start_new_thread(writeToPipe, ( str(numberOfPackets),))
 			startTime = time()
 			stopTime = startTime + statNotPeriod
 			numberOfPackets = 0

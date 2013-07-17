@@ -11,17 +11,21 @@ from time import sleep
 from os import read, listdir, remove
 from os import path as osPath
 from inspect import currentframe, getfile
+from thread import start_new_thread
+from Queue import Queue
 
 # global variables 
 host = "localhost"
 port = 5005
 pipeArg1 = None
+receivedMessagesQueue = Queue()
 
 # code to include subfolder modules (packages)
 cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
+from utilities.tcp_client_win32_named_pipes import *
 from utilities.user_pipes import sendMessage
 
 def printHelp():
@@ -113,10 +117,12 @@ if __name__ == '__main__':
 	
 	
 	while 1:
-		# start looking for statistics after the notification period had passed + one second for safety.
-		sleep(int(notificationPeriod)+1)
-		stat = getStatistics()
-		s.send(stat)
+		# start looking for statistics and send them to tcp server in sender. 
+		start_new_thread(readFromPipe, ())
+		message = str(receivedMessagesQueue.get())
+		s.send(message)
+		#stat = getStatistics() 
+		#s.send(stat)
 	'''
 	while 1:
 		try:
