@@ -12,8 +12,9 @@ from os import pipe, fdopen, read
 from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
-
+from thread import start_new_thread
 from utilities.user_pipes import getHandleDuplicate, closePipe	
+from Tkinter import *
 	
 class Window(Frame):
 			
@@ -37,11 +38,30 @@ class Window(Frame):
 		# exitbutton = Button(self, text = "Exit", foreground= "red", command = self.quit)
 		# exitbutton.place(x= 150, y = 120)
 		# start UDP Client button
-		startButton = Button(self, text = "Start", foreground = "Black", command = self.start)
-		startButton.place(x = 30, y = 190)
+		# only one start button
+		self.startButton = Button(self, text = "Start", foreground = "Black", command = self.callStartByThread)
+		self.startButton.place(x = 30, y = 190)
+		# stop button
+		stopButton = Button(self, text = "Stop", foreground = "Black", command = self.callTerminateProcesses)
+		stopButton.place(x = 90, y = 190)
+		
 		#startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
 		#startTcpButton.place(x = 340, y = 190) 
 	
+	def callTerminateProcesses(self):
+		'''
+			This function will change the state of the start button and also stop the processes. 
+		'''
+		self.startButton.config(state = NORMAL)
+		terminateProcesses()
+	
+	def callStartByThread(self):
+		'''
+			This function will call start function by a thread. 
+		'''
+		self.startButton.config(state = DISABLED)
+		start_new_thread(self.start, ())
+		
 	'''
 		This function will set the labels on the window.
 	'''
