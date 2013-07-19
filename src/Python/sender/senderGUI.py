@@ -3,7 +3,7 @@ Created on June 23, 2013
 
 @author: Abbad
 
-Module to run the sender.
+Module to run the sender(tcp server and udp client).
 
 '''
 from Tkinter import Frame, Tk, BOTH, Label, Button, Entry, mainloop
@@ -92,7 +92,7 @@ class Window(Frame):
 		udp_durationSendingPackets.place(x = 10, y = 190)
 		
 		# TCP Server		
-		tcp_label = Label(self, text = "TCP Client", foreground = "Black")
+		tcp_label = Label(self, text = "TCP Server", foreground = "Black")
 		tcp_label.place(x = 360, y = 10)
 		
 		tcp_hostEntry = Label(self, text = "Host Name", foreground = "Black")

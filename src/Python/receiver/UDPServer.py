@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
 	startTime = time()
 	stopTime = startTime + statNotPeriod
-	
+	print host
 	print "UDP Server: Server is listening.."
 	
 	while 1:
