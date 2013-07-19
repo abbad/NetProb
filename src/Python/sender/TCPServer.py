@@ -28,14 +28,15 @@ from utilities.tcp_server_win32_named_pipes import *
 def printHelp():
 	print 'This is a TCP Server:'
 	print 'usage:'
+	print '-l host name'
 	print '-p port number \t\t\t default 5005'
 	print '-n notification period'
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt(argv[1:],"hp:n:a:",["portNumber", "notificationPeriod", "pipeArg"])
+		opts, args = getopt(argv[1:],"hp:n:a:l:",["portNumber", "notificationPeriod", "pipeArg", "hostName"])
 	except GetoptError:
-		print 'TCPServer.py -p <port> -n <notification period> -a <pipeArg>'
+		print 'TCPServer.py -p <port> -n <notification period> -a <pipeArg> -l <hostName>'
 		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -50,6 +51,9 @@ def checkArguments(argv):
 		elif opt in ('-a'):
 			global pipeArg
 			pipeArg = int(arg)
+		elif opt in ('-l'):
+			global host
+			host = arg
 
 '''
 	Create tcp connection and accept a connection.

@@ -15,7 +15,7 @@ from thread import start_new_thread
 from Queue import Queue
 
 # global variables 
-host = "localhost"
+host = "localHost"
 port = 5005
 pipeArg1 = None
 receivedMessagesQueue = Queue()
@@ -112,9 +112,8 @@ if __name__ == '__main__':
 	# read from tcp server.
 	notificationPeriod = getNotificationPeriod(s)
 	# notify the parent to launch the udp server with the notification period read from tcp server.
-	sendMessage("startUdpServer" + notificationPeriod, pipeArg1)
 	sendConfirm(s)
-	
+	sendMessage("startUdpServer" + notificationPeriod, pipeArg1)
 	
 	while 1:
 		# start looking for statistics and send them to tcp server in sender. 

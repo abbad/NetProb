@@ -14,7 +14,7 @@ from os import write
 from utilities.udp_server_win32_named_pipes import writeToPipe
 
 # global variables
-host = "localhost"              # Symbolic name meaning all available interfaces
+host = "192.168.0.1"              # Symbolic name meaning all available interfaces
 port = 4001                     # Arbitrary non-privileged port
 bufferSize = 2084
 statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
