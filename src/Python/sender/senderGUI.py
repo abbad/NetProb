@@ -169,7 +169,7 @@ class Window(Frame):
 		global P2
 		print 'Starting UDP client'
 		args =  ["python", "UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", str(self.udp_packetSizeEntry.get()), "-t"
-				, str(self.udp_timeBetweenEachWindow.get()), "-w", "-n", str(self.notificationEntry.get()), str(self.udp_windowSizeEntry.get()), "-d", str(self.udp_durationEntry.get())]
+				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()), "-n", str(self.notificationEntry.get()), "-d", str(self.udp_durationEntry.get())]
 		P2 = Popen(args, shell=False)		
 		
 
