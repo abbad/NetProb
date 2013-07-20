@@ -3,11 +3,6 @@ Created on Apr 13, 2013
 
 @author: Abbad
 '''
-'''
-Created on Apr 13, 2013
-
-@author: Abbad
-'''
 
 from socket import socket, gethostbyname, AF_INET, SOCK_DGRAM
 from os import urandom
@@ -26,7 +21,7 @@ port = 4001
 windowSize = 10
 packetSize = 1000
 duration = 10
-timeBetweenPackets = 0 
+timeBetweenWindows = 0 
 numberOfPackets = 1
 notificationPeriod = 5 
 # what the udp client send. 
@@ -51,9 +46,10 @@ def sendUdpBasedOntime(sock):
 	notificationTime = startTime + notificationPeriod
 	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
 	global numberOfPackets, totalNumberOfPacketsSend
-	numberOfPackets = 1
+	numberOfPackets = 0
 		
 	while(1):
+		# send a window a loop
 		for i in range(windowSize):
 		
 			packet = makePacket(packetSize, numberOfPackets)
@@ -64,10 +60,10 @@ def sendUdpBasedOntime(sock):
 				packetsSendQueue.put(numberOfPackets)
 				numberOfPackets = 0
 				notificationTime = time() + notificationPeriod
-			
-		if timeBetweenPackets != 0:
-			print 'sleeping for ' + str(timeBetweenPackets) + ' seconds' 
-			sleep(timeBetweenPackets)
+		
+		if timeBetweenWindows != 0:
+			print 'sleeping for ' + str(timeBetweenWindows) + ' seconds' 
+			sleep(timeBetweenWindows)
 		
 		if stopDurationTime <= time():
 			print 'done'
@@ -103,7 +99,7 @@ def checkArguments(argv):
 	try:
 		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time", "notificationPeriod"])
 	except GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenPackets>, -n <notificationPeriod>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenWindows>, -n <notificationPeriod>'
 		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -125,8 +121,8 @@ def checkArguments(argv):
 			global duration
 			duration = float(arg)
 		elif opt in ('-t'):
-			global timeBetweenPackets
-			timeBetweenPackets = float(arg)
+			global timeBetweenWindows
+			timeBetweenWindows = float(arg)
 		elif opt in ('-n'):
 			global notificationPeriod
 			notificationPeriod = float(arg)

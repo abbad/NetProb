@@ -94,8 +94,6 @@ if __name__ == "__main__":
 		numberOfPackets += 1
 		
 		if stopTime <= time():
-			
 			start_new_thread(writeToPipe, ( str(numberOfPackets),))
-			startTime = time()
-			stopTime = startTime + statNotPeriod
+			stopTime = time() + statNotPeriod
 			numberOfPackets = 0
