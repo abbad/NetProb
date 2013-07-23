@@ -91,7 +91,10 @@ def makePacketHeader(header):
 		specification first 32 bits are reserved for squence number 
 	'''
 	return bytearray('{0:32b}'.format(header))
-	
+
+'''
+	Make body of the packet from random bytes. returned as a string of bytes.
+'''
 def makePacketBody(size):
 	return urandom(size)
 	
