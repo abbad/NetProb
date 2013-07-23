@@ -175,7 +175,6 @@ class Window(Frame):
 		message = pipefh.read()
 		# a message to start udp server
 		if(message == "startUdpClient"):
-			print 'fuck'
 			self.launchUdpClientNonUniform()
 				 
 	
@@ -237,7 +236,7 @@ def readInput(file):
 	'''	
 	# reading from the 4th line 
 	for i, line in enumerate(file):
-		if i > 3:
+		if i > 2:
 			yield line
 
 def parseLine(line):
