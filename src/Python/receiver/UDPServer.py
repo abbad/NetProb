@@ -87,6 +87,7 @@ if __name__ == "__main__":
 	print "UDP Server: Server is listening.."
 	
 	while 1:
+	
 		data  = sock.recv(bufferSize)
 		print "UDP Server: received message " + str(numberOfPackets)
 		#print "UDP Server: size:" + str(len(data))
