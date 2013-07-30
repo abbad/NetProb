@@ -92,10 +92,11 @@ def makePacketHeader(header):
 	'''
 	return bytearray('{0:32b}'.format(header))
 
-'''
-	Make body of the packet from random bytes. returned as a string of bytes.
-'''
+
 def makePacketBody(size):
+	'''
+		Make body of the packet from random bytes. returned as a string of bytes.
+	'''
 	return urandom(size)
 	
 def checkArguments(argv):
@@ -130,10 +131,11 @@ def checkArguments(argv):
 			global notificationPeriod
 			notificationPeriod = float(arg)
 
-'''
-	This function to make statistics. It will compare what is received by udp server with what was send from udp client. 
-'''
+
 def makeStatistics():
+	'''
+		This function to make statistics. It will compare what is received by udp server with what was send from udp client. 
+	'''
 	while 1:
 		print str(packetsRecievedQueue.get()) + '/' + str(packetsSendQueue.get())
 		

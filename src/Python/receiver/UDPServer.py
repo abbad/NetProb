@@ -18,18 +18,8 @@ host = "192.168.0.1"              # Symbolic name meaning all available interfac
 port = 4001                     # Arbitrary non-privileged port
 bufferSize = 2084
 statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
-fileName = "statistics "
 numberOfPackets = 0
 pipeIn = None
-
-def writeStatistics(packets):
-	'''
-		this is to write statistics to a file.
-	'''
-	with open(fileName +  strftime("%H%M%S") + '.xml', 'w') as f:
-		f.write(__generateStatistics(packets))
-	
-	f.close()
 	
 	
 def __generateStatistics(packets):
@@ -49,9 +39,9 @@ def printHelp():
 
 def checkArguments(argv):
 	try:
-		opts, args = getopt(argv[1:],"hl:p:b:f:n:",["host", "portNumber", "bufferSize", "fileName", "notificationPeriod"])
+		opts, args = getopt(argv[1:],"hl:p:b:n:",["host", "portNumber", "bufferSize", "notificationPeriod"])
 	except GetoptError:
-		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -f <fileName> -n <notificationPeriod>'
+		print 'UDPServer.py -l <hostname> -p <port> -b <bufferSize> -n <notificationPeriod>'
 		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -66,9 +56,6 @@ def checkArguments(argv):
 		elif opt in ('-b'):
 			global bufferSize
 			bufferSize = int(arg)
-		elif opt in ('-f'):
-			global fileName
-			fileName = arg
 		elif opt in ('-n'):
 			global statNotPeriod
 			statNotPeriod = int(arg)
@@ -94,7 +81,13 @@ if __name__ == "__main__":
 		
 		numberOfPackets += 1
 		
+		print "UDP Server: received message " + str(numberOfPackets)
+		#print "UDP Server: size:" + str(len(data))
+		
+		numberOfPackets += 1
+		
 		if stopTime <= time():
 			start_new_thread(writeToPipe, ( str(numberOfPackets),))
 			stopTime = time() + statNotPeriod
 			numberOfPackets = 0
+		

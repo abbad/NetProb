@@ -173,11 +173,11 @@ class Window(Frame):
 		P2 = Popen(args, shell=False)		
 		
 
-	'''
-		This function will start 1. Tcp Server, 2. Udp Client.
-	'''
+	
 	def start(self):
-		
+		'''
+			This function will start 1. Tcp Server, 2. Udp Client.
+		'''
 		# Create pipe for communication
 		pipeOut, pipeIn = pipe()
 		
