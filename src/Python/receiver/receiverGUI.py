@@ -3,7 +3,7 @@ Created on July 23, 2013
 
 @author: Abbad
 
-Module to run the receiver(tcp client and udp server).
+Module to run the receiver(tcp client and udp client).
 
 '''
 
@@ -48,8 +48,6 @@ class Window(Frame):
 		stopButton = Button(self, text = "Stop", foreground = "Black", command = self.callTerminateProcesses)
 		stopButton.place(x = 90, y = 220)
 		
-		#startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
-		#startTcpButton.place(x = 340, y = 190) 
 	
 	def callTerminateProcesses(self):
 		'''
@@ -69,8 +67,8 @@ class Window(Frame):
 		This function will set the labels on the window.
 	'''
 	def setLabels(self):
-		#UDP Server
-		udp_label = Label(self, text = "UDP Server", foreground = "Black")
+		#UDP client
+		udp_label = Label(self, text = "UDP Client", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
 		
 		udp_hostLabel= Label(self, text = "Host Name", foreground = "Black")
@@ -104,7 +102,7 @@ class Window(Frame):
 		self.udp_portEntry.insert(0, "4001")
 		self.udp_portEntry.place(x = 90, y = 70)
 		
-		#TCP Server
+		#TCP client
 		# Host Name
 		self.tcp_hostEntry = Entry(self)
 		self.tcp_hostEntry.insert(0, "127.0.0.1")
@@ -125,16 +123,16 @@ class Window(Frame):
 		P1 = Popen(args, shell=False)
 		
 	'''
-		This function will open a sub-process and launch UDP server.
+		This function will open a sub-process and launch UDP client.
 	'''
-	def launchUdpServer(self, notificationPeriod):
+	def launchUdpClient(self, notificationPeriod):
 		global P2
-		print 'Starting UDP Server'
-		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()),  "-n", notificationPeriod]
+		print 'Starting UDP Client'
+		args =  ["python", "UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()),  "-n", notificationPeriod]
 		P2 = Popen(args, shell=False)		
 
 	'''
-		This function will start 1. Tcp Server, 2. Udp Client.
+		This function will start 1. Tcp Client, 2. Udp Client.
 	'''
 	def start(self):
 		# Create pipe for handshake
@@ -149,23 +147,23 @@ class Window(Frame):
 		# wait for message from tcp client
 		message = getMessageFromTcpClient(handShake[0])
 	
-		if(message[0:14] == "startUdpServer"):
-			UDPServerSubProc = self.launchUdpServer(message[14:])
+		if(message[0:14] == "startUdpClient"):
+			UDPClientSubProc = self.launchUdpClient(message[14:])
 
-'''
-	create a pipe between parent and tcp client. 
-'''
 def CreatePipeBetweenParentAndTcpClient():
+	'''
+		create a pipe between parent and tcp client. 
+	'''
 	pipeout, pipein = pipe()
 	
 	pipeInDuplicate = getHandleDuplicate(pipein)
 	
 	return pipeout, pipein, pipeInDuplicate
 
-'''
-	get message from tcp client, which it got from the sender part of the program.
-'''
 def getMessageFromTcpClient(pipeout):
+	'''
+		get message from tcp client, which it got from the sender part of the program.
+	'''
 	pipefh = fdopen(pipeout, 'r')
 	message = pipefh.read()
 	pipefh.close()
@@ -193,9 +191,9 @@ def terminateAll():
 	terminateProcesses() 
 	ROOT.destroy()
 	
-''' this will terminate the processes running '''
 
 def terminateProcesses():
+	''' this will terminate the processes running '''
 	global P1, P2
 	try: 
 		if P1:

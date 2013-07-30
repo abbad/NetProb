@@ -16,7 +16,7 @@
 '''
 
 from ctypes import *
-from UDPClient import packetsRecievedQueue
+from UDPServer import packetsRecievedQueue
 
 PIPE_ACCESS_DUPLEX = 0x3
 PIPE_TYPE_MESSAGE = 0x4

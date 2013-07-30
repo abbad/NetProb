@@ -113,7 +113,7 @@ if __name__ == '__main__':
 	notificationPeriod = getNotificationPeriod(s)
 	# notify the parent to launch the udp server with the notification period read from tcp server.
 	sendConfirm(s)
-	sendMessage("startUdpServer" + notificationPeriod, pipeArg1)
+	sendMessage("startUdpClient" + notificationPeriod, pipeArg1)
 	
 	while 1:
 		# start looking for statistics and send them to tcp server in sender. 
