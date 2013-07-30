@@ -151,19 +151,14 @@ if __name__ == '__main__':
 	checkArguments(argv)
 	print 'UDP target IP:', gethostbyname(host)
 	print 'UDP target port:', port
-	
 	sock = socket(AF_INET, SOCK_DGRAM)
 	makeStatisticsThread = Thread(target = makeStatistics)
-	#print makeStatisticsThread.isDaemon()
-	#makeStatisticsThread.Daemon = True
 	makeStatisticsThread.start()
-	#start_new_thread(makeStatistics, ())
 	start_new_thread(readFromPipe, ())
 	sendUdpBasedOntime(sock)  
 	threadFlag = True
-	print "Number of packets sent:", totalNumberOfPacketsSend
 	makeStatisticsThread.join()
+	print "Number of packets sent:", totalNumberOfPacketsSend
 	print 'closing sockets'
 	
 	sock.close()
-	
