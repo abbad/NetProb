@@ -83,8 +83,7 @@ if __name__ == "__main__":
 		
 		print "UDP Server: received message " + str(numberOfPackets)
 		#print "UDP Server: size:" + str(len(data))
-		
-		numberOfPackets += 1
+
 		
 		if stopTime <= time():
 			start_new_thread(writeToPipe, ( str(numberOfPackets),))
