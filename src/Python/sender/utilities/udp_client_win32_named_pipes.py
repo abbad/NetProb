@@ -101,7 +101,7 @@ def ReadWrite_ClientPipe_Thread(hPipe):
         fSuccess = windll.kernel32.ReadFile(hPipe, chBuf, BUFSIZE,byref(cbRead), None)
         if ((fSuccess ==1) or (cbRead.value != 0)):
 			packetsRecievedQueue.put(int(chBuf.value))
-			#print chBuf.value
+			print chBuf.value
 			cbWritten = c_ulong(0)
 			'''fSuccess = windll.kernel32.WriteFile(hPipe,
                                                  c_char_p(MESSAGE),

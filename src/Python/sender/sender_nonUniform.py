@@ -136,8 +136,8 @@ class Window(Frame):
 			This function will open a sub-process and launch UDP Client.
 		'''
 		global P2
-		print 'Starting UDP client'
-		args =  ["python", "UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", para[0], "-t"
+		print 'Starting UDP Server'
+		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", para[0], "-t"
 				, para[2], "-w", para[1], "-n", str(self.notificationEntry.get()), "-d", para[3]]
 		P2 = Popen(args, shell=False)		
 	
