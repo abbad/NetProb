@@ -3,7 +3,7 @@ Created on June 23, 2013
 
 @author: Abbad
 
-Module to run the sender(tcp server and udp client).
+Module to run the transmitter(tcp server and udp server).
 
 '''
 from Tkinter import Frame, Tk, BOTH, Label, Button, Entry, mainloop
@@ -24,16 +24,17 @@ class Window(Frame):
 		self.interface()
 	
 	def interface(self):
-		self.parent.title("Probing Delay Sender Application")
+		self.parent.title("Probing Delay Transmitter Application")
 		self.pack(fill=BOTH, expand = 1) 
 		self.setLabels()
 		self.setButtons()
 		self.setTextFields()
 	
-	'''
-		This function will set buttons on the window.
-	'''
+	
 	def setButtons(self):
+		'''
+			This function will set buttons on the window.
+		'''
 		# exit button
 		# exitbutton = Button(self, text = "Exit", foreground= "red", command = self.quit)
 		# exitbutton.place(x= 150, y = 120)
@@ -62,10 +63,11 @@ class Window(Frame):
 		self.startButton.config(state = DISABLED)
 		start_new_thread(self.start, ())
 		
-	'''
-		This function will set the labels on the window.
-	'''
+	
 	def setLabels(self):
+		'''
+			This function will set the labels on the window.
+		'''
 		#UDP Client
 		udp_label = Label(self, text = "UDP Client", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
@@ -105,10 +107,11 @@ class Window(Frame):
 		notification_period = Label(self, text = "Notification Period", foreground = "Black")
 		notification_period.place(x = 310, y = 100)
 	
-	'''
-		This function will set the text fields.
-	'''	
+	
 	def setTextFields(self):
+		'''
+			This function will set the text fields.
+		'''	
 		#UDP Client
 		# host 
 		self.udp_hostEntry = Entry(self)
@@ -153,19 +156,21 @@ class Window(Frame):
 		self.notificationEntry.insert(0, "5")
 		self.notificationEntry.place(x = 420, y = 100)
 		
-	'''
-		This function will open a sub-process to launch TCP server.
-	'''
+	
 	def launchTCPServer(self, pipeArg):
+		'''
+			This function will open a sub-process to launch TCP server.
+		'''
 		global P1
 		print 'Starting TCP server'
 		args = ["python", "TCPServer.py", "-l", str(self.tcp_hostEntry.get()) ,"-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get()), "-a", pipeArg]
 		P1 = Popen(args, shell=False)
 		
-	'''
-		This function will open a sub-process and launch UDP Client.
-	'''
+	
 	def launchUdpClient(self):
+		'''
+			This function will open a sub-process and launch UDP Client.
+		'''
 		global P2
 		print 'Starting UDP client'
 		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", str(self.udp_packetSizeEntry.get()), "-t"
@@ -219,9 +224,9 @@ def terminateAll():
 	terminateProcesses() 
 	ROOT.destroy()
 	
-''' this will terminate the processes running '''
-
 def terminateProcesses():
+	''' this will terminate the processes running '''
+
 	global P1, P2
 	try: 
 		if P1:

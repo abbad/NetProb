@@ -26,7 +26,7 @@ class Window(Frame):
 		self.interface()
 	
 	def interface(self):
-		self.parent.title("Probing Delay Sender Application")
+		self.parent.title("Probing Delay Transmitter Application")
 		self.pack(fill=BOTH, expand = 1) 
 		self.setLabels()
 		self.setButtons()
