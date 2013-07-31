@@ -4,6 +4,7 @@ Created on Apr 13, 2013
 @author: Abbad
 '''
 
+from __future__ import division
 from socket import socket, gethostbyname, AF_INET, SOCK_DGRAM
 from os import urandom
 from sys import exit, argv
@@ -15,6 +16,7 @@ from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
+
 
 # global variables 
 host = "localhost"
@@ -136,13 +138,17 @@ def checkArguments(argv):
 
 def makeStatistics():
 	'''
-		This function to make statistics. It will compare what is received by udp server with what was send from udp client. 
+		This function will make statistics.  
 	'''
 	while 1:
 		if threadFlag:
 			break
 		try: 
-			print str(packetsRecievedQueue.get(timeout = 5)) + '/' + str(packetsSendQueue.get(timeout = 5))
+			recv = packetsRecievedQueue.get(timeout = 5)
+			sent = packetsSendQueue.get(timeout = 5)
+			# 24/25--> (1 -  24/25)*100
+			print str((abs(1 - (recv / sent)) * 100)) + "%"
+			print str(recv) + '/' + str(sent)
 		except Empty:
 			pass
 		
@@ -154,6 +160,7 @@ if __name__ == '__main__':
 	print 'UDP target port:', port
 	sock = socket(AF_INET, SOCK_DGRAM)
 	makeStatisticsThread = Thread(target = makeStatistics)
+	makeStatisticsThread.daemon = True
 	makeStatisticsThread.start()
 	start_new_thread(readFromPipe, ())
 	sendUdpBasedOntime(sock)  
