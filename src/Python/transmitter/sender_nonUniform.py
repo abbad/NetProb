@@ -32,10 +32,11 @@ class Window(Frame):
 		self.setButtons()
 		self.setTextFields()
 	
-	'''
-		This function will set buttons on the window.
-	'''
+	
 	def setButtons(self):
+		'''
+			This function will set buttons on the window.
+		'''
 		# exit button
 		# exitbutton = Button(self, text = "Exit", foreground= "red", command = self.quit)
 		# exitbutton.place(x= 150, y = 120)
@@ -167,6 +168,8 @@ class Window(Frame):
 		'''
 			This function will start 1. Tcp Server, 2. Udp Client.
 		'''
+		global startThreadFlag 
+		startThreadFlag = False
 		# Create pipe for communication
 		pipeOut, pipeIn = pipe()
 		
