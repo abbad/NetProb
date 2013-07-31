@@ -15,6 +15,7 @@ from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
+
 # global variables 
 host = "localhost"
 port = 4001
@@ -24,9 +25,9 @@ duration = 10
 timeBetweenWindows = 0 
 numberOfPackets = 1
 notificationPeriod = 5 
-# what the udp client send. 
+# sent udp packets. 
 packetsSendQueue = Queue()
-# what the udp server has received. 
+# received udp packets. 
 packetsRecievedQueue = Queue()
 totalNumberOfPacketsSend = 0
 threadFlag = False

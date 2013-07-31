@@ -54,6 +54,8 @@ class Window(Frame):
 		'''
 			This function will change the state of the start button and also stop the processes. 
 		'''
+		global startThreadFlag
+		startThreadFlag = True
 		self.startButton.config(state = NORMAL)
 		terminateProcesses()
 	
@@ -64,10 +66,11 @@ class Window(Frame):
 		self.startButton.config(state = DISABLED)
 		start_new_thread(self.start, ())
 		
-	'''
-		This function will set the labels on the window.
-	'''
+	
 	def setLabels(self):
+		'''
+			This function will set the labels on the window.
+		'''
 		#UDP Client
 		udp_label = Label(self, text = "UDP Client", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
@@ -92,10 +95,11 @@ class Window(Frame):
 		notification_period = Label(self, text = "Notification Period", foreground = "Black")
 		notification_period.place(x = 310, y = 100)
 	
-	'''
-		This function will set the text fields.
-	'''	
+	
 	def setTextFields(self):
+		'''
+			This function will set the text fields.
+		'''	
 		#UDP Client
 		# host 
 		self.udp_hostEntry = Entry(self)
@@ -156,6 +160,8 @@ class Window(Frame):
 			# launch udp client with the values
 			self.launchUdpClient(input)
 			P2.wait()
+			if startThreadFlag:
+				break
 			
 	def start(self):
 		'''
@@ -186,6 +192,7 @@ class Window(Frame):
 ROOT = None 
 P1 = None
 P2 = None
+startThreadFlag = False
 
 def main():
 	global ROOT 
