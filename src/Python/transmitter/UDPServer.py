@@ -37,7 +37,7 @@ cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
-from utilities.udp_client_win32_named_pipes import *
+from utilities.udp_server_win32_named_pipes import *
 
 def sendUdpBasedOntime(sock):
 	'''
