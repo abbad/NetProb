@@ -15,8 +15,8 @@ from inspect import currentframe, getfile
 from sys import path
 from thread import start_new_thread
 from utilities.user_pipes import getHandleDuplicate, closePipe	
+from utilities.file_io import *
 from Tkinter import *
-from re import compile
 	
 class Window(Frame):
 			
@@ -151,7 +151,7 @@ class Window(Frame):
 			This function will read from the input.txt and launch udp client with the specific values. 
 		'''
 		# open input.txt
-		p = openFile()
+		p = openFile("input.txt")
 		# get Generator for files 
 		gen = readInput(p)
 		# go over the values 
@@ -163,6 +163,8 @@ class Window(Frame):
 			P2.wait()
 			if startThreadFlag:
 				break
+		
+		print 'finished reading file'
 			
 	def start(self):
 		'''
@@ -227,34 +229,6 @@ def terminateProcesses():
 	except: 
 		pass
 
-
-def openFile():
-	'''
-		This will open the file specified.
-	'''
-	return open("input.txt")
-
-def closeFile(file):
-	'''
-		This function will close the file.
-	'''
-	file.close()
-	
-def readInput(file):
-	'''
-		This function will read from input file. It will return a generator.
-	'''	
-	# reading from the 4th line 
-	for i, line in enumerate(file):
-		if i > 2:
-			yield line
-
-def parseLine(line):
-	'''
-		This function will parse the line sent to by commas
-	'''
-	p = compile('[,;\s]+')
-	return p.split(line)
 	
 if __name__ == '__main__':
 	# testing

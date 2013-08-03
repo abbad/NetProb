@@ -16,7 +16,7 @@ from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
-
+from utilities.file_io import writeToLog, closeFile
 
 # global variables 
 host = "localhost"
@@ -140,15 +140,19 @@ def makeStatistics():
 	'''
 		This function will make statistics.  
 	'''
+	fp  = open("log.txt", 'a')
 	while 1:
 		if threadFlag:
+			closeFile(fp)
 			break
 		try: 
 			recv = packetsRecievedQueue.get(timeout = 5)
 			sent = packetsSendQueue.get(timeout = 5)
 			# 24/25--> (1 -  24/25)*100
-			print str((abs(1 - (recv / sent)) * 100)) + "%"
-			print str(recv) + '/' + str(sent)
+			lossRate = str((abs(1 - (recv / sent)) * 100)) + "%"
+			print lossRate
+			#print str(recv) + '/' + str(sent)
+			writeToLog(fp, (lossRate,))
 		except Empty:
 			pass
 		
