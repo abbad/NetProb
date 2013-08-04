@@ -48,25 +48,19 @@ def sendUdpBasedOntime(sock):
 	'''
 	startTime = time()
 	stopDurationTime = startTime + duration
-	notificationTime = startTime + notificationPeriod
+	start_new_thread(putValuesInQueue, (startTime,))
 	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
 	global numberOfPackets, totalNumberOfPacketsSend
 	numberOfPackets = 0
 		
 	while(1):
 		# send a window a loop
-		for i in range(windowSize):
-		
+		for i in range(windowSize):	
 			packet = makePacket(packetSize, numberOfPackets)
 			sock.sendto(packet , (host, port))
 			numberOfPackets = numberOfPackets + 1
 			totalNumberOfPacketsSend = totalNumberOfPacketsSend + 1
-			if notificationTime <= time():
-				packetsSendQueue.put(numberOfPackets)
-				timeStampSendQueue.put(time())
-				numberOfPackets = 0
-				notificationTime = time() + notificationPeriod
-		
+			#putValuesInQueue(startTime)
 		if timeBetweenWindows != 0:
 			print 'sleeping for ' + str(timeBetweenWindows) + ' seconds' 
 			sleep(timeBetweenWindows)
@@ -74,6 +68,21 @@ def sendUdpBasedOntime(sock):
 		if stopDurationTime <= time():
 			print 'done'
 			break
+
+def putValuesInQueue(startTime):
+	'''
+		This function will put the values in the queue
+	'''
+	global numberOfPackets
+	
+	notificationTime = startTime + notificationPeriod
+	while(1):
+		if notificationTime <= time():
+			packetsSendQueue.put(numberOfPackets)
+			timeStampSendQueue.put(time())
+			numberOfPackets = 0
+			notificationTime = time() + notificationPeriod
+		
 			
 def printHelp():
 	print 'This is a UDP client:'
@@ -171,11 +180,13 @@ def makeStatistics():
 			# ex loss rate: 24/25--> (1 -  24/25)*100
 			lossRate = str(abs((1 - (int(recvArray[0]) / int(sentArray[0])) * 100))) + "%"
 			timeDifference = str(abs(float(recvArray[1]) - float(sentArray[1])))
-			print float(recvArray[1])
-			print float(sentArray[1])
+			print recvArray[0] 
+			print sentArray[0]
+			#print float(recvArray[1])
+			#print float(sentArray[1])
 			print timeDifference
-			print lossRate
-			writeToLog(fp, (lossRate +'\t' + timeDifference,))
+			#print lossRate
+			#writeToLog(fp, (lossRate +'\t' + timeDifference,))
 		except Empty:
 			pass
 		

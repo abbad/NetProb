@@ -59,29 +59,38 @@ def checkArguments(argv):
 		elif opt in ('-n'):
 			global statNotPeriod
 			statNotPeriod = int(arg)
+
+def monitorValues():
+	'''
+		this function will keep on checking on the notificatin peroid. 
+	'''	
+	global numberOfPackets
+	startTime = time()
+	stopTime = startTime + statNotPeriod
+	while 1:
+		if stopTime <= time():
+			start_new_thread(writeToPipe, ( str(numberOfPackets) + "time:" + str(time()),))
+			stopTime = time() + statNotPeriod
+			numberOfPackets = 0
 		
 if __name__ == "__main__":
 		
 	checkArguments(argv)
 	
 	sock = socket(AF_INET, SOCK_DGRAM)
-
+	#sock.setblocking(0)
 	sock.bind((host, port))
-	startTime = time()
-	stopTime = startTime + statNotPeriod
 	print host
 	print "UDP Client : Client  is listening.."
+	start_new_thread(monitorValues, ())
 	
 	while 1:
-	
-		data  = sock.recv(bufferSize)
-		print "UDP Client : received message " + str(numberOfPackets)
-		#print "UDP Client : size:" + str(len(data))
+		try:
+			data  = sock.recv(bufferSize)
+			print "UDP Client : received message " + str(numberOfPackets)
+			#print "UDP Client : size:" + str(len(data))
+			numberOfPackets += 1
+		except: 
+			pass
 		
-		numberOfPackets += 1
-		
-		if stopTime <= time():
-			start_new_thread(writeToPipe, ( str(numberOfPackets) + "time:" + str(time()),))
-			stopTime = time() + statNotPeriod
-			numberOfPackets = 0
 		
