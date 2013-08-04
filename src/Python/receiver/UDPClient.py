@@ -7,7 +7,7 @@ Created on Apr 13, 2013
 from socket import socket, AF_INET, SOCK_DGRAM
 from sys import platform, exit, argv
 from getopt import getopt, GetoptError
-from time import strftime, time, sleep
+from time import time, sleep
 from thread import start_new_thread
 from os import write
 
@@ -67,7 +67,6 @@ if __name__ == "__main__":
 	sock = socket(AF_INET, SOCK_DGRAM)
 
 	sock.bind((host, port))
-
 	startTime = time()
 	stopTime = startTime + statNotPeriod
 	print host
@@ -82,7 +81,7 @@ if __name__ == "__main__":
 		numberOfPackets += 1
 		
 		if stopTime <= time():
-			start_new_thread(writeToPipe, ( str(numberOfPackets),))
+			start_new_thread(writeToPipe, ( str(numberOfPackets) + "time:" + str(time()),))
 			stopTime = time() + statNotPeriod
 			numberOfPackets = 0
 		

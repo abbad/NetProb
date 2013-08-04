@@ -16,7 +16,7 @@ from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
-from utilities.file_io import writeToLog, closeFile
+from utilities.file_io import writeToLog
 
 # global variables 
 host = "localhost"
@@ -29,8 +29,9 @@ numberOfPackets = 1
 notificationPeriod = 5 
 # sent udp packets. 
 packetsSendQueue = Queue()
-# received udp packets. 
-packetsRecievedQueue = Queue()
+timeStampSendQueue  = Queue()
+# received udp packets and time stamp queue. 
+receivedDataQueue = Queue()
 totalNumberOfPacketsSend = 0
 threadFlag = False
 
@@ -62,6 +63,7 @@ def sendUdpBasedOntime(sock):
 			totalNumberOfPacketsSend = totalNumberOfPacketsSend + 1
 			if notificationTime <= time():
 				packetsSendQueue.put(numberOfPackets)
+				timeStampSendQueue.put(time())
 				numberOfPackets = 0
 				notificationTime = time() + notificationPeriod
 		
@@ -135,7 +137,25 @@ def checkArguments(argv):
 			global notificationPeriod
 			notificationPeriod = float(arg)
 
-
+def getReceivedData():
+	'''
+		Split the data and return an array. 
+	'''
+	# get received data
+	recvData = receivedDataQueue.get(timeout = 5)
+	# split the output 
+	return recvData.split('time:', len(recvData))
+			
+def getSentData(): 
+	'''
+		Get sent data from the queue and return an array.
+	'''
+	arr = []
+	arr.append(packetsSendQueue.get(timeout = 5))
+	arr.append(timeStampSendQueue.get(timeout = 5))
+	
+	return arr
+	
 def makeStatistics():
 	'''
 		This function will make statistics.  
@@ -143,16 +163,19 @@ def makeStatistics():
 	fp  = open("log.txt", 'a')
 	while 1:
 		if threadFlag:
-			closeFile(fp)
+			fp.close()
 			break
-		try: 
-			recv = packetsRecievedQueue.get(timeout = 5)
-			sent = packetsSendQueue.get(timeout = 5)
-			# 24/25--> (1 -  24/25)*100
-			lossRate = str((abs(1 - (recv / sent)) * 100)) + "%"
+		try:
+			recvArray = getReceivedData()
+			sentArray = getSentData()
+			# ex loss rate: 24/25--> (1 -  24/25)*100
+			lossRate = str(abs((1 - (int(recvArray[0]) / int(sentArray[0])) * 100))) + "%"
+			timeDifference = str(abs(float(recvArray[1]) - float(sentArray[1])))
+			print float(recvArray[1])
+			print float(sentArray[1])
+			print timeDifference
 			print lossRate
-			#print str(recv) + '/' + str(sent)
-			writeToLog(fp, (lossRate,))
+			writeToLog(fp, (lossRate +'\t' + timeDifference,))
 		except Empty:
 			pass
 		

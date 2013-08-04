@@ -16,7 +16,7 @@
 '''
 
 from ctypes import *
-from UDPServer import packetsRecievedQueue
+from UDPServer import receivedDataQueue
 
 PIPE_ACCESS_DUPLEX = 0x3
 PIPE_TYPE_MESSAGE = 0x4
@@ -33,16 +33,17 @@ ERROR_PIPE_CONNECTED = 535
 MESSAGE = "Default message from client\0"
 szPipename = "\\\\.\\pipe\\mynamedpipe"
 
-'''
-	Creates an instance of a named pipe and returns a 
-	handle for subsequent pipe operations. A named pipe 
-	server process uses this function either to create 
-	the first instance of a specific named pipe and 
-	establish its basic attributes or to create a 
-	new instance of an existing named pipe.
-'''
+
 
 def createNamedPipe():
+	'''
+		Creates an instance of a named pipe and returns a 
+		handle for subsequent pipe operations. A named pipe 
+		server process uses this function either to create 
+		the first instance of a specific named pipe and 
+		establish its basic attributes or to create a 
+		new instance of an existing named pipe.
+	'''
 	# create
 	hPipe = windll.kernel32.CreateNamedPipeA(szPipename,
                                                  PIPE_ACCESS_DUPLEX,
@@ -60,14 +61,15 @@ def createNamedPipe():
 	
 	return hPipe
 		
-'''
-	Enables a named pipe server process to 
-	wait for a client process to connect to 
-	an instance of a named pipe. 
-	A client process connects by calling either 
-	the CreateFile or CallNamedPipe function.
-'''
+
 def connectToPipe(hPipe):
+	'''
+		Enables a named pipe server process to 
+		wait for a client process to connect to 
+		an instance of a named pipe. 
+		A client process connects by calling either 
+		the CreateFile or CallNamedPipe function.
+	'''
 
 	fConnected = windll.kernel32.ConnectNamedPipe(hPipe, None)
 	if ((fConnected == 0) and (windll.kernel32.GetLastError() == ERROR_PIPE_CONNECTED)):
@@ -78,11 +80,11 @@ def connectToPipe(hPipe):
 		#print "Could not connect to the Named Pipe"
 		windll.kernel32.CloseHandle(hPipe)
 
-'''
-	Creates a thread to execute within the virtual address space of the calling process.
-	To create a thread that runs in the virtual address space of another process, use the CreateRemoteThread function.
-'''	
 def createThread(hPipe, thread_func):
+	'''
+		Creates a thread to execute within the virtual address space of the calling process.
+		To create a thread that runs in the virtual address space of another process, use the CreateRemoteThread function.
+	'''	
 	dwThreadId = c_ulong(0)
 	hThread = windll.kernel32.CreateThread(None, 0, thread_func, hPipe, 0, byref(dwThreadId))
 	if (hThread == -1):
@@ -91,33 +93,34 @@ def createThread(hPipe, thread_func):
 	else:
 		windll.kernel32.CloseHandle(hThread)
 
-'''
-	This function will just will read the value from the pipe.
-'''
+
 def ReadWrite_ClientPipe_Thread(hPipe):
-    chBuf = create_string_buffer(BUFSIZE)
-    cbRead = c_ulong(0)
-    while 1:
-        fSuccess = windll.kernel32.ReadFile(hPipe, chBuf, BUFSIZE,byref(cbRead), None)
-        if ((fSuccess ==1) or (cbRead.value != 0)):
-			packetsRecievedQueue.put(int(chBuf.value))
+	'''
+		This function will just will read the value from the pipe.
+	'''
+	chBuf = create_string_buffer(BUFSIZE)
+	cbRead = c_ulong(0)
+	while 1:
+		fSuccess = windll.kernel32.ReadFile(hPipe, chBuf, BUFSIZE,byref(cbRead), None)
+		if ((fSuccess ==1) or (cbRead.value != 0)):
+			receivedDataQueue.put(chBuf.value)
 			#print chBuf.value
 			cbWritten = c_ulong(0)
 			'''fSuccess = windll.kernel32.WriteFile(hPipe,
-                                                 c_char_p(MESSAGE),
-                                                 len(MESSAGE),
-                                                 byref(cbWritten),
-                                                 None
-                                                )
+												 c_char_p(MESSAGE),
+												 len(MESSAGE),
+												 byref(cbWritten),
+												None
+												)
 			'''
-        else:
-            break
+		else:
+			break
 			
-    windll.kernel32.FlushFileBuffers(hPipe)
-    windll.kernel32.DisconnectNamedPipe(hPipe)
-    windll.kernel32.CloseHandle(hPipe)
-    return 0
-	
+	windll.kernel32.FlushFileBuffers(hPipe)
+	windll.kernel32.DisconnectNamedPipe(hPipe)
+	windll.kernel32.CloseHandle(hPipe)
+	return 0
+
 def readFromPipe():
 	
 	THREADFUNC = CFUNCTYPE(c_int, c_int)

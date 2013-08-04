@@ -151,7 +151,7 @@ class Window(Frame):
 			This function will read from the input.txt and launch udp client with the specific values. 
 		'''
 		# open input.txt
-		p = openFile("input.txt")
+		p = open("input.txt", 'r')
 		# get Generator for files 
 		gen = readInput(p)
 		# go over the values 

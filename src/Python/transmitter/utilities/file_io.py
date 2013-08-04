@@ -1,20 +1,8 @@
 '''
-	Helping module for file handling. 
+	Helping module for file handling and parsing strings. 
 '''
 
 from re import compile
-
-def openFile(fileName):
-	'''
-		This will open the file specified.
-	'''
-	return open(fileName)
-
-def closeFile(file):
-	'''
-		This function will close the file.
-	'''
-	file.close()
 	
 def readInput(file):
 	'''
