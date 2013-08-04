@@ -164,6 +164,7 @@ class Window(Frame):
 			if startThreadFlag:
 				break
 		
+		terminateProcesses()
 		print 'finished reading file'
 			
 	def start(self):

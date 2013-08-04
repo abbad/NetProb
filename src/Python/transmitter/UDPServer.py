@@ -178,15 +178,18 @@ def makeStatistics():
 			recvArray = getReceivedData()
 			sentArray = getSentData()
 			# ex loss rate: 24/25--> (1 -  24/25)*100
-			lossRate = str(abs((1 - (int(recvArray[0]) / int(sentArray[0])) * 100))) + "%"
+			if int(sentArray[0]) != 0:
+				lossRate = str(abs((1 - (int(recvArray[0]) / int(sentArray[0])) * 100))) + "%"
+			else: 
+				lossRate = str(0) + "%"
 			timeDifference = str(abs(float(recvArray[1]) - float(sentArray[1])))
 			print recvArray[0] 
 			print sentArray[0]
 			#print float(recvArray[1])
 			#print float(sentArray[1])
 			print timeDifference
-			#print lossRate
-			#writeToLog(fp, (lossRate +'\t' + timeDifference,))
+			print lossRate
+			writeToLog(fp, (lossRate +'\t' + timeDifference,))
 		except Empty:
 			pass
 		
