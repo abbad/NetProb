@@ -14,10 +14,10 @@ from os import write
 from utilities.udp_client_win32_named_pipes import writeToPipe
 
 # global variables
-host = "192.168.0.1"              # Symbolic name meaning all available interfaces
-port = 4001                     # Arbitrary non-privileged port
+host = "localhost"              # Symbolic name meaning all available interfaces
+port = 4001                     # port number
 bufferSize = 2084
-statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
+statNotPeriod = 0				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
 numberOfPackets = 0
 pipeIn = None
 	
@@ -31,7 +31,7 @@ def __generateStatistics(packets):
 def printHelp():
 	print 'This is a UDP client:'
 	print 'usage:'
-	print '-l localHost \t\t\t default localhost'
+	print '-l host \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-b buffer size \t\t\t default 1024'
 	print '-f file name \t\t\t default stat.xml'
@@ -72,25 +72,29 @@ def monitorValues():
 			start_new_thread(writeToPipe, ( str(numberOfPackets) + "time:" + str(time()),))
 			stopTime = time() + statNotPeriod
 			numberOfPackets = 0
-		
+	
+def createConnection():
+	'''
+		This will create a connection.
+	'''
+	sock = socket(AF_INET, SOCK_DGRAM)
+	sock.bind((host, port))
+	return sock
+	
 if __name__ == "__main__":
 		
 	checkArguments(argv)
-	
-	sock = socket(AF_INET, SOCK_DGRAM)
-	#sock.setblocking(0)
-	sock.bind((host, port))
+	sock = createConnection()
 	print host
-	print "UDP Client : Client  is listening.."
-	start_new_thread(monitorValues, ())
+	print "UDP Client: listening.."
+	
+	if statNotPeriod != 0:
+		start_new_thread(monitorValues, ())
 	
 	while 1:
-		try:
-			data  = sock.recv(bufferSize)
-			print "UDP Client : received message " + str(numberOfPackets)
-			#print "UDP Client : size:" + str(len(data))
-			numberOfPackets += 1
-		except: 
-			pass
+		data  = sock.recv(bufferSize)
+		print "UDP Client : received message " + str(numberOfPackets)
+		#print "UDP Client : size:" + str(len(data))
+		numberOfPackets += 1
 		
 		
