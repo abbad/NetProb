@@ -18,10 +18,6 @@ from Queue import Queue, Empty
 from threading import Thread 
 from utilities.file_io import writeToLog, readInput, parseLine
 from utilities.udp_server_win32_named_pipes import *
-# code to include subfolder modules (packages)
-#cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
-#if cmd_subfolder not in path:
-# 	path.insert(0, cmd_subfolder)
 
 # global variables 
 host = "localhost"
@@ -32,7 +28,8 @@ duration = 10
 timeBetweenWindows = 0 
 numberOfPackets = 1
 notificationPeriod = 0
-
+totalNumberOfPacketsReceived = 0
+logFileName = "log" + str(time()) + ".txt"
 # flags
 nonUniform = False
 
@@ -170,16 +167,18 @@ def calculateRatio(recv, sent):
 		
 	return str(abs(((1 - float(recv) / float(sent)) * 100))) + "%"
 	
-def generateStatistics(queues):
+def generateStatistics(queues, ):
 	'''
 		This function will make statistics.  
 	'''
-	logFileName = "log" + str(time()) + ".txt"
+	global totalNumberOfPacketsReceived
+	
 	while 1:
 		fp  = open(logFileName, 'a')
 		recvArray = getReceivedData(queues[2])
 		sentArray = getSentData(queues[0], queues[1])
-		
+		totalNumberOfPacketsReceived += int(recvArray[0])
+		print 
 		if int(sentArray[0]) != 0:
 			lossRate = calculateRatio(recvArray[0], sentArray[0])
 		else: 
@@ -213,6 +212,7 @@ def startSending(sock):
 	'''
 		This function will start sending packets.
 	'''
+	total = 0
 	if nonUniform:
 		# open input.txt
 		p = open("input.txt", 'r')
@@ -223,7 +223,7 @@ def startSending(sock):
 			#  parse the line and set values for the transmitter. 
 			setValues(parseLine(line))
 			# send packets
-			total = sendUdpBasedOnDuration(sock)
+			total += sendUdpBasedOnDuration(sock)
 		print 'finished reading file'
 		p.close()
 	else: 
@@ -259,7 +259,7 @@ def createQueues():
 	return arr
 	
 if __name__ == '__main__':
-	
+	totalNumberOfPacketsSend = 0
 	checkArguments(argv)
 	sock = createConnection()
 	
@@ -270,8 +270,12 @@ if __name__ == '__main__':
 	launchThreads(startTime, queues)
 	
 	totalNumberOfPacketsSend = startSending(sock)
-	
-	print "Number of packets sent:", totalNumberOfPacketsSend
+	print totalNumberOfPacketsSend
+	print totalNumberOfPacketsReceived
+	fp  = open(logFileName, 'a')
+	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend))
+	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)
+	fp.close()
 	print 'closing sockets'
 	
 	sock.close()
