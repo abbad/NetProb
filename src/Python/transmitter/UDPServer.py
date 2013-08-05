@@ -36,6 +36,17 @@ notificationPeriod = 0
 # flags
 nonUniform = False
 
+def printHelp():
+	print 'This is a UDP Server:'
+	print 'usage:'
+	print '-l Host \t\t\t default localhost'
+	print '-p port number \t\t\t default 4001'
+	print '-s packet size \t\t\t default 50'
+	print '-t time between each window \t default 0 seconds'
+	print '-w window size \t\t\t default 0'
+	print '-d duration sending packets \t dafault 20'
+	print '-n notification period \t default 5 \n'
+
 def sendUdpBasedOnDuration(sock):
 	'''
 		sending packets based on duration
@@ -79,18 +90,7 @@ def putValuesInQueue(startTime, packetsSendQueue, timeStampSendQueue):
 			timeStampSendQueue.put(time())
 			numberOfPackets = 0
 			notificationTime = time() + notificationPeriod
-		
-def printHelp():
-	print 'This is a UDP Server:'
-	print 'usage:'
-	print '-l Host \t\t\t default localhost'
-	print '-p port number \t\t\t default 4001'
-	print '-s packet size \t\t\t default 50'
-	print '-t time between each window \t default 0 seconds'
-	print '-w window size \t\t\t default 0'
-	print '-d duration sending packets \t dafault 20'
-	print '-n notification period \t default 5 \n'
-	
+			
 def makePacket(size, number):
 	packetheader = makePacketHeader(number)
 	packetData = makePacketBody(size)
@@ -174,10 +174,9 @@ def generateStatistics(queues):
 	'''
 		This function will make statistics.  
 	'''
-	
-	fp  = open("log" + str(time()) + ".txt", 'a')
-	
+	logFileName = "log" + str(time()) + ".txt"
 	while 1:
+		fp  = open(logFileName, 'a')
 		recvArray = getReceivedData(queues[2])
 		sentArray = getSentData(queues[0], queues[1])
 		
@@ -186,9 +185,11 @@ def generateStatistics(queues):
 		else: 
 			lossRate = str(0) + "%"
 	
-		timeDifference = str(abs(float(recvArray[1]) - float(sentArray[1])))
+		timeDifference = str(float(recvArray[1]) - float(sentArray[1]))
 		
-		writeToLog(fp, lossRate + '\t' + timeDifference + '\t' + str(recvArray[0]) + '/' + str(sentArray[0]))		
+		writeToLog(fp, lossRate + '\t' + timeDifference + '\t' + str(recvArray[0]) + '/' + str(sentArray[0]))	
+		
+		fp.close()
 		
 def createConnection(): 
 	'''

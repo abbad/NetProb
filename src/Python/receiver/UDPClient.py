@@ -20,13 +20,7 @@ bufferSize = 2084
 statNotPeriod = 0				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
 numberOfPackets = 0
 pipeIn = None
-	
-	
-def __generateStatistics(packets):
-	'''
-		A function to generate xml statistics for client.
-	'''
-	return str(packets)
+
 	 
 def printHelp():
 	print 'This is a UDP client:'
