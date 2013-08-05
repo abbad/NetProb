@@ -80,11 +80,10 @@ def putValuesInQueue(startTime, packetsSendQueue, timeStampSendQueue):
 			numberOfPackets = 0
 			notificationTime = time() + notificationPeriod
 		
-			
 def printHelp():
 	print 'This is a UDP Server:'
 	print 'usage:'
-	print '-l localHost \t\t\t default localhost'
+	print '-l Host \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-s packet size \t\t\t default 50'
 	print '-t time between each window \t default 0 seconds'
@@ -163,12 +162,13 @@ def getSentData(packetsSendQueue, timeStampSendQueue):
 	arr.append(timeStampSendQueue.get())
 	return arr
 
-def calculateStatistics(recv, sent):
+def calculateRatio(recv, sent):
 	'''
-		This function will calculate the statisctics. 
+		This function will calculate ratio . 
 		# ex loss rate: 24/25--> (1 -  24/25)*100
 	'''
-	return str(abs((1 - (int(recv) / int(sent)) * 100))) + "%"
+		
+	return str(abs(((1 - float(recv) / float(sent)) * 100))) + "%"
 	
 def generateStatistics(queues):
 	'''
@@ -182,7 +182,7 @@ def generateStatistics(queues):
 		sentArray = getSentData(queues[0], queues[1])
 		
 		if int(sentArray[0]) != 0:
-			lossRate = calculateStatistics(recvArray[0], sentArray[0])
+			lossRate = calculateRatio(recvArray[0], sentArray[0])
 		else: 
 			lossRate = str(0) + "%"
 	
