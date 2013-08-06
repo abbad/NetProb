@@ -22,7 +22,7 @@ from utilities.udp_server_win32_named_pipes import *
 # global variables 
 host = "localhost"
 port = 4001
-PacketsPerWindows = 10
+packetsPerWindows = 10
 packetSize = 1000
 duration = 10
 timeBetweenWindows = 0 
@@ -30,6 +30,7 @@ numberOfPackets = 1
 notificationPeriod = 0
 totalNumberOfPacketsReceived = 0
 logFileName = "log" + str(time()) + ".txt"
+timeBetweenPacket = 0
 # flags
 nonUniform = False
 
@@ -42,7 +43,8 @@ def printHelp():
 	print '-t time between each window \t default 0 seconds'
 	print '-w window size \t\t\t default 0'
 	print '-d duration sending packets \t dafault 20'
-	print '-n notification period \t default 5 \n'
+	print '-n notification period \t default 0 \n'
+	print '-x time between each packet \t default 0\n'
 
 def sendUdpBasedOnDuration(sock):
 	'''
@@ -57,11 +59,14 @@ def sendUdpBasedOnDuration(sock):
 	
 	while(1):
 		# send a window a loop
-		for i in range(PacketsPerWindows):	
+		for i in range(packetsPerWindows):	
 			packet = makePacket(packetSize, numberOfPackets)
 			sock.sendto(packet , (host, port))
 			numberOfPackets = numberOfPackets + 1
 			totalNumberOfPacketsSend = totalNumberOfPacketsSend + 1
+			
+			# timeBetweenPacket
+			sleep(timeBetweenPacket)
 			
 		if timeBetweenWindows != 0:
 			print 'sleeping for ' + str(timeBetweenWindows) + ' seconds' 
@@ -108,10 +113,10 @@ def makePacketBody(size):
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:f:",["host", "portNumber", "PacketsPerWindows", "packetSize", 
-						"duration", "time", "notificationPeriod","non-uniform"])
+		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:f:x:",["host", "portNumber", "packetsPerWindows", "packetSize", 
+						"duration", "time", "notificationPeriod","non-uniform", "timeBetweenPacket"])
 	except GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <PacketsPerWindows> -d <duration> -t <timeBetweenWindows>, -n <notificationPeriod>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <packetsPerWindows> -d <duration> -t <timeBetweenWindows> -x <timeBetweenPacket>'
 		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -127,8 +132,8 @@ def checkArguments(argv):
 			global packetSize
 			packetSize = int(arg)
 		elif opt in ('-w'):
-			global PacketsPerWindows
-			PacketsPerWindows = int(arg)
+			global packetsPerWindows
+			packetsPerWindows = int(arg)
 		elif opt in ('-d'):
 			global duration
 			duration = float(arg)
@@ -141,6 +146,9 @@ def checkArguments(argv):
 		elif opt in ('-f'):
 			global nonUniform
 			nonUniform = True
+		elif opt in ('-x'):
+			global timeBetweenPacket
+			timeBetweenPacket = float(arg)
 
 def getReceivedData(receivedDataQueue):
 	'''
@@ -177,8 +185,7 @@ def generateStatistics(queues, ):
 		fp  = open(logFileName, 'a')
 		recvArray = getReceivedData(queues[2])
 		sentArray = getSentData(queues[0], queues[1])
-		totalNumberOfPacketsReceived += int(recvArray[0])
-		print 
+		totalNumberOfPacketsReceived += int(recvArray[0]) 
 		if int(sentArray[0]) != 0:
 			lossRate = calculateRatio(recvArray[0], sentArray[0])
 		else: 
@@ -202,11 +209,12 @@ def setValues(args):
 	'''
 		set global values for the transmitter.
 	'''
-	global PacketsPerWindows, packetSize, duration, timeBetweenWindows 
-	PacketsPerWindows = int(args[1])
+	global packetsPerWindows, packetSize, duration, timeBetweenWindows 
 	packetSize = int(args[0])
-	duration = int(args[3])
-	timeBetweenWindows = int(args[2])
+	packetsPerWindows = int(args[1])
+	timeBetweenPacket = float(args[2])
+	timeBetweenWindows = int(args[3])
+	duration = int(args[4])
 	
 def startSending(sock):
 	'''
@@ -270,8 +278,6 @@ if __name__ == '__main__':
 	launchThreads(startTime, queues)
 	
 	totalNumberOfPacketsSend = startSending(sock)
-	print totalNumberOfPacketsSend
-	print totalNumberOfPacketsReceived
 	fp  = open(logFileName, 'a')
 	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend))
 	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)
