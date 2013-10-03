@@ -213,7 +213,7 @@ def setValues(args):
 	packetSize = int(args[0])
 	packetsPerWindows = int(args[1])
 	timeBetweenPacket = float(args[2])
-	timeBetweenWindows = int(args[3])
+	timeBetweenWindows = float(args[3])
 	duration = int(args[4])
 	
 def startSending(sock):
