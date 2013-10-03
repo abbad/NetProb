@@ -246,7 +246,7 @@ def launchThreads(startTime, queues):
 	# statistics thread
 	start_new_thread(generateStatistics, (queues,))
 	
-	# cancel pipe usage when called from cmd.
+	# if statement to cancel pipe usage when called from cmd.
 	if notificationPeriod != 0:
 		# read from pipe
 		start_new_thread(readFromPipe, (queues[2],))
@@ -273,9 +273,7 @@ if __name__ == '__main__':
 	
 	# queues 
 	queues = createQueues()
-	
-	startTime = time()
-	launchThreads(startTime, queues)
+	launchThreads(time(), queues)
 	
 	totalNumberOfPacketsSend = startSending(sock)
 	fp  = open(logFileName, 'a')
