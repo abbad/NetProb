@@ -29,7 +29,7 @@ timeBetweenWindows = 0
 numberOfPackets = 1
 notificationPeriod = 0
 totalNumberOfPacketsReceived = 0
-logFileName = "log" + str(time()) + ".txt"
+logFileName = "log" + str(time()) + ".log"
 timeBetweenPacket = 0
 # flags
 nonUniform = False
