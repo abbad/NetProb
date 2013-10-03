@@ -11,8 +11,6 @@ from sys import exit, argv
 from getopt import getopt, GetoptError
 from time import sleep, time
 from thread import start_new_thread
-from os import path as osPath
-from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
