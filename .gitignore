@@ -34,5 +34,6 @@ nosetests.xml
 .project
 .pydevproject
 
-# examples
+# my stuff 
 Code Examples
+*.log
