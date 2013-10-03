@@ -105,8 +105,12 @@ if __name__ == '__main__':
 	
 	checkArguments(argv)
 	s = socket(AF_INET, SOCK_STREAM)
-	s.connect((host, port))
-	
+	while (1):
+		try:
+			s.connect((host, port))
+			break
+		except: 
+			sleep(5)
 	print 'TCP Client: Connection established.'
 	
 	# read from tcp server.
@@ -122,16 +126,6 @@ if __name__ == '__main__':
 		s.send(message)
 		#stat = getStatistics() 
 		#s.send(stat)
-	'''
-	while 1:
-		try:
-
-			break
-		except: 
-			sleepTime = 5
-			print 'TCP Client: sleeping for ' + str(sleepTime) + ' seconds'
-			sleep(sleepTime)
-	'''
 	
 	s.close()
 	
