@@ -15,7 +15,6 @@ from inspect import currentframe, getfile
 from sys import path
 from thread import start_new_thread
 from utilities.user_pipes import getHandleDuplicate, closePipe	
-from utilities.file_io import *
 from Tkinter import *
 	
 class Window(Frame):
@@ -32,7 +31,6 @@ class Window(Frame):
 		self.setButtons()
 		self.setTextFields()
 	
-	
 	def setButtons(self):
 		'''
 			This function will set buttons on the window.
@@ -48,15 +46,10 @@ class Window(Frame):
 		stopButton = Button(self, text = "Stop", foreground = "Black", command = self.callTerminateProcesses)
 		stopButton.place(x = 90, y = 220)
 		
-		#startTcpButton = Button(self, text = "Start TCP Server", foreground = "Black", command = self.launchTCPServer)
-		#startTcpButton.place(x = 340, y = 190) 
-	
 	def callTerminateProcesses(self):
 		'''
 			This function will change the state of the start button and also stop the processes. 
 		'''
-		global startThreadFlag
-		startThreadFlag = True
 		self.startButton.config(state = NORMAL)
 		terminateProcesses()
 	
@@ -67,7 +60,6 @@ class Window(Frame):
 		self.startButton.config(state = DISABLED)
 		start_new_thread(self.start, ())
 		
-	
 	def setLabels(self):
 		'''
 			This function will set the labels on the window.
@@ -95,7 +87,6 @@ class Window(Frame):
 		#global 
 		notification_period = Label(self, text = "Notification Period", foreground = "Black")
 		notification_period.place(x = 310, y = 100)
-	
 	
 	def setTextFields(self):
 		'''
@@ -136,42 +127,22 @@ class Window(Frame):
 		args = ["python", "TCPServer.py", "-l", str(self.tcp_hostEntry.get()) ,"-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get()), "-a", pipeArg]
 		P1 = Popen(args, shell=False)
 		
-	def launchUdpClient(self, para):
+	def launchUdpClient(self):
 		'''
 			This function will open a sub-process and launch UDP Client.
 		'''
 		global P2
 		print 'Starting UDP Server'
-		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", para[0], "-t"
-				, para[2], "-w", para[1], "-n", str(self.notificationEntry.get()), "-d", para[3]]
+		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-n", str(self.notificationEntry.get()), "-f" , "true"]
 		P2 = Popen(args, shell=False)		
 	
-	def launchUdpClientNonUniform(self):
-		'''
-			This function will read from the input.txt and launch udp client with the specific values. 
-		'''
-		# open input.txt
-		p = open("input.txt", 'r')
-		# get Generator for files 
-		gen = readInput(p)
-		# go over the values 
-		for line in gen:
-			# parse the line 
-			input = parseLine(line)
-			# launch udp client with the values
-			self.launchUdpClient(input)
-			P2.wait()
-			if startThreadFlag:
-				break
-		
-		print 'finished reading file'
+
 			
 	def start(self):
 		'''
 			This function will start 1. Tcp Server, 2. Udp Client.
 		'''
-		global startThreadFlag 
-		startThreadFlag = False
+	
 		# Create pipe for communication
 		pipeOut, pipeIn = pipe()
 		
@@ -186,9 +157,8 @@ class Window(Frame):
 		message = pipefh.read()
 		# a message to start udp server
 		if(message == "startUdpClient"):
-			self.launchUdpClientNonUniform()
+			self.launchUdpClient()
 				 
-	
 		pipefh.close()
 		
 		
@@ -197,7 +167,6 @@ class Window(Frame):
 ROOT = None 
 P1 = None
 P2 = None
-startThreadFlag = False
 
 def main():
 	global ROOT 
@@ -231,9 +200,4 @@ def terminateProcesses():
 
 	
 if __name__ == '__main__':
-	# testing
-	#f = openFile()
-	#gen = readInput(f)
-	#for c in gen:
-	#	print parseInput(c)
 	main()

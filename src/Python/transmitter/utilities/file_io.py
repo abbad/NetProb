@@ -20,8 +20,8 @@ def parseLine(line):
 	p = compile('[,;\s]+')
 	return p.split(line)
 
-def writeToLog(filePointer, (lossRate,)):
+def writeToLog(filePointer, value):
 	'''
 		This function will write the output of the application into the log file. 
 	'''
-	filePointer.write(str(lossRate) + '\n')
+	filePointer.write(value + '\n')

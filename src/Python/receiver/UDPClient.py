@@ -14,24 +14,18 @@ from os import write
 from utilities.udp_client_win32_named_pipes import writeToPipe
 
 # global variables
-host = "192.168.0.1"              # Symbolic name meaning all available interfaces
-port = 4001                     # Arbitrary non-privileged port
+host = "localhost"              # Symbolic name meaning all available interfaces
+port = 4001                     # port number
 bufferSize = 2084
-statNotPeriod = 20 				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
+statNotPeriod = 0				#statisticsNotificationPeriod. // this means that the server will drop a statistics 
 numberOfPackets = 0
 pipeIn = None
-	
-	
-def __generateStatistics(packets):
-	'''
-		A function to generate xml statistics for client.
-	'''
-	return str(packets)
+
 	 
 def printHelp():
 	print 'This is a UDP client:'
 	print 'usage:'
-	print '-l localHost \t\t\t default localhost'
+	print '-l host \t\t\t default localhost'
 	print '-p port number \t\t\t default 4001'
 	print '-b buffer size \t\t\t default 1024'
 	print '-f file name \t\t\t default stat.xml'
@@ -59,29 +53,42 @@ def checkArguments(argv):
 		elif opt in ('-n'):
 			global statNotPeriod
 			statNotPeriod = int(arg)
-		
-if __name__ == "__main__":
-		
-	checkArguments(argv)
-	
-	sock = socket(AF_INET, SOCK_DGRAM)
 
-	sock.bind((host, port))
+def monitorValues():
+	'''
+		this function will keep on checking on the notificatin peroid. 
+	'''	
+	global numberOfPackets
 	startTime = time()
 	stopTime = startTime + statNotPeriod
-	print host
-	print "UDP Client : Client  is listening.."
-	
 	while 1:
-	
-		data  = sock.recv(bufferSize)
-		print "UDP Client : received message " + str(numberOfPackets)
-		#print "UDP Client : size:" + str(len(data))
-		
-		numberOfPackets += 1
-		
 		if stopTime <= time():
 			start_new_thread(writeToPipe, ( str(numberOfPackets) + "time:" + str(time()),))
 			stopTime = time() + statNotPeriod
 			numberOfPackets = 0
+	
+def createConnection():
+	'''
+		This will create a connection.
+	'''
+	sock = socket(AF_INET, SOCK_DGRAM)
+	sock.bind((host, port))
+	return sock
+	
+if __name__ == "__main__":
+		
+	checkArguments(argv)
+	sock = createConnection()
+	print host
+	print "UDP Client: listening.."
+	
+	if statNotPeriod != 0:
+		start_new_thread(monitorValues, ())
+	
+	while 1:
+		data  = sock.recv(bufferSize)
+		print "UDP Client : received message " + str(numberOfPackets)
+		#print "UDP Client : size:" + str(len(data))
+		numberOfPackets += 1
+		
 		

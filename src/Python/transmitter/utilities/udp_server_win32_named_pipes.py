@@ -16,7 +16,7 @@
 '''
 
 from ctypes import *
-from UDPServer import receivedDataQueue
+
 
 PIPE_ACCESS_DUPLEX = 0x3
 PIPE_TYPE_MESSAGE = 0x4
@@ -33,7 +33,8 @@ ERROR_PIPE_CONNECTED = 535
 MESSAGE = "Default message from client\0"
 szPipename = "\\\\.\\pipe\\mynamedpipe"
 
-
+# global 
+receivedDataQueue = None
 
 def createNamedPipe():
 	'''
@@ -49,14 +50,14 @@ def createNamedPipe():
                                                  PIPE_ACCESS_DUPLEX,
                                                  PIPE_TYPE_MESSAGE |
                                                  PIPE_READMODE_MESSAGE|
-                                                 PIPE_WAIT, 1,
+                                                 PIPE_WAIT, PIPE_UNLIMITED_INSTANCES,
                                                  BUFSIZE, BUFSIZE, NMPWAIT_USE_DEFAULT_WAIT,
                                                  None
                                                 )
 	
 	# check for errors					
 	if (hPipe == INVALID_HANDLE_VALUE):
-		#print "Error in creating Named Pipe"
+		print "Error in creating Named Pipe"
 		return 0
 	
 	return hPipe
@@ -77,7 +78,7 @@ def connectToPipe(hPipe):
 	if (fConnected == 1):
 		return 1
 	else:
-		#print "Could not connect to the Named Pipe"
+		print "Could not connect to the Named Pipe"
 		windll.kernel32.CloseHandle(hPipe)
 
 def createThread(hPipe, thread_func):
@@ -104,7 +105,7 @@ def ReadWrite_ClientPipe_Thread(hPipe):
 		fSuccess = windll.kernel32.ReadFile(hPipe, chBuf, BUFSIZE,byref(cbRead), None)
 		if ((fSuccess ==1) or (cbRead.value != 0)):
 			receivedDataQueue.put(chBuf.value)
-			#print chBuf.value
+			#print 'value from the pipe: ' + chBuf.value
 			cbWritten = c_ulong(0)
 			'''fSuccess = windll.kernel32.WriteFile(hPipe,
 												 c_char_p(MESSAGE),
@@ -121,8 +122,9 @@ def ReadWrite_ClientPipe_Thread(hPipe):
 	windll.kernel32.CloseHandle(hPipe)
 	return 0
 
-def readFromPipe():
-	
+def readFromPipe(queue):
+	global receivedDataQueue
+	receivedDataQueue = queue
 	THREADFUNC = CFUNCTYPE(c_int, c_int)
 	thread_func = THREADFUNC(ReadWrite_ClientPipe_Thread)
 	while 1:

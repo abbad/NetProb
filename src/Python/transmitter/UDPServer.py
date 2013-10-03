@@ -16,57 +16,58 @@ from inspect import currentframe, getfile
 from sys import path
 from Queue import Queue, Empty
 from threading import Thread 
-from utilities.file_io import writeToLog
+from utilities.file_io import writeToLog, readInput, parseLine
+from utilities.udp_server_win32_named_pipes import *
 
 # global variables 
 host = "localhost"
 port = 4001
-windowSize = 10
+packetsPerWindows = 10
 packetSize = 1000
 duration = 10
 timeBetweenWindows = 0 
 numberOfPackets = 1
-notificationPeriod = 5 
-# sent udp packets. 
-packetsSendQueue = Queue()
-timeStampSendQueue  = Queue()
-# received udp packets and time stamp queue. 
-receivedDataQueue = Queue()
-totalNumberOfPacketsSend = 0
-threadFlag = False
+notificationPeriod = 0
+totalNumberOfPacketsReceived = 0
+logFileName = "log" + str(time()) + ".txt"
+timeBetweenPacket = 0
+# flags
+nonUniform = False
 
-# code to include subfolder modules (packages)
-cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(currentframe()))[0],"subfolder")))
-if cmd_subfolder not in path:
-	path.insert(0, cmd_subfolder)
+def printHelp():
+	print 'This is a UDP Server:'
+	print 'usage:'
+	print '-l Host \t\t\t default localhost'
+	print '-p port number \t\t\t default 4001'
+	print '-s packet size \t\t\t default 50'
+	print '-t time between each window \t default 0 seconds'
+	print '-w window size \t\t\t default 0'
+	print '-d duration sending packets \t dafault 20'
+	print '-n notification period \t default 0 \n'
+	print '-x time between each packet \t default 0\n'
 
-from utilities.udp_server_win32_named_pipes import *
-
-def sendUdpBasedOntime(sock):
+def sendUdpBasedOnDuration(sock):
 	'''
 		sending packets based on duration
 	'''
 	startTime = time()
 	stopDurationTime = startTime + duration
-	notificationTime = startTime + notificationPeriod
+	totalNumberOfPacketsSend = 0
 	print 'UDP Client: sending packets for about ' + str(duration) + ' of seconds'
-	global numberOfPackets, totalNumberOfPacketsSend
+	global numberOfPackets
 	numberOfPackets = 0
-		
+	
 	while(1):
 		# send a window a loop
-		for i in range(windowSize):
-		
+		for i in range(packetsPerWindows):	
 			packet = makePacket(packetSize, numberOfPackets)
 			sock.sendto(packet , (host, port))
 			numberOfPackets = numberOfPackets + 1
 			totalNumberOfPacketsSend = totalNumberOfPacketsSend + 1
-			if notificationTime <= time():
-				packetsSendQueue.put(numberOfPackets)
-				timeStampSendQueue.put(time())
-				numberOfPackets = 0
-				notificationTime = time() + notificationPeriod
-		
+			
+			# timeBetweenPacket
+			sleep(timeBetweenPacket)
+			
 		if timeBetweenWindows != 0:
 			print 'sleeping for ' + str(timeBetweenWindows) + ' seconds' 
 			sleep(timeBetweenWindows)
@@ -75,17 +76,23 @@ def sendUdpBasedOntime(sock):
 			print 'done'
 			break
 			
-def printHelp():
-	print 'This is a UDP client:'
-	print 'usage:'
-	print '-l localHost \t\t\t default localhost'
-	print '-p port number \t\t\t default 4001'
-	print '-s packet size \t\t\t default 50'
-	print '-t time between each window \t default 0 seconds'
-	print '-w window size \t\t\t default 0'
-	print '-d duration sending packets \t dafault 20'
-	print '-n notification period \t default 5 \n'
+	return totalNumberOfPacketsSend
+
+def putValuesInQueue(startTime, packetsSendQueue, timeStampSendQueue):
+	'''
+		This function will put the values in the queue
+	'''
+	global numberOfPackets
 	
+	notificationTime = startTime + notificationPeriod
+	
+	while(1):
+		if notificationTime <= time():
+			packetsSendQueue.put(numberOfPackets)
+			timeStampSendQueue.put(time())
+			numberOfPackets = 0
+			notificationTime = time() + notificationPeriod
+			
 def makePacket(size, number):
 	packetheader = makePacketHeader(number)
 	packetData = makePacketBody(size)
@@ -98,7 +105,6 @@ def makePacketHeader(header):
 	'''
 	return bytearray('{0:32b}'.format(header))
 
-
 def makePacketBody(size):
 	'''
 		Make body of the packet from random bytes. returned as a string of bytes.
@@ -107,9 +113,10 @@ def makePacketBody(size):
 	
 def checkArguments(argv):
 	try:
-		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:",["host", "portNumber", "windowSize", "packetSize", "duration", "Time", "notificationPeriod"])
+		opts, args = getopt(argv[1:],"hl:p:w:s:d:t:n:f:x:",["host", "portNumber", "packetsPerWindows", "packetSize", 
+						"duration", "time", "notificationPeriod","non-uniform", "timeBetweenPacket"])
 	except GetoptError:
-		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <windowSize> -d <duration> -t <timeBetweenWindows>, -n <notificationPeriod>'
+		print 'UDPClient.py -l <hostname> -p <port> -s <packetSize> -w <packetsPerWindows> -d <duration> -t <timeBetweenWindows> -x <timeBetweenPacket>'
 		exit(2)
 	for opt, arg in opts:
 		if opt == '-h':
@@ -125,8 +132,8 @@ def checkArguments(argv):
 			global packetSize
 			packetSize = int(arg)
 		elif opt in ('-w'):
-			global windowSize
-			windowSize = int(arg)
+			global packetsPerWindows
+			packetsPerWindows = int(arg)
 		elif opt in ('-d'):
 			global duration
 			duration = float(arg)
@@ -136,64 +143,145 @@ def checkArguments(argv):
 		elif opt in ('-n'):
 			global notificationPeriod
 			notificationPeriod = float(arg)
+		elif opt in ('-f'):
+			global nonUniform
+			nonUniform = True
+		elif opt in ('-x'):
+			global timeBetweenPacket
+			timeBetweenPacket = float(arg)
 
-def getReceivedData():
+def getReceivedData(receivedDataQueue):
 	'''
 		Split the data and return an array. 
 	'''
 	# get received data
-	recvData = receivedDataQueue.get(timeout = 5)
-	# split the output 
+	recvData = receivedDataQueue.get()
 	return recvData.split('time:', len(recvData))
 			
-def getSentData(): 
+def getSentData(packetsSendQueue, timeStampSendQueue): 
 	'''
 		Get sent data from the queue and return an array.
 	'''
 	arr = []
-	arr.append(packetsSendQueue.get(timeout = 5))
-	arr.append(timeStampSendQueue.get(timeout = 5))
-	
+	arr.append(packetsSendQueue.get())
+	arr.append(timeStampSendQueue.get())
 	return arr
+
+def calculateRatio(recv, sent):
+	'''
+		This function will calculate ratio . 
+		# ex loss rate: 24/25--> (1 -  24/25)*100
+	'''
+		
+	return str(abs(((1 - float(recv) / float(sent)) * 100))) + "%"
 	
-def makeStatistics():
+def generateStatistics(queues, ):
 	'''
 		This function will make statistics.  
 	'''
-	fp  = open("log.txt", 'a')
-	while 1:
-		if threadFlag:
-			fp.close()
-			break
-		try:
-			recvArray = getReceivedData()
-			sentArray = getSentData()
-			# ex loss rate: 24/25--> (1 -  24/25)*100
-			lossRate = str(abs((1 - (int(recvArray[0]) / int(sentArray[0])) * 100))) + "%"
-			timeDifference = str(abs(float(recvArray[1]) - float(sentArray[1])))
-			print float(recvArray[1])
-			print float(sentArray[1])
-			print timeDifference
-			print lossRate
-			writeToLog(fp, (lossRate +'\t' + timeDifference,))
-		except Empty:
-			pass
-		
-		
-if __name__ == '__main__':
+	global totalNumberOfPacketsReceived
 	
-	checkArguments(argv)
+	while 1:
+		fp  = open(logFileName, 'a')
+		recvArray = getReceivedData(queues[2])
+		sentArray = getSentData(queues[0], queues[1])
+		totalNumberOfPacketsReceived += int(recvArray[0]) 
+		if int(sentArray[0]) != 0:
+			lossRate = calculateRatio(recvArray[0], sentArray[0])
+		else: 
+			lossRate = str(0) + "%"
+	
+		timeDifference = str(float(recvArray[1]) - float(sentArray[1]))
+		
+		writeToLog(fp, lossRate + '\t' + timeDifference + '\t' + str(recvArray[0]) + '/' + str(sentArray[0]))	
+		
+		fp.close()
+		
+def createConnection(): 
+	'''
+		make udp connection.
+	'''
 	print 'UDP target IP:', gethostbyname(host)
 	print 'UDP target port:', port
-	sock = socket(AF_INET, SOCK_DGRAM)
-	makeStatisticsThread = Thread(target = makeStatistics)
-	makeStatisticsThread.daemon = True
-	makeStatisticsThread.start()
-	start_new_thread(readFromPipe, ())
-	sendUdpBasedOntime(sock)  
-	threadFlag = True
-	makeStatisticsThread.join()
-	print "Number of packets sent:", totalNumberOfPacketsSend
+	return socket(AF_INET, SOCK_DGRAM)
+
+def setValues(args):
+	'''
+		set global values for the transmitter.
+	'''
+	global packetsPerWindows, packetSize, duration, timeBetweenWindows 
+	packetSize = int(args[0])
+	packetsPerWindows = int(args[1])
+	timeBetweenPacket = float(args[2])
+	timeBetweenWindows = int(args[3])
+	duration = int(args[4])
+	
+def startSending(sock):
+	'''
+		This function will start sending packets.
+	'''
+	total = 0
+	if nonUniform:
+		# open input.txt
+		p = open("input.txt", 'r')
+		# get Generator for files 
+		gen = readInput(p)
+		# go over the values 
+		for line in gen:
+			#  parse the line and set values for the transmitter. 
+			setValues(parseLine(line))
+			# send packets
+			total += sendUdpBasedOnDuration(sock)
+		print 'finished reading file'
+		p.close()
+	else: 
+		total = sendUdpBasedOnDuration(sock)
+		
+	return total
+		
+def launchThreads(startTime, queues):
+	'''
+		This function will launch all threads in the application.
+	'''
+	# statistics thread
+	start_new_thread(generateStatistics, (queues,))
+	
+	# cancel pipe usage when called from cmd.
+	if notificationPeriod != 0:
+		# read from pipe
+		start_new_thread(readFromPipe, (queues[2],))
+	
+		# put Values In Queue
+		start_new_thread(putValuesInQueue, (startTime, queues[0], queues[1]))
+
+def createQueues():
+	'''
+		packetsSendQueue 
+		timeStampSendQueue  
+		receivedDataQueue
+	'''
+	arr = [] 
+	for x in range(3):
+		arr.append(Queue())
+	
+	return arr
+	
+if __name__ == '__main__':
+	totalNumberOfPacketsSend = 0
+	checkArguments(argv)
+	sock = createConnection()
+	
+	# queues 
+	queues = createQueues()
+	
+	startTime = time()
+	launchThreads(startTime, queues)
+	
+	totalNumberOfPacketsSend = startSending(sock)
+	fp  = open(logFileName, 'a')
+	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend))
+	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)
+	fp.close()
 	print 'closing sockets'
 	
 	sock.close()
