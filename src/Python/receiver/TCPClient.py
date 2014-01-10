@@ -86,16 +86,18 @@ def getStatistics():
 	deleteStatistics(fileName)
 	return read_data 
 
-'''
-	This function to get notification period from server.
-'''
+
 def getNotificationPeriod(conn):
+	'''
+		This function to get notification period from server.
+	'''
 	return conn.recv(4096)
 	
-'''
-	This function to send confirm to server.
-'''
+
 def sendConfirm(conn):
+	'''
+		This function to send confirm to server.
+	'''
 	conn.send("confirm")
 	
 if __name__ == '__main__':

@@ -55,10 +55,11 @@ def checkArguments(argv):
 			global host
 			host = arg
 
-'''
-	Create tcp connection and accept a connection.
-'''
+
 def createConnection():
+	'''
+		Create tcp connection and accept a connection.
+	'''
 	s = socket(AF_INET, SOCK_STREAM)
 	s.bind((host, port))
 	print 'server is listening'
@@ -68,10 +69,10 @@ def createConnection():
 	print 'TCP Server: Connection address:', addr
 	return conn
 	
-'''
-	Send to udp client in order to analyze it. 
-'''
 def sendToReciever(data):
+	'''
+		Send to udp client in order to analyze it. 
+	'''
 	writeToPipe(data)
 	
 
@@ -93,16 +94,18 @@ def main():
 	
 	conn.close()
 
-'''
-	this function will send the notification period to client.
-'''
+
 def sendNotificationPeriod(conn):
+	'''
+		this function will send the notification period to client.
+	'''
 	conn.sendall(str(notificationPeriod))
 
-'''
-	this function to receive confirm from the client. 
-'''
+
 def receiveConfirm(conn):
+	'''
+		this function to receive confirm from the client. 
+	'''
 	return conn.recv(bufferSize)
 	
 if __name__ == '__main__':

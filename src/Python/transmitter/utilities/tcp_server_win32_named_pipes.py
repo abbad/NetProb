@@ -1,3 +1,20 @@
+'''
+	This module used in sending data between tcp server and udp client. 
+	Copied from the internet and modified. 
+	
+	Hello,
+	Here is an example of Multithreaded Pipe Server and Client using the
+		excellent ctypes library (Windows).
+
+	Reference - MSDN:
+	http://msdn.microsoft.com/library/default.asp?url=/library/en-us/ipc/base/multithreaded_pipe_server.asp
+	and
+	http://msdn.microsoft.com/library/default.asp?url=/library/en-us/ipc/base/named_pipe_client.asp
+
+	Best Regards,
+	Srijit
+'''
+
 from ctypes import *
 
 GENERIC_READ = 0x80000000

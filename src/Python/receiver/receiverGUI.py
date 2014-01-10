@@ -33,10 +33,13 @@ class Window(Frame):
 		self.setButtons()
 		self.setTextFields()
 	
-	'''
-		This function will set buttons on the window.
-	'''
+	
+	
 	def setButtons(self):
+		'''
+			This function will set buttons on the window.
+		'''
+
 		# exit button
 		# exitbutton = Button(self, text = "Exit", foreground= "red", command = self.quit)
 		# exitbutton.place(x= 150, y = 120)
@@ -63,10 +66,11 @@ class Window(Frame):
 		self.startButton.config(state = DISABLED)
 		start_new_thread(self.start, ())
 		
-	'''
-		This function will set the labels on the window.
-	'''
+	
 	def setLabels(self):
+		'''
+			This function will set the labels on the window.
+		'''
 		#UDP client
 		udp_label = Label(self, text = "UDP Client", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
@@ -88,10 +92,11 @@ class Window(Frame):
 		tcp_portNumber = Label(self, text = "Port Number", foreground = "Black")
 		tcp_portNumber.place(x = 340, y = 70)
 		
-	'''
-		This function will set the text fields.
-	'''	
+	
 	def setTextFields(self):
+		'''
+			This function will set the text fields.
+		'''	
 		#UDP Client
 		# host 
 		self.udp_hostEntry = Entry(self)
@@ -113,28 +118,31 @@ class Window(Frame):
 		self.tcp_portEntry.insert(0, "5005")
 		self.tcp_portEntry.place(x = 420, y = 70)
 
-	'''
-		This function will open a sub-process to launch TCP client.
-	'''
+	
 	def launchTcpClient(self, pipeArg):
+		'''
+			This function will open a sub-process to launch TCP client.
+		'''
 		global P1
 		print 'Starting TCP client'
 		args = ["python", "TCPClient.py", "-l", str(self.tcp_hostEntry.get()) ,"-p", str(self.tcp_portEntry.get()), "-a", pipeArg]
 		P1 = Popen(args, shell=False)
 		
-	'''
-		This function will open a sub-process and launch UDP client.
-	'''
+	
 	def launchUdpClient(self, notificationPeriod):
+		'''
+			This function will open a sub-process and launch UDP client.
+		'''
 		global P2
 		print 'Starting UDP Client'
 		args =  ["python", "UDPClient.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()),  "-n", notificationPeriod]
 		P2 = Popen(args, shell=False)		
 
-	'''
-		This function will start 1. Tcp Client, 2. Udp Client.
-	'''
+	
 	def start(self):
+		'''
+			This function will start 1. Tcp Client, 2. Udp Client.
+		'''
 		# Create pipe for handshake
 		handShake = CreatePipeBetweenParentAndTcpClient()
 		
