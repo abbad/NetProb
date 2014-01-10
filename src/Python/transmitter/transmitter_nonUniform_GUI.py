@@ -127,7 +127,7 @@ class Window(Frame):
 		args = ["python", "TCPServer.py", "-l", str(self.tcp_hostEntry.get()) ,"-p", str(self.tcp_portEntry.get()), "-n", str(self.notificationEntry.get()), "-a", pipeArg]
 		P1 = Popen(args, shell=False)
 		
-	def launchUdpClient(self):
+	def launchUdpServer(self):
 		'''
 			This function will open a sub-process and launch UDP Client.
 		'''
@@ -157,7 +157,7 @@ class Window(Frame):
 		message = pipefh.read()
 		# a message to start udp server
 		if(message == "startUdpClient"):
-			self.launchUdpClient()
+			self.launchUdpServer()
 				 
 		pipefh.close()
 		

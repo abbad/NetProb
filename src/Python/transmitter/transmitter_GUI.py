@@ -68,8 +68,8 @@ class Window(Frame):
 		'''
 			This function will set the labels on the window.
 		'''
-		#UDP Client
-		udp_label = Label(self, text = "UDP Client", foreground = "Black")
+		#UDP Server
+		udp_label = Label(self, text = "UDP Server", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
 		
 		udp_hostLabel= Label(self, text = "Host Name", foreground = "Black")
@@ -172,7 +172,7 @@ class Window(Frame):
 			This function will open a sub-process and launch UDP Client.
 		'''
 		global P2
-		print 'Starting UDP client'
+		print 'Starting UDP Server'
 		args =  ["python", "UDPServer.py", "-l", str(self.udp_hostEntry.get()), "-p", str(self.udp_portEntry.get()), "-s", str(self.udp_packetSizeEntry.get()), "-t"
 				, str(self.udp_timeBetweenEachWindow.get()), "-w", str(self.udp_windowSizeEntry.get()), "-n", str(self.notificationEntry.get()), "-d", str(self.udp_durationEntry.get())]
 		P2 = Popen(args, shell=False)		

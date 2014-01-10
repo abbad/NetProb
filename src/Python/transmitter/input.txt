@@ -1,18 +1,5 @@
 # Please put the input seperated by a comma and start with 
 packetSize in bytes, PacketsPerWindows, timeBetweenEachPacketInSeconds, TimeBetweenEachWindowInSeconds, DurationInSeconds
 # ex 2000,5,2,60 	# the program will start parsing input from the fourth line. 
-1000,4,0.5,5,20
-1000,5,1,6,20
-1000,20,2,6,20
-1000,10,0.1,2,20
-1000,20,0,10,20
-1000,20,0,5,20
-1000,10,1,2,20
-1000,2,3,0,20
-1000,2,0,1,20
-1000,5,0,2,20
-2000,5,1,5,20
-500,4,0,5,20
-1000,1,1,2,20
-1000,40,2,20,20
-1000,100,2,2,20
+1000,4,0.5,5,40
+1000,5,0.5,2,60
