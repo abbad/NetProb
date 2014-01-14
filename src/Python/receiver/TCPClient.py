@@ -26,7 +26,7 @@ if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
 from utilities.tcp_client_win32_named_pipes import *
-from utilities.user_pipes import sendMessage
+from utilities.udp_tcp_client_unnamed_pipes import sendMessage
 
 def printHelp():
 	'''
@@ -60,33 +60,7 @@ def checkArguments(argv):
 			global pipeArg1 
 			pipeArg1 = int(arg)
 			
-def getFileName():
-	'''
-		using listdir function in os to find files ending with
-		xml if one found then return it to function.
-	'''
-	
-	while 1:
-		for files in listdir("."):
-			if files.endswith(".xml"):
-				return files
-	
-def deleteStatistics(fileName):
-	remove(fileName)
-	
-def getStatistics():
-	'''
-		this is to open and read the statistics which are dumped from udp server. once read are also deleted.
-	'''
-	fileName = getFileName()
-	with open(fileName, 'r') as f:
-		read_data = f.read()
-			
-	f.close()
-	deleteStatistics(fileName)
-	return read_data 
-
-
+		
 def getNotificationPeriod(conn):
 	'''
 		This function to get notification period from server.

@@ -13,7 +13,7 @@ from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
 from thread import start_new_thread
-from utilities.user_pipes import getHandleDuplicate, closePipe	
+from utilities.tcp_udp_server_unnamed_pipes_utilities import getHandleDuplicate, closePipe	
 from Tkinter import *
 	
 class Window(Frame):

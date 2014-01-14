@@ -15,7 +15,7 @@ from os import path as osPath
 from inspect import currentframe, getfile
 from sys import path
 from thread import start_new_thread
-from utilities.user_pipes import getHandleDuplicate, closePipe	
+from utilities.udp_tcp_client_unnamed_pipes import getHandleDuplicate, closePipe	
 from Tkinter import *
 
 

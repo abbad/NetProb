@@ -3,7 +3,7 @@ Created on July 9, 2013
 
 @author: Abbad
 
-This module has all functions related to pipes.
+This module has function related to unnamed pipes
 
 '''
 
@@ -46,10 +46,11 @@ def getOsFileHandle(pipe, flags):
 	
 	return pipeoutfd
 	
-'''
-	This function will get you the duplicate the handle.
-'''
+
 def getHandleDuplicate(pipe):
+	'''
+	This function will get you the duplicate the handle.
+	'''
 	if platform == "win32": # windows
 		curproc = GetCurrentProcess()
 		pipeHandle = get_osfhandle(pipe)
@@ -63,10 +64,11 @@ def getHandleDuplicate(pipe):
 		
 		return pipearg
 
-'''
-	This will close the pipe end.
-'''
+
 def closePipe(pipe, pipeDuplicate):
+	'''
+		This will close the pipe end.
+	'''
 	close(pipe)
 	if platform == "win32":
 		pipeDuplicate.Close()

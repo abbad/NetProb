@@ -1,4 +1,4 @@
-from unnamed_pipes_utilities import sendMessage, getOsFileHandle, getHandleDuplicate
+from tcp_udp_server_unnamed_pipes_utilities import sendMessage, getOsFileHandle, getHandleDuplicate
 from udp_server_win32_named_pipes import readFromPipe
 from tcp_server_win32_named_pipes import writeToPipe
 from file_io import *

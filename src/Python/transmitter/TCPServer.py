@@ -22,7 +22,7 @@ cmd_subfolder = osPath.realpath(osPath.abspath(osPath.join(osPath.split(getfile(
 if cmd_subfolder not in path:
 	path.insert(0, cmd_subfolder)
 
-from utilities.user_pipes import sendMessage	
+from utilities.tcp_udp_server_unnamed_pipes_utilities import sendMessage	
 from utilities.tcp_server_win32_named_pipes import *
 
 def printHelp():
@@ -59,6 +59,7 @@ def checkArguments(argv):
 def createConnection():
 	'''
 		Create tcp connection and accept a connection.
+		@return an accepted connection. 
 	'''
 	s = socket(AF_INET, SOCK_STREAM)
 	s.bind((host, port))
@@ -71,6 +72,7 @@ def createConnection():
 	
 def sendToReciever(data):
 	'''
+		@parameter data: A list of items 
 		Send to udp client in order to analyze it. 
 	'''
 	writeToPipe(data)

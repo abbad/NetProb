@@ -70,6 +70,7 @@ def monitorValues():
 def createConnection():
 	'''
 		This will create a connection.
+		@return a socket
 	'''
 	sock = socket(AF_INET, SOCK_DGRAM)
 	sock.bind((host, port))

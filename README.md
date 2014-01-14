@@ -9,5 +9,13 @@ To run transmitter. Go to Transmitter folder and execute "python transmitter_GUI
 
 This application is used to help in a research paper. 
 
+There is a certain set of values in order to get more determined values. 
+
+A user must fill the input file for nonUniform probing. 
+
+This application works under windows environment.
+
 -------------------
 C code is used for experimental purposes only. 
+
+Ahm.abbad@gmail.com
