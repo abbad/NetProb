@@ -176,7 +176,7 @@ def calculateRatio(recv, sent):
 	recv = int(recv)
 	# check if recv greater then sent 
 	if recv > sent:
-		print 'fuck'
+		print 'recv > sent'
 		# subtract a sum from the recieved so its equal to the send packets.
 		recievedPacketsRemainder = recv - sent
 		return sent ,"0%"
