@@ -31,6 +31,8 @@ logFileName = "log" + str(time()) + ".log"
 timeBetweenPacket = 0
 # flags
 nonUniform = False
+# remainder of the recieved packets, to be added to the next lost packets
+recievedPacketsRemainder = 0
 
 def printHelp():
 	print 'This is a UDP Server:'
@@ -170,8 +172,20 @@ def calculateRatio(recv, sent):
 		This function will calculate ratio . 
 		# ex loss rate: 24/25--> (1 -  24/25)*100
 	'''
+	global recievedPacketsRemainder
+	recv = int(recv)
+	# check if recv greater then sent 
+	if recv > sent:
+		print 'fuck'
+		# subtract a sum from the recieved so its equal to the send packets.
+		recievedPacketsRemainder = recv - sent
+		return sent ,"0%"
 		
-	return str(abs(((1 - float(recv) / float(sent)) * 100))) + "%"
+	
+	# re add the remainder of the recieved to the actual recieved packets. 
+	recv = recv + recievedPacketsRemainder
+	recievedPacketsRemainder = 0
+	return int(recv), str(abs(((1 - float(recv) / float(sent)) * 100))) + "%"
 	
 def generateStatistics(queues, ):
 	'''
@@ -185,13 +199,13 @@ def generateStatistics(queues, ):
 		sentArray = getSentData(queues[0], queues[1])
 		totalNumberOfPacketsReceived += int(recvArray[0]) 
 		if int(sentArray[0]) != 0:
-			lossRate = calculateRatio(recvArray[0], sentArray[0])
+			recv, lossRate = calculateRatio(recvArray[0], sentArray[0])
 		else: 
 			lossRate = str(0) + "%"
 	
 		timeDifference = str(float(recvArray[1]) - float(sentArray[1]))
 		
-		writeToLog(fp, lossRate + '\t' + timeDifference + '\t' + str(recvArray[0]) + '/' + str(sentArray[0]))	
+		writeToLog(fp, lossRate + '\t' + timeDifference + '\t' + str(recv) + '/' + str(sentArray[0]))	
 		
 		fp.close()
 		
@@ -275,8 +289,9 @@ if __name__ == '__main__':
 	
 	totalNumberOfPacketsSend = startSending(sock)
 	fp  = open(logFileName, 'a')
-	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend))
-	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)
+	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)[1])
+	print totalNumberOfPacketsReceived, totalNumberOfPacketsSend
+	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)[1]
 	fp.close()
 	print 'closing sockets'
 	
