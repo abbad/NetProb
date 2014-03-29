@@ -289,8 +289,10 @@ if __name__ == '__main__':
 	
 	totalNumberOfPacketsSend = startSending(sock)
 	fp  = open(logFileName, 'a')
-	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)[1])
+	sleep(2)
+	
 	print totalNumberOfPacketsReceived, totalNumberOfPacketsSend
+	writeToLog(fp, calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)[1])
 	print "the average packet loss ratio of all the calculated packet losses", calculateRatio(totalNumberOfPacketsReceived, totalNumberOfPacketsSend)[1]
 	fp.close()
 	print 'closing sockets'
