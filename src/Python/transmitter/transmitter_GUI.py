@@ -68,8 +68,8 @@ class Window(Frame):
 		'''
 			This function will set the labels on the window.
 		'''
-		#UDP Server
-		udp_label = Label(self, text = "UDP Server", foreground = "Black")
+		#UDP Client
+		udp_label = Label(self, text = "UDP Client", foreground = "Black")
 		udp_label.place(x = 40, y = 10)
 		
 		udp_hostLabel= Label(self, text = "Host Name", foreground = "Black")
