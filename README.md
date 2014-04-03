@@ -1,4 +1,4 @@
-Probing Delay 
+NetProb 
 ==============
 
 An Application, written in Python, to measure UDP packet loss between two remote computers. This application is a part of a research paper. 
