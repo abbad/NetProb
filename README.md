@@ -4,7 +4,7 @@ NetProb
 An Application, written in Python, to measure UDP packet loss between two remote computers. This application is part of a research paper. 
 
 Link to research paper. 
-http://docs.mipro-proceedings.com/cti/CTI_23_3438.pdf
+https://pdfs.semanticscholar.org/4bf1/61dd7ab7b07ff71625ba4274eb9f93a60a91.pdf
 
 - To run receiver. Go to Receiver folder and execute "python receiver.py"
 
